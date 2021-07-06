@@ -1,5 +1,5 @@
 # greendoge-blockchain 
-An improved version of ChiaDoge, currently for testing only
+GreenDoge is made to improve ChiaDoge. It is currently being tested and will not promise any rewards.
 
 **GreenDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.
 
