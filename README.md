@@ -1,5 +1,5 @@
 # greendoge-testnet 
-ChiaDoge is running fast. GreenDoge is made for test to improve ChiaDoge. We are committed to providing ChiaDoge's stability, but GreenDoge may restart multiple times. So do not run GreenDoge yourself without following the community's instructions.
+Because of the suggestions of many people, I decided to migrate from ChiaDoge to GreenDoge. GreenDoge will be released only after fully preparing all OS versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge Network.
 
 **ChiaDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.
 
