@@ -6,7 +6,7 @@ Because of the suggestions of many people, We decided to migrate from ChiaDoge t
 Block Reward: 100<br>
 Pre-farm: 21,000,000 (Development and Promotion Fund)
 
-For more information, see our website and downloads at https://chiadog.co.
+For more information, see our website and downloads at https://chiadoge.co.
 
 ## Installing
 
