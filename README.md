@@ -15,6 +15,9 @@ Install instructions are available in the
 section of the
 [chia-blockchain repository wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
+## Full Notes
+greendoge show -a 36.225.198.229:5444
+
 ## Running
 
 Once installed, a
