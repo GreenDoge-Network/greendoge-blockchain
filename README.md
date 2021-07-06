@@ -1,5 +1,5 @@
 # greendoge-blockchain-testnet 
-Because of the suggestions of many people, We decided to migrate from ChiaDoge to GreenDoge Network. GreenDoge mainnet will be lauched only after fully preparing all OS versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge mainnet.
+Because of the suggestions of many people, We decided to migrate from ChiaDoge to more thoughtful GreenDoge Network. GreenDoge mainnet will be lauched only after fully preparing all OS versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge mainnet.
 
 Do not run GreenDoge testnet yourself without following the community's instructions for now.
 
