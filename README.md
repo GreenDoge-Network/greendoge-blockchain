@@ -1,5 +1,5 @@
 # greendoge-blockchain-testnet 
-Because of the suggestions of many people, We decided to migrate from ChiaDoge to GreenDoge Network. GreenDoge mainnet will be lauched only after fully preparing all OS versions. And let the rewards obtained by ChiaDoge mainnet can be transferred to the GreenDoge mainnet.
+Because of the suggestions of many people, We decided to migrate from ChiaDoge to GreenDoge Network. GreenDoge mainnet will be lauched only after fully preparing all OS versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge mainnet.
 
 **ChiaDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.
 
