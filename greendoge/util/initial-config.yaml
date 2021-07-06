@@ -246,7 +246,7 @@ full_node:
       port: 5446
   introducer_peer:
       host: introducer.greendoge.dog  # GreenDoge AWS introducer IPv4/IPv6
-      port: 5444
+      port: 5445
   wallet_peer:
     host: *self_hostname
     port: 5449
@@ -328,7 +328,7 @@ wallet:
 
   introducer_peer:
     host: introducer.greendoge.dog # GreenDoge AWS introducer IPv4/IPv6
-    port: 5444
+    port: 5445
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
