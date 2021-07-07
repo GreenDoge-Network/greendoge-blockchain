@@ -108,9 +108,9 @@ class WSGreenDogeConnection:
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'greendoge-' + network_id,
+                    network_id,
                     protocol_version,
-                    greendoge_full_version_str(),
+                    chia_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],
@@ -124,7 +124,7 @@ class WSGreenDogeConnection:
             inbound_handshake = Handshake.from_bytes(inbound_handshake_msg.data)
             if ProtocolMessageTypes(inbound_handshake_msg.type) != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-            if inbound_handshake.network_id != 'greendoge-' + network_id:
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
             self.peer_server_port = inbound_handshake.server_port
@@ -141,14 +141,14 @@ class WSGreenDogeConnection:
             inbound_handshake = Handshake.from_bytes(message.data)
             if ProtocolMessageTypes(message.type) != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-            if inbound_handshake.network_id != 'greendoge-' + network_id:
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'greendoge-' + network_id,
+                    network_id,
                     protocol_version,
-                    greendoge_full_version_str(),
+                    chia_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],

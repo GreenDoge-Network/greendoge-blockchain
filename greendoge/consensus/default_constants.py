@@ -30,12 +30,12 @@ testnet_kwargs = {
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
     # Forks of greendoge should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d"),
+    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("6930e42ae7ae2bbed7ec306c80dda18f35cf4ddaf49abefa99b2a5bbd1545f3c"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
-        "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+        "01038f6bd2a6fec99c25b9ca1b87d884b0af163bd9ba406f4cd2d4ebb1817259"
     ),
     "GENESIS_PRE_FARM_FARMER_PUZZLE_HASH": bytes.fromhex(
-        "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+        "5694141eb8a00fcf2a8c8ba623f497019c641edc6667d3b907bd73b83e26f02f"
     ),
     "MAX_VDF_WITNESS_SIZE": 64,
     # Size of mempool = 50x the size of block

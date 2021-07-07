@@ -122,7 +122,7 @@ python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
 echo ""
 echo "GreenDoge blockchain install.sh complete."
 echo "For assistance join us on Discord in the #testnet chat channel:"
-echo "https://discord.gg/t6H5ZM7k"
+echo "https://discord.gg/YJaBQ9a6"
 echo ""
 echo "Try the Quick Start Guide to running greendoge-blockchain:"
 echo "https://github.com/GreenDoge-Network/greendoge-blockchain/wiki/Quick-Start-Guide"

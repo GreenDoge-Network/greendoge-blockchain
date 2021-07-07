@@ -3,7 +3,7 @@ min_mainnet_k_size: 32
 # Send a ping to all peers after ping_interval seconds
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
-daemon_port: 52400
+daemon_port: 53500
 inbound_rate_limit_percent: 100
 outbound_rate_limit_percent: 30
 
@@ -11,11 +11,11 @@ network_overrides: &network_overrides
   constants:
     mainnet:
       NETWORK_TYPE: 0
-      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
+      GENESIS_CHALLENGE: 6930e42ae7ae2bbed7ec306c80dda18f35cf4ddaf49abefa99b2a5bbd1545f3c
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
     testnet0:
-      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
+      GENESIS_CHALLENGE: 6930e42ae7ae2bbed7ec306c80dda18f35cf4ddaf49abefa99b2a5bbd1545f3c
       NETWORK_TYPE: 1
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
@@ -54,14 +54,14 @@ logging: &logging
 
 harvester:
   # The harvester server (if run) will run on this port
-  port: 5448
+  port: 6548
   farmer_peer:
     host: *self_hostname
-    port: 5447
+    port: 6547
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 5560
+  rpc_port: 6660
   num_threads: 30
   plot_loading_frequency_seconds: 120
 
@@ -94,14 +94,14 @@ pool:
 
 farmer:
   # The farmer server (if run) will run on this port
-  port: 5447
+  port: 6547
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 5444
+    port: 6544
   harvester_peer:
     host: *self_hostname
-    port: 5448
+    port: 6548
 
   pool_public_keys: []
 
@@ -110,7 +110,7 @@ farmer:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 5559
+  rpc_port: 6659
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -127,7 +127,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
-  port: 5000
+  port: 6100
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -135,7 +135,7 @@ timelord_launcher:
 
 timelord:
   # The timelord server (if run) will run on this port
-  port: 5446
+  port: 6546
   # Provides a list of VDF clients expected to connect to this timelord.
   # For each client, an IP is provided, together with the estimated iterations per second.
   vdf_clients:
@@ -147,13 +147,13 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 5444
+      port: 6544
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 5000
+    port: 6100
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -182,7 +182,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 5444
+  port: 6544
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -192,7 +192,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 5555
+  rpc_port: 6655
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -240,16 +240,16 @@ full_node:
     - "dns-introducer.greendoge.dog"
   farmer_peer:
       host: *self_hostname
-      port: 5447
+      port: 6547
   timelord_peer:
       host: *self_hostname
-      port: 5446
+      port: 6546
   introducer_peer:
       host: introducer.greendoge.dog  # GreenDoge AWS introducer IPv4/IPv6
-      port: 5445
+      port: 6545
   wallet_peer:
     host: *self_hostname
-    port: 5449
+    port: 6549
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -262,10 +262,10 @@ full_node:
 
 ui:
    # The ui node server (if run) will run on this port
-  port: 5222
+  port: 6322
 
   # Which port to use to communicate with the full node
-  rpc_port: 5555
+  rpc_port: 6655
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -276,14 +276,14 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 52400
+  daemon_port: 53500
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
 
 introducer:
   host: *self_hostname
-  port: 5445
+  port: 6545
   max_peers_to_send: 20
   # The introducer will only return peers who it has seen in the last
   # recent_peer_threshold seconds
@@ -297,8 +297,8 @@ introducer:
     public_key:  "config/ssl/full_node/public_full_node.key"
 
 wallet:
-  port: 5449
-  rpc_port: 6256
+  port: 6549
+  rpc_port: 7356
 
   # The minimum height that we care about for our transactions. Set to zero
   # If we are restoring from private key and don't know the height.
@@ -310,7 +310,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 5444
+    port: 6544
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite
@@ -328,7 +328,7 @@ wallet:
 
   introducer_peer:
     host: introducer.greendoge.dog # GreenDoge AWS introducer IPv4/IPv6
-    port: 5445
+    port: 6545
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"

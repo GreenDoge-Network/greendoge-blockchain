@@ -9,8 +9,7 @@ Pre-farm: 21,000,000 (Development and Promotion Fund)
 For more information, see our website and downloads at https://greendoge.dog .
 
 ## Full Nodes: 
-greendoge show -a 36.225.198.229:6443<br>
-greendoge show -a 54.255.135.223:6443
+greendoge show -a 
 
 ## Installing
 
