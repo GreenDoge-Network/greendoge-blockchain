@@ -26,6 +26,11 @@ greendoge show -a 1.164.180.223:6544
 
 For more information, join our [Discord](https://discord.gg/YJaBQ9a6) and see website at https://greendoge.dog.
 
+## Help run the Timelord node
+. ./activate
+sh install-timelord.sh
+greendoge start timelord
+
 ## Running
 
 Once installed, a
