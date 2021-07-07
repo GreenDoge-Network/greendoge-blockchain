@@ -25,7 +25,7 @@ network_overrides: &network_overrides
     testnet0:
       address_prefix: "tgdog"
 
-selected_network: &selected_network "mainnet"
+selected_network: &selected_network "testnet0"
 ALERTS_URL: https://download.greendoge.dog/notify/mainnet_alert.txt
 GREENDOGE_ALERTS_PUBKEY: 8c5da6e80b9dca56e3c417ea13c71ad4e4e2b4162ee658d7542f0cb56b0bd3b0b47591b946b01e437bc165a354ab1853
 
