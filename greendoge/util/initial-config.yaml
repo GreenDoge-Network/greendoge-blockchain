@@ -11,21 +11,29 @@ network_overrides: &network_overrides
   constants:
     mainnet:
       NETWORK_TYPE: 0
-      GENESIS_CHALLENGE: 6930e42ae7ae2bbed7ec306c80dda18f35cf4ddaf49abefa99b2a5bbd1545f3c
+      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
     testnet0:
-      GENESIS_CHALLENGE: 6930e42ae7ae2bbed7ec306c80dda18f35cf4ddaf49abefa99b2a5bbd1545f3c
+      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
       NETWORK_TYPE: 1
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    testnet1:
+      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
+      NETWORK_TYPE: 1
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    
   config:
     mainnet:
       address_prefix: "gdog"
     testnet0:
       address_prefix: "tgdog"
+    testnet1:
+      address_prefix: "tgdog"
 
-selected_network: &selected_network "testnet0"
+selected_network: &selected_network "testnet1"
 ALERTS_URL: https://download.greendoge.dog/notify/mainnet_alert.txt
 GREENDOGE_ALERTS_PUBKEY: 8c5da6e80b9dca56e3c417ea13c71ad4e4e2b4162ee658d7542f0cb56b0bd3b0b47591b946b01e437bc165a354ab1853
 
