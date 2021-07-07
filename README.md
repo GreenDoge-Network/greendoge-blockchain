@@ -22,10 +22,7 @@ greendoge plots add -d D:\plots_path <br>
 greendoge start farmer<br>
 greendoge show -a 1.164.180.223:6544
 
-More infomation in the
-[INSTALL](https://github.com/Chia-Network/chia-blockchain/wiki/INSTALL)
-section of the
-[chia-blockchain repository wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
+For more information, join our [Discord](https://discord.gg/YJaBQ9a6) and see website at https://greendoge.dog.
 
 ## Running
 
