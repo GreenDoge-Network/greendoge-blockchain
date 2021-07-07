@@ -1,4 +1,4 @@
-## Migration plan - GreenDoge Network
+## Migration plan - GreenDoge Network(Testnet)
 Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet will be lauched only after fully preparing windows and ubuntu versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge mainnet.
 
 ## Full Nodes:
