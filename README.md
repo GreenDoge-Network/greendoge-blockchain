@@ -21,7 +21,7 @@ sh install.sh<br>
 . ./activate<br>
 greendoge init<br>
 greendoge keys add<br>
-greendoge plots add -d D:\<br>
+greendoge plots add -d D:\your_plots_dir <br>
 greendoge start farmer<br>
 
 More infomation in the
