@@ -9,7 +9,7 @@ Because of the suggestions of many people, We decided to migrate from [ChiaDoge]
 For more information, see our website and downloads at https://greendoge.dog .
 
 ## Full Nodes: 
-greendoge show -a 1.164.180.223:6544
+1.164.180.223:6544
 
 ## Installing
 git clone https://github.com/GreenDoge-Network/greendoge-blockchain<br>
