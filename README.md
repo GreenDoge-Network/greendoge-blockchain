@@ -2,6 +2,7 @@
 Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet will be lauched only after fully preparing windows and ubuntu versions. And let the rewards obtained by ChiaDoge can be transferred to the GreenDoge mainnet.
 
 **GreenDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.Cancel changes
+![image](https://github.com/ChiaDoge/chiadoge-blockchain/blob/ec2ce39cf234eec1e3bb8c5788c3c3e462fe7eb7/chiadoge.jpg)
 
 Block Reward: 100<br>
 Pre-farm: 21,000,000 (Development and Promotion Fund)
