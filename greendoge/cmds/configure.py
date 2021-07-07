@@ -75,7 +75,7 @@ def configure(
     if testnet is not None:
         if testnet == "true" or testnet == "t":
             print("Setting Testnet")
-            testnet_port = "6544"
+            testnet_port = "56544"
             testnet_introducer = "beta1_introducer.greendoge.dog"
             testnet = "testnet7"
             config["full_node"]["port"] = int(testnet_port)
