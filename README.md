@@ -20,6 +20,8 @@ greendoge init<br>
 greendoge keys add<br>
 greendoge plots add -d D:\plots_path <br>
 greendoge start farmer<br>
+greendoge wallet show<br>
+s<br>
 greendoge show -a 1.164.180.223:6544
 
 For more information, join our [Discord](https://discord.gg/YJaBQ9a6) and see website at https://greendoge.dog.
