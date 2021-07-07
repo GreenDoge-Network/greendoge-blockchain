@@ -15,8 +15,16 @@ For more information, see our website and downloads at https://greendoge.dog .
 greendoge show -a 1.164.180.223:6544
 
 ## Installing
+git clone https://github.com/GreenDoge-Network/greendoge-blockchain
+cd greendoge-blockchain
+sh install.sh
+. ./activate
+greendoge init
+greendoge keys add
+greendoge plots add -d D:\
+greendoge start farmer
 
-Install instructions are available in the
+More infomation in the
 [INSTALL](https://github.com/Chia-Network/chia-blockchain/wiki/INSTALL)
 section of the
 [chia-blockchain repository wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
