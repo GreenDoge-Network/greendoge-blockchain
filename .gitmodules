@@ -8,3 +8,9 @@
 [submodule "Submodules"]
 	path = Submodules
 	url = https://github.com/GreenDoge-Network/greendoge-blockchain-gui.git
+[submodule "Submodulesmozilla-ca"]
+	path = Submodulesmozilla-ca
+	url = https://github.com/Chia-Network/mozilla-ca.git
+[submodule "Submodulesgreendoge-blockchain-gui"]
+	path = Submodulesgreendoge-blockchain-gui
+	url = https://github.com/GreenDoge-Network/greendoge-blockchain-gui.git
