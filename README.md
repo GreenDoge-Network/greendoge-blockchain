@@ -30,11 +30,14 @@ greendoge start timelord
 For more information, join our [Discord](https://discord.gg/YJaBQ9a6) and see website at https://greendoge.dog.
 
 ## Running
-
 Once installed, a
 [Quick Start Guide](https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide)
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
+
+## Remove old version
+rm -r greendoge-blockchain
+rm -r .greendoge
 
 ## Community
 [Green ChiaDoge Community](https://discord.gg/YJaBQ9a6) (Official)<br>
