@@ -1,3 +1,6 @@
 [submodule "mozilla-ca"]
 	path = mozilla-ca
 	url = https://github.com/Chia-Network/mozilla-ca.git
+[submodule "greendoge-blockchain-gui"]
+	path = greendoge-blockchain-gui
+	url = https://github.com/GreenDoge-Network/greendoge-blockchain-gui.git
