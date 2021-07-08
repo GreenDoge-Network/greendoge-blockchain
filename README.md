@@ -36,7 +36,7 @@ is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
 ## Remove old version
-rm -r greendoge-blockchain
+rm -r greendoge-blockchain<br>
 rm -r .greendoge
 
 ## Community
