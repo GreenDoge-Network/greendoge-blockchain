@@ -1,6 +1,6 @@
 [submodule "greendoge-blockchain-gui"]
 	path = greendoge-blockchain-gui
-	url = https://github.com/GreenDoge-Network/greendoge-blockchain-gui.git
+	url = https://github.com/GreenDoge-Network/greendoge-blockchain-gui
 	branch = main
 [submodule "mozilla-ca"]
 	path = mozilla-ca
