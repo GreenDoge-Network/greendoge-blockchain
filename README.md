@@ -2,7 +2,7 @@
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 
 ## Migration plan
-Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet will be launched only after fully preparing windows and ubuntu versions. Anyone who has ever participated in ChiaDoge can get 500 GreenDoge coins from the developer.
+ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet will be launched only after fully preparing windows and ubuntu versions. Anyone who has ever participated in ChiaDoge can get 500 GreenDoge coins from the developer.
 
 **GreenDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.The pre-mining of GreenDoge Coin is the same as Chia, but the reward is 50 times. Pre-mining will be used as a development and promotion fund.
 
