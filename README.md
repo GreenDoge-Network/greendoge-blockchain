@@ -40,7 +40,7 @@ Once installed, a
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
-## Remove old version
+## Remove old version (Before you install the new version)
 rm -r greendoge-blockchain<br>
 rm -r .greendoge
 
