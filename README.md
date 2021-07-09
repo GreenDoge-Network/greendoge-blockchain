@@ -45,7 +45,7 @@ rm -r greendoge-blockchain<br>
 rm -r .greendoge
 
 ## Telegram
-[English](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)
+[English](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<>
 [中文](https://t.me/joinchat/b11R4pYF41c5MWNl)
 
 ## Community
