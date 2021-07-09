@@ -22,7 +22,7 @@ greendoge plots add -d D:\plots_path <br>
 greendoge start farmer<br>
 greendoge wallet show<br>
 s<br>
-greendoge show -a 18.141.197.43:6544
+greendoge show -a 18.141.197.43:6544<br>
 greendoge show -a 18.141.194.162:6544
 
 sh install-timelord.sh<br>
