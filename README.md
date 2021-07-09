@@ -9,7 +9,7 @@ ChiaDoge is no longer maintained. Because of the suggestions of many people, We 
 For more information, see our website and downloads at https://greendoge.dog .
 
 ## Full Nodes: 
-1.164.180.223:6544
+https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/full_node_list
 
 ## Installing
 git clone https://github.com/GreenDoge-Network/greendoge-blockchain<br>
