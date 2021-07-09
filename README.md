@@ -8,7 +8,7 @@ ChiaDoge is no longer maintained. Because of the suggestions of many people, We 
 
 For more information, see our website and downloads at https://greendoge.dog .
 
-## Early ChiaDoge Participants Registration Form
+## Early ChiaDoge participant registration
 Please refill your gdoge address instead of tgdoge.
 https://docs.google.com/forms/d/e/1FAIpQLSeUglpkzz0peQKada16YOu9ByCePbeAC6yTAD2IL3Fdqw21MA/viewform
 
