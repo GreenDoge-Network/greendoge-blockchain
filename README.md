@@ -15,6 +15,10 @@ https://forms.gle/37qMeWr6n4m16XMu5
 ## Full Nodes: 
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/full_node_list
 
+## Remove old version (Before you install the new version)
+rm -r greendoge-blockchain<br>
+rm -r .greendoge
+
 ## Installing
 git clone https://github.com/GreenDoge-Network/greendoge-blockchain<br>
 cd greendoge-blockchain<br>
@@ -39,10 +43,6 @@ Once installed, a
 [Quick Start Guide](https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide)
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
-
-## Remove old version (Before you install the new version)
-rm -r greendoge-blockchain<br>
-rm -r .greendoge
 
 ## Telegram
 [GreenDoge coin Promotion Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
