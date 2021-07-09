@@ -45,7 +45,7 @@ rm -r greendoge-blockchain<br>
 rm -r .greendoge
 
 ## Community
-[Green ChiaDoge Community](https://discord.gg/YJaBQ9a6) (Official)<br>
+[GreenDoge Community](https://discord.gg/YJaBQ9a6) (Official)<br>
 [ChiaDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [ChiaDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
