@@ -1,6 +1,6 @@
 # GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
-
+GreenDoge mainnet is online!!!
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
 
 ## Migration plan
