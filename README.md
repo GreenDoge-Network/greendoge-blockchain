@@ -9,7 +9,7 @@ ChiaDoge is no longer maintained. Because of the suggestions of many people, We 
 For more information, see our website and downloads at https://greendoge.dog .
 
 ## Early participants of ChiaDoge registration
-Please refill your gdoge address instead of tgdoge.
+Please refill your gdoge address instead of tgdoge.<br>
 https://forms.gle/37qMeWr6n4m16XMu5
 
 ## Full Nodes: 
