@@ -1,6 +1,8 @@
 # GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 
+[Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
+
 ## Migration plan
 ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet is online!!!
 
