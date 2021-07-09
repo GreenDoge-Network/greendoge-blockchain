@@ -48,6 +48,9 @@ is available from the repository
 [GreenDoge coin Promotion Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
 [绿狗币推广群](https://t.me/joinchat/b11R4pYF41c5MWNl)
 
+## Reddit
+https://www.reddit.com/r/GreenDogecoin/
+
 ## Community
 [GreenDoge Promotion Community](https://discord.gg/YJaBQ9a6) (Official)<br>
 [GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
