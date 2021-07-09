@@ -44,6 +44,10 @@ is available from the repository
 rm -r greendoge-blockchain<br>
 rm -r .greendoge
 
+## Telegram
+[English](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)
+[中文](https://t.me/joinchat/b11R4pYF41c5MWNl)
+
 ## Community
 [GreenDoge Community](https://discord.gg/YJaBQ9a6) (Official)<br>
 [GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
