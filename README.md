@@ -1,6 +1,6 @@
 # Please be informed
 1. GreenDoge is not yet available for trading.<br>
-2. Because the value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The code will be revised as follows:<br>
+2. Because the value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The code was revised as follows:<br>
 https://github.com/GreenDoge-Network/greendoge-blockchain/commit/47621cb0de2d270c5bbb9c793b55c026a3a7f737
 
  
@@ -11,7 +11,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/commit/47621cb0de2d270
 ## Migration plan
 ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet is online!!!
 
-GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. The pre-farm coins of GreenDoge are the same as Chia, but __the block reward of GreenDoge is 50 times. This means that the pre-farm value is only 2% of Chia.__
+GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. The pre-farm coins of GreenDoge are the same as Chia, but __the early block reward of GreenDoge is 50 times that of Chia.
 
 For more information, see our website and downloads at https://greendoge.dog .
 
