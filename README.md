@@ -9,10 +9,6 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 
 For more information, see our website and downloads at https://greendoge.dog .
 
-## Early participants of ChiaDoge registration
-Please refill your gdoge address instead of tgdoge.<br>
-https://forms.gle/37qMeWr6n4m16XMu5
-
 ## Full Nodes: 
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/full_node_list
 
