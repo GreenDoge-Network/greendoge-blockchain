@@ -1,6 +1,6 @@
 # Please be informed
 1. GreenDoge is not yet available for trading.<br>
-2. The value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early community participants. The mainnet was revised as follows:<br>
+2. The value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early community participants. The mainnet consensus has been confirmed as follows:<br>
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
  
 # GreenDoge Blockchain - Mainnet
