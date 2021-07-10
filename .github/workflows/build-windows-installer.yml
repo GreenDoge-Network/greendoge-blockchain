@@ -92,7 +92,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: Windows-Exe
-        path: ${{ github.workspace }}\greendoge-blockchain-gui\Greendoge-win32-x64\
+        path: ${{ github.workspace }}\greendoge-blockchain-gui\GreenDoge-win32-x64\
 
     - name: Upload Installer to artifacts
       uses: actions/upload-artifact@v2.2.2
