@@ -16,16 +16,28 @@ def calculate_pool_reward(height: uint32) -> uint64:
 
     if height == 0:
         return uint64(int((7 / 8) * 21000000 * _mojo_per_greendoge))
+    elif height < (3 / 12) * _blocks_per_year: #Early participation rewards
+        return uint64(int((7 / 8) * 100 * _mojo_per_greendoge))
+    elif height < 1 * _blocks_per_year:
+        return uint64(int((7 / 8) * 50 * _mojo_per_greendoge))
+    elif height < 2 * _blocks_per_year:
+        return uint64(int((7 / 8) * 25 * _mojo_per_greendoge))
     elif height < 3 * _blocks_per_year:
-        return uint64(int((7 / 8) * 2 * 50 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 12.5 * _mojo_per_greendoge))
+    elif height < 4 * _blocks_per_year:
+        return uint64(int((7 / 8) * 6.25 * _mojo_per_greendoge))
+    elif height < 5 * _blocks_per_year:
+        return uint64(int((7 / 8) * 3.125 * _mojo_per_greendoge))
     elif height < 6 * _blocks_per_year:
-        return uint64(int((7 / 8) * 1 * 50 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 1.5625 * _mojo_per_greendoge))
+    elif height < 7 * _blocks_per_year:
+        return uint64(int((7 / 8) * 0.78125 * _mojo_per_greendoge))
+    elif height < 8 * _blocks_per_year:
+        return uint64(int((7 / 8) * 0.390625 * _mojo_per_greendoge))
     elif height < 9 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.5 * 50 * _mojo_per_greendoge))
-    elif height < 12 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.25 * 50 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 0.1953125 * _mojo_per_greendoge))
     else:
-        return uint64(int((7 / 8) * 0.125 * 50 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 0.09765625 * _mojo_per_greendoge))
 
 
 def calculate_base_farmer_reward(height: uint32) -> uint64:
@@ -39,13 +51,25 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     """
     if height == 0:
         return uint64(int((1 / 8) * 21000000 * _mojo_per_greendoge))
+    elif height < (3 / 12) * _blocks_per_year: #Early participation rewards
+        return uint64(int((1 / 8) * 100 * _mojo_per_greendoge))
+    elif height < 1 * _blocks_per_year:
+        return uint64(int((1 / 8) * 50 * _mojo_per_greendoge))
+    elif height < 2 * _blocks_per_year:
+        return uint64(int((1 / 8) * 25 * _mojo_per_greendoge))
     elif height < 3 * _blocks_per_year:
-        return uint64(int((1 / 8) * 2 * 50 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 12.5 * _mojo_per_greendoge))
+    elif height < 4 * _blocks_per_year:
+        return uint64(int((1 / 8) * 6.25 * _mojo_per_greendoge))
+    elif height < 5 * _blocks_per_year:
+        return uint64(int((1 / 8) * 3.125 * _mojo_per_greendoge))
     elif height < 6 * _blocks_per_year:
-        return uint64(int((1 / 8) * 1 * 50 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 1.5625 * _mojo_per_greendoge))
+    elif height < 7 * _blocks_per_year:
+        return uint64(int((1 / 8) * 0.78125 * _mojo_per_greendoge))
+    elif height < 8 * _blocks_per_year:
+        return uint64(int((1 / 8) * 0.390625 * _mojo_per_greendoge))
     elif height < 9 * _blocks_per_year:
-        return uint64(int((1 / 8) * 0.5 * 50 * _mojo_per_greendoge))
-    elif height < 12 * _blocks_per_year:
-        return uint64(int((1 / 8) * 0.25 * 50 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 0.1953125 * _mojo_per_greendoge))
     else:
-        return uint64(int((1 / 8) * 0.125 * 50 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 0.09765625 * _mojo_per_greendoge))
