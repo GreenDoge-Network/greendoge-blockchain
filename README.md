@@ -1,5 +1,5 @@
 # Please be informed
-Please note that GreenDoge is not yet available for trading.
+GreenDoge is not yet available for trading.<br>
 Because the value of _mojo_per_greendoge is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The block reward is revised as follows.
 
     if height == 0:
