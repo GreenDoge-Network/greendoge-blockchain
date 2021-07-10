@@ -1,4 +1,31 @@
-# Please note that GreenDoge is not yet available for trading.
+# Please be informed
+Please note that GreenDoge is not yet available for trading.
+Because the value of _mojo_per_greendoge is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The block reward is revised as follows.
+
+    if height == 0:
+        return uint64(int((1 / 8) * 21000000 * _mojo_per_greendoge))
+    elif height < (3 / 12) * _blocks_per_year: #Early participation rewards
+        return uint64(int((1 / 8) * 100 * _mojo_per_greendoge))
+    elif height < 1 * _blocks_per_year:
+        return uint64(int((1 / 8) * 50 * _mojo_per_greendoge))
+    elif height < 2 * _blocks_per_year:
+        return uint64(int((1 / 8) * 25 * _mojo_per_greendoge))
+    elif height < 3 * _blocks_per_year:
+        return uint64(int((1 / 8) * 12.5 * _mojo_per_greendoge))
+    elif height < 4 * _blocks_per_year:
+        return uint64(int((1 / 8) * 6.25 * _mojo_per_greendoge))
+    elif height < 5 * _blocks_per_year:
+        return uint64(int((1 / 8) * 3.125 * _mojo_per_greendoge))
+    elif height < 6 * _blocks_per_year:
+        return uint64(int((1 / 8) * 1.5625 * _mojo_per_greendoge))
+    elif height < 7 * _blocks_per_year:
+        return uint64(int((1 / 8) * 0.78125 * _mojo_per_greendoge))
+    elif height < 8 * _blocks_per_year:
+        return uint64(int((1 / 8) * 0.390625 * _mojo_per_greendoge))
+    elif height < 9 * _blocks_per_year:
+        return uint64(int((1 / 8) * 0.1953125 * _mojo_per_greendoge))
+    else:
+        return uint64(int((1 / 8) * 0.09765625 * _mojo_per_greendoge))
 
 # GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
