@@ -1,3 +1,5 @@
+## The trading function has not been opened yet.
+
 # GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases), the mainnet is online!!!
