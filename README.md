@@ -26,7 +26,7 @@
         return uint64(int((7 / 8) * 0.1953125 * _mojo_per_greendoge))
     else:
         return uint64(int((7 / 8) * 0.09765625 * _mojo_per_greendoge))
-
+ 
 # GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases), the mainnet is online!!!
