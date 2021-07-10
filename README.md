@@ -1,6 +1,7 @@
 # Please be informed
 1. GreenDoge is not yet available for trading.<br>
-2. Because the value of _mojo_per_greendoge is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. [The block reward is revised](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/47621cb0de2d270c5bbb9c793b55c026a3a7f737).
+2. Because the value of _mojo_per_greendoge is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The block reward is revised.
+https://github.com/GreenDoge-Network/greendoge-blockchain/commit/47621cb0de2d270c5bbb9c793b55c026a3a7f737
 
  
 # GreenDoge Blockchain - Mainnet
