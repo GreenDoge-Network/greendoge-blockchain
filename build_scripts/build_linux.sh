@@ -20,7 +20,7 @@ GREENDOGE_INSTALLER_VERSION=$(python installer-version.py)
 
 if [ ! "$GREENDOGE_INSTALLER_VERSION" ]; then
 	echo "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 0.0.0."
-	GREENDOGE_INSTALLER_VERSION="0.0.0"
+	GREENDOGE_INSTALLER_VERSION="1.0.1"
 fi
 echo "GreenDoge Installer Version is: $GREENDOGE_INSTALLER_VERSION"
 
