@@ -1,6 +1,6 @@
 # Please be informed
 1. GreenDoge is not yet available for trading.<br>
-2. Because the value of _mojo_per_greendoge = 1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The block reward is revised as follows.
+2. Because the value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of variable overflow that is difficult to deal with in the future, and to reward early participants. The block reward is revised as follows.
 
     if height == 0:
         return uint64(int((1 / 8) * 21000000 * _mojo_per_greendoge))
