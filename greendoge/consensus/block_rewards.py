@@ -16,18 +16,18 @@ def calculate_pool_reward(height: uint32) -> uint64:
 
     if height == 0:
         return uint64(int((7 / 8) * 21000000 * _mojo_per_greendoge))
-    elif height < 1 / 12 * _blocks_per_year:
-        return uint64(int((7 / 8) * 2 * 50 * _mojo_per_greendoge))
+    elif height < 3 / 12 * _blocks_per_year:
+        return uint64(int((7 / 8) * 100 * _mojo_per_greendoge))
     elif height < 3 * _blocks_per_year:
-        return uint64(int((7 / 8) * 2 * 10 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 20 * _mojo_per_greendoge))
     elif height < 6 * _blocks_per_year:
-        return uint64(int((7 / 8) * 1 * 10 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 10 * _mojo_per_greendoge))
     elif height < 9 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.5 * 10 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 5 * _mojo_per_greendoge))
     elif height < 12 * _blocks_per_year:
-        return uint64(int((7 / 8) * 0.25 * 10 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 2.5 * _mojo_per_greendoge))
     else:
-        return uint64(int((7 / 8) * 0.125 * 10 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 1.25 * _mojo_per_greendoge))
 
 
 def calculate_base_farmer_reward(height: uint32) -> uint64:
@@ -42,14 +42,14 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     if height == 0:
         return uint64(int((1 / 8) * 21000000 * _mojo_per_greendoge))
     elif height < 1 / 12 * _blocks_per_year:
-        return uint64(int((7 / 8) * 2 * 50 * _mojo_per_greendoge))
+        return uint64(int((7 / 8) * 100 * _mojo_per_greendoge))
     elif height < 3 * _blocks_per_year:
-        return uint64(int((1 / 8) * 2 * 10 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 20 * _mojo_per_greendoge))
     elif height < 6 * _blocks_per_year:
-        return uint64(int((1 / 8) * 1 * 10 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 10 * _mojo_per_greendoge))
     elif height < 9 * _blocks_per_year:
-        return uint64(int((1 / 8) * 0.5 * 10 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 5 * _mojo_per_greendoge))
     elif height < 12 * _blocks_per_year:
-        return uint64(int((1 / 8) * 0.25 * 10 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 2.5 * _mojo_per_greendoge))
     else:
-        return uint64(int((1 / 8) * 0.125 * 10 * _mojo_per_greendoge))
+        return uint64(int((1 / 8) * 1.25 * _mojo_per_greendoge))
