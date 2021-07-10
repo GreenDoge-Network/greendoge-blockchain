@@ -11,7 +11,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/commit/47621cb0de2d270
 ## Migration plan
 ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet is online!!!
 
-GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. The pre-farm coins of GreenDoge are the same as Chia, but __the early block reward of GreenDoge is 50 times that of Chia.
+GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. The pre-farm coins of GreenDoge are the same as Chia, but __the early block reward of GreenDoge is 50 times that of Chia. You can win more money today.__
 
 For more information, see our website and downloads at https://greendoge.dog .
 
