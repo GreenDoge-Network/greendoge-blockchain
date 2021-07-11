@@ -17,7 +17,7 @@ If ($LastExitCode -gt 0){
 }
 else
 {
-    Set-Location -Path . -PassThru
+    Set-Location -Path - -PassThru
     Write-Output "miniupnpc download successful."
 }
 
