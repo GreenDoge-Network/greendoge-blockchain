@@ -16,8 +16,8 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 1. GreenDoge is not yet available for trading.<br>
 2. The default value of _mojo_per_chia=1000000000000 is too large. In order to avoid the problem of [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) that is difficult to deal with in the future, and to reward early community participants. The block reward of the mainnet has been confirmed as [the code](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py).
 
-The maximum value for an UINT64 is 18,446,744,073,709,551,615
-_mojo_per_chia is 1,000,000,000,000
+The maximum value for an UINT64 is 18,446,744,073,709,551,615<br>
+_mojo_per_chia is 1,000,000,000,000<br>
 18,446,744,073,709,551,615 / 1,000,000,000,000 = 18,446,744
 
 ## ChiaDoge Migration Reward
