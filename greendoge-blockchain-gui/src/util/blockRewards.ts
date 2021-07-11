@@ -31,7 +31,6 @@ export function calculateBaseFarmerReward(height: number): Big {
   }
   if (height < 3 / 12 * BLOCKS_PER_YEAR) {
     return MOJO_PER_GREENDOGE.times(100).times(1 / 8);
-  }
   if (height < 3 * BLOCKS_PER_YEAR) {
     return MOJO_PER_GREENDOGE.times(20).times(1 / 8);
   }
