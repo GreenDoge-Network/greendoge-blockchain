@@ -58,7 +58,7 @@ https://www.reddit.com/r/GreenDogecoin/
 ## Community
 [GreenDoge Promotion Community](https://discord.gg/2jSC6W9N)<br>
 [GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
-[ChiaDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
+[GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
 ## Sponsor server fees
 BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz<br>
