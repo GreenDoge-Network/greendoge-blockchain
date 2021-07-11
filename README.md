@@ -14,9 +14,9 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 
 ## Please be informed
 1. GreenDoge is not yet available for trading.<br>
-2. The default value of _mojo_per_chia=1000000000000 is too large. In order to avoid the problem of [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) that is difficult to deal with in the future, and to reward early community participants. The block reward of the main network has been confirmed as [the code](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py).
+2. The default value of _mojo_per_chia=1000000000000 is too large. In order to avoid the problem of [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) that is difficult to deal with in the future, and to reward early community participants. The block reward of the mainnet has been confirmed as [the code](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py).
 
-## ChiaDoge Migration plan
+## ChiaDoge Migration Reward
 The registered early participant rewards will be sent after the transfer function is activated.
 
 ## Installing
