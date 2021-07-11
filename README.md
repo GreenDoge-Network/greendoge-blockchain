@@ -50,8 +50,9 @@ https://www.reddit.com/r/GreenDogecoin/
 [GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
-## Sponsor the cost of introducer and timelord server
-BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz<br>
-ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581<br>
-BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505<br>
-TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
+## Sponsor 
+sponsor the cost of introducer and timelord server
+* BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz<br>
+* ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581<br>
+* BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505<br>
+* TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
