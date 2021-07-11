@@ -7,6 +7,9 @@ export function calculatePoolReward(height: number): Big {
   if (height === 0) {
     return MOJO_PER_GREENDOGE.times(21000000).times(7 / 8);
   }
+  if (height < (3 / 12) * BLOCKS_PER_YEAR) {
+    return MOJO_PER_GREENDOGE.times(100).times(7 / 8);
+  }
   if (height < 3 * BLOCKS_PER_YEAR) {
     return MOJO_PER_GREENDOGE.times(20).times(7 / 8);
   }
@@ -26,6 +29,9 @@ export function calculatePoolReward(height: number): Big {
 export function calculateBaseFarmerReward(height: number): Big {
   if (height === 0) {
     return MOJO_PER_GREENDOGE.times(21000000).times(1 / 8);
+  }
+  if (height < (3 / 12) * BLOCKS_PER_YEAR) {
+    return MOJO_PER_GREENDOGE.times(100).times(1 / 8);
   }
   if (height < 3 * BLOCKS_PER_YEAR) {
     return MOJO_PER_GREENDOGE.times(20).times(1 / 8);
