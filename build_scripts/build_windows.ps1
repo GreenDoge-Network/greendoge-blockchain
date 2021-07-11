@@ -39,7 +39,7 @@ $env:GREENDOGE_INSTALLER_VERSION = python .\build_scripts\installer-version.py -
 
 if (-not (Test-Path env:GREENDOGE_INSTALLER_VERSION)) {
   $env:GREENDOGE_INSTALLER_VERSION = '0.0.0'
-  Write-Output "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 0.0.0"
+  Write-Output "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 1.0.1"
   }
 Write-Output "GreenDoge Version is: $env:GREENDOGE_INSTALLER_VERSION"
 Write-Output "   ---"
