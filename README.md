@@ -9,7 +9,6 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * Simplified UTXO based transaction model, with small on-chain state
 * Lisp-style Turing-complete functional [programming language](https://chialisp.com/) for money related use cases
 * BLS keys and aggregate signatures (only one signature per block)
-* [Pooling protocol](https://www.chia.net/2020/11/10/pools-in-chia.html) (in development) that allows farmers to have control of making blocks
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 
