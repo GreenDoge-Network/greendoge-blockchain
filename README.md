@@ -1,15 +1,27 @@
-# GreenDoge Blockchain - Testnet 1
+# Please be informed
+1. GreenDoge is not yet available for trading.<br>
+2. The value of _mojo_per_greendoge=1000000000000 is too large. In order to avoid the problem of integer overflow that is difficult to deal with in the future, and to reward early community participants. The mainnet consensus will be different from the testnet, please refer to the following:<br>
+- https://en.wikipedia.org/wiki/Integer_overflow
+- https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py <br>
+
+ 
+# GreenDoge Blockchain - Mainnet
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
+[Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases), the mainnet is online!!!
 
 ## Migration plan
-ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet will be launched only after fully preparing windows and ubuntu versions.
+ChiaDoge is no longer maintained. Because of the suggestions of many people, We decided to migrate from [ChiaDoge](https://github.com/ChiaDoge/chiadoge-blockchain) to a more thoughtful [GreenDoge Blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain). GreenDoge mainnet is online!!!
 
-**GreenDoge** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.The pre-mining of GreenDoge Coin is the same as Chia, but the reward is 50 times. Pre-mining will be used as a development and promotion fund.
+GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. The pre-farm coins of GreenDoge are the same as Chia, but __the early block reward of GreenDoge is 50 times that of Chia. You can win more money today.__
 
 For more information, see our website and downloads at https://greendoge.dog .
 
 ## Full Nodes: 
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/full_node_list
+
+## Remove old version (Before you install the new version)
+rm -r greendoge-blockchain<br>
+rm -r .greendoge
 
 ## Installing
 git clone https://github.com/GreenDoge-Network/greendoge-blockchain<br>
@@ -22,7 +34,8 @@ greendoge plots add -d D:\plots_path <br>
 greendoge start farmer<br>
 greendoge wallet show<br>
 s<br>
-greendoge show -a 1.164.180.223:6544
+greendoge show -a 18.141.197.43:6544<br>
+greendoge show -a 18.141.194.162:6544
 
 sh install-timelord.sh<br>
 greendoge start timelord
@@ -35,13 +48,16 @@ Once installed, a
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
-## Remove old version
-rm -r greendoge-blockchain<br>
-rm -r .greendoge
+## Telegram
+[GreenDoge coin Promotion Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
+[绿狗币推广群](https://t.me/joinchat/b11R4pYF41c5MWNl)
+
+## Reddit
+https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
-[Green ChiaDoge Community](https://discord.gg/YJaBQ9a6) (Official)<br>
-[ChiaDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
+[GreenDoge Promotion Community](https://discord.gg/2jSC6W9N)<br>
+[GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [ChiaDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
 ## Sponsor server fees
