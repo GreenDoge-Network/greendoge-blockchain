@@ -1,0 +1,5 @@
+{
+  "dest": "dist/installers/",
+  "icon": "src/assets/img/greendoge.ico",
+  "tags": ["Blockchain"]
+}
