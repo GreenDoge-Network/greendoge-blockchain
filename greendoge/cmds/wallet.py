@@ -68,13 +68,13 @@ def get_transactions_cmd(wallet_rpc_port: int, fingerprint: int, id: int, offset
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees for the transaction, in XCH",
+    help="Set the fees for the transaction, in GDOG",
     type=str,
     default="0",
     show_default=True,
     required=True,
 )
-@click.option("-t", "--address", help="Address to send the XCH", type=str, required=True)
+@click.option("-t", "--address", help="Address to send the GDOG", type=str, required=True)
 def send_cmd(wallet_rpc_port: int, fingerprint: int, id: int, amount: str, fee: str, address: str) -> None:
     extra_params = {"id": id, "amount": amount, "fee": fee, "address": address}
     import asyncio
