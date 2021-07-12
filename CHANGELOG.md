@@ -108,7 +108,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - @aisk added error checking in bech32m
 - Chialisp programs now remained serialized in Node for better performance.
 - Mempool is now set to be 50 times the single block size.
-- Mitigate 1-3 mojo dust attacks.
+- Mitigate 1-3 dog dust attacks.
 - CLI now switches to EiB for netspace display as appropriate.
 
 ### Fixed
@@ -550,7 +550,7 @@ validation was changed to allow blocks like these to be made. This will enable c
 - Sub blocks renamed to blocks, and blocks renamed to transaction blocks, everywhere. This effects the RPC, now
 all fields that referred to sub blocks are changed to blocks.
 - Base difficulty and weight have increased, so difficulty of "5" in the rc1 testnet will be equivalent to "21990232555520" in the previous testnet.
-- 'chia wallet send' now takes in TXCH or XCH as units instead of mojos.
+- 'chia wallet send' now takes in TXCH or XCH as units instead of dogs.
 - Transactions have been further sped up.
 - The blockchain database has more careful validation.
 - The GUI is now using bech32m.

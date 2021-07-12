@@ -23,7 +23,7 @@ import {
   send_transaction,
   farm_block,
 } from '../../../modules/message';
-import { mojo_to_greendoge_string, greendoge_to_mojo } from '../../../util/greendoge';
+import { dog_to_greendoge_string, greendoge_to_dog } from '../../../util/greendoge';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';
@@ -213,7 +213,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_greendoge_string(props.balance)} {currencyCode}
+            {dog_to_greendoge_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -405,8 +405,8 @@ function SendCard(props: SendCardProps) {
       );
       return;
     }
-    const amount = greendoge_to_mojo(amount_input.value);
-    const fee = greendoge_to_mojo(fee_input.value);
+    const amount = greendoge_to_dog(amount_input.value);
+    const fee = greendoge_to_dog(fee_input.value);
 
     if (address.includes('colour')) {
       dispatch(

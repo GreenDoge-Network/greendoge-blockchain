@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { greendoge_to_mojo } from '../../../util/greendoge';
+import { greendoge_to_dog } from '../../../util/greendoge';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -166,12 +166,12 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const greendogeper = greendoge_to_mojo(greendogeper_input.value);
+    const greendogeper = greendoge_to_dog(greendogeper_input.value);
     const greendogeper_value = Number.parseInt(Number(greendogeper));
     const userpubkey = userpubkey_input.value;
-    const amount = greendoge_to_mojo(amount_input.value);
+    const amount = greendoge_to_dog(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = greendoge_to_mojo(fee_input.value);
+    // var fee = greendoge_to_dog(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(

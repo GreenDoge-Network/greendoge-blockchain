@@ -20,7 +20,7 @@ if [ "$(uname -m)" = "armv7l" ]; then
 	echo "WARNING:"
 	echo "The GreenDoge Blockchain requires a 64 bit OS and this is 32 bit armv7l"
 	echo "For more information, see"
-	echo "https://github.com/GreenDoge-Network/greendoge-blockchain/wiki/Raspberry-Pi"
+	echo "https://github.com/GreenDoge-Network/greendoge-blockchain"
 	echo "Exiting."
 	exit 1
 fi

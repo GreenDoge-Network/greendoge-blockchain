@@ -15,7 +15,7 @@ import {
   getBlockRecord,
   getBlock,
 } from '../../modules/fullnodeMessages';
-import { mojo_to_greendoge } from '../../util/greendoge';
+import { dog_to_greendoge } from '../../util/greendoge';
 import { calculatePoolReward, calculateBaseFarmerReward } from '../../util/blockRewards';
 import LayoutMain from '../layout/LayoutMain';
 import toBech32m from '../../util/toBech32m';
@@ -168,11 +168,11 @@ export default function Block() {
     ? blockRecord.weight - prevBlockRecord.weight
     : blockRecord?.weight ?? 0;
 
-  const poolReward = mojo_to_greendoge(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = mojo_to_greendoge(calculateBaseFarmerReward(blockRecord.height));
+  const poolReward = dog_to_greendoge(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = dog_to_greendoge(calculateBaseFarmerReward(blockRecord.height));
 
   const greendogeFees = blockRecord.fees
-    ? mojo_to_greendoge(BigInt(blockRecord.fees))
+    ? dog_to_greendoge(BigInt(blockRecord.fees))
     : '';
 
   const rows = [

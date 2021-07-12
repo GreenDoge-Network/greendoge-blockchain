@@ -3,7 +3,7 @@ import { Table } from '@greendoge/core';
 import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { Box } from '@material-ui/core';
-import { mojo_to_greendoge_string } from '../../util/greendoge';
+import { dog_to_greendoge_string } from '../../util/greendoge';
 
 const Amount = styled(Box)`
   white-space: normal;
@@ -48,7 +48,7 @@ export default function TradesTable(props: Props) {
       ),
       amount: (
         <Amount>
-          {mojo_to_greendoge_string(humanAmount)}
+          {dog_to_greendoge_string(humanAmount)}
         </Amount>
       ),
     };

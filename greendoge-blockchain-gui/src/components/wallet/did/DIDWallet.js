@@ -31,7 +31,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
-import { mojo_to_greendoge_string } from '../../../util/greendoge';
+import { dog_to_greendoge_string } from '../../../util/greendoge';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { openDialog } from '../../../modules/dialog';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
@@ -472,7 +472,7 @@ const BalanceCardSubSection = (props) => {
           </Box>
           <Box>
             <Typography variant="subtitle1">
-              {mojo_to_greendoge_string(props.balance)} {currencyCode}
+              {dog_to_greendoge_string(props.balance)} {currencyCode}
             </Typography>
           </Box>
         </Box>

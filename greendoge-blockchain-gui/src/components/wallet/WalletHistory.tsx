@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Card, CopyToClipboard, Flex, Table } from '@greendoge/core';
 import type { RootState } from '../../modules/rootReducer';
 import type { Row } from '../core/components/Table/Table';
-import { mojo_to_greendoge_string, mojo_to_colouredcoin_string } from '../../util/greendoge';
+import { dog_to_greendoge_string, dog_to_colouredcoin_string } from '../../util/greendoge';
 import { unix_to_short_date } from '../../util/utils';
 import TransactionType from '../../constants/TransactionType';
 import WalletType from '../../constants/WalletType';
@@ -57,12 +57,12 @@ const getCols = (type: WalletType) => [
   },
   {
     field: (row: Row) => type === WalletType.COLOURED_COIN
-      ? mojo_to_colouredcoin_string(row.amount)
-      : mojo_to_greendoge_string(row.amount),
+      ? dog_to_colouredcoin_string(row.amount)
+      : dog_to_greendoge_string(row.amount),
     title: <Trans>Amount</Trans>,
   },
   {
-    field: (row: Row) => mojo_to_greendoge_string(row.fee_amount),
+    field: (row: Row) => dog_to_greendoge_string(row.fee_amount),
     title: <Trans>Fee</Trans>,
   },
 ];

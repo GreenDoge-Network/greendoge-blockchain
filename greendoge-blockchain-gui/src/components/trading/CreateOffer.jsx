@@ -16,8 +16,8 @@ import { AlertDialog, Card, Flex } from '@greendoge/core';
 import isElectron from 'is-electron';
 import { newBuy, newSell, addTrade, resetTrades } from '../../modules/trade';
 import {
-  greendoge_to_mojo,
-  colouredcoin_to_mojo,
+  greendoge_to_dog,
+  colouredcoin_to_dog,
 } from '../../util/greendoge';
 import { openDialog } from '../../modules/dialog';
 import { create_trade_action } from '../../modules/trade_messages';
@@ -90,13 +90,13 @@ export default function CreateOffer() {
       );
       return;
     }
-    const mojo = wallets[wallet_id.value].type === COLOURED_COIN
-      ? colouredcoin_to_mojo(amount_input.value)
-      : greendoge_to_mojo(amount_input.value);
+    const dog = wallets[wallet_id.value].type === COLOURED_COIN
+      ? colouredcoin_to_dog(amount_input.value)
+      : greendoge_to_dog(amount_input.value);
 
     const trade = buy_or_sell.value === 1
-      ? newBuy(mojo, wallet_id.value)
-      : newSell(mojo, wallet_id.value);
+      ? newBuy(dog, wallet_id.value)
+      : newSell(dog, wallet_id.value);
 
     dispatch(addTrade(trade));
   }

@@ -83,32 +83,32 @@ greendoge_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const mojo_to_greendoge = (mojo) => {
-  return greendoge_formatter(Number.parseInt(mojo), 'mojo').to('greendoge').value();
+export const dog_to_greendoge = (dog) => {
+  return greendoge_formatter(Number.parseInt(dog), 'dog').to('greendoge').value();
 };
 
-export const greendoge_to_mojo = (greendoge) => {
+export const greendoge_to_dog = (greendoge) => {
   return greendoge_formatter(Number.parseFloat(Number(greendoge)), 'greendoge')
-    .to('mojo')
+    .to('dog')
     .value();
 };
 
-export const mojo_to_greendoge_string = (mojo) => {
-  return greendoge_formatter(Number(mojo), 'mojo').to('greendoge').toString();
+export const dog_to_greendoge_string = (dog) => {
+  return greendoge_formatter(Number(dog), 'dog').to('greendoge').toString();
 };
 
-export const mojo_to_colouredcoin = (mojo) => {
-  return greendoge_formatter(Number.parseInt(mojo), 'mojo')
+export const dog_to_colouredcoin = (dog) => {
+  return greendoge_formatter(Number.parseInt(dog), 'dog')
     .to('colouredcoin')
     .value();
 };
 
-export const colouredcoin_to_mojo = (colouredcoin) => {
+export const colouredcoin_to_dog = (colouredcoin) => {
   return greendoge_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
-    .to('mojo')
+    .to('dog')
     .value();
 };
 
-export const mojo_to_colouredcoin_string = (mojo) => {
-  return greendoge_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
+export const dog_to_colouredcoin_string = (dog) => {
+  return greendoge_formatter(Number(dog), 'dog').to('colouredcoin').toString();
 };

@@ -1,12 +1,12 @@
 const units = {
   greendoge: 1,
-  mojo: 1 / 1e12,
+  dog: 1 / 1e12,
   colouredcoin: 1 / 1e9,
 };
 
 const aliases = {
   greendoge: ['ch', 'greendoge', 'GreenDoge'],
-  mojo: ['mj', 'mojo'],
+  dog: ['mj', 'dog'],
   colouredcoin: ['cc', 'colouredcoin'],
 };
 
@@ -15,7 +15,7 @@ const display = {
     format: '{amount} CH',
     fractionDigits: 12,
   },
-  mojo: {
+  dog: {
     format: '{amount} MJ',
     fractionDigits: 0,
   },

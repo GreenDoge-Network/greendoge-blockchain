@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useStyles } from './WalletCreate';
 import { create_did_action } from '../../../modules/message';
-import { greendoge_to_mojo } from '../../../util/greendoge';
+import { greendoge_to_dog } from '../../../util/greendoge';
 import { openDialog } from '../../../modules/dialog';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 
@@ -121,7 +121,7 @@ export const CreateDIDWallet = () => {
       dispatch(openDialog('Please enter a valid numeric amount'));
       return;
     }
-    var amount_val = greendoge_to_mojo(parseInt(data.amount));
+    var amount_val = greendoge_to_dog(parseInt(data.amount));
     const num_of_backup_ids_needed = parseInt(1);
     dispatch(createState(true, true));
     dispatch(create_did_action(amount_val, didArray, num_of_backup_ids_needed));

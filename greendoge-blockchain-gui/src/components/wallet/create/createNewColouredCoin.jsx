@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_cc_action } from '../../../modules/message';
-import { greendoge_to_mojo } from '../../../util/greendoge';
+import { greendoge_to_dog } from '../../../util/greendoge';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -87,8 +87,8 @@ export const CreateNewCCWallet = () => {
       return;
     }
     dispatch(createState(true, true));
-    const amount = greendoge_to_mojo(amount_input.value);
-    const fee = greendoge_to_mojo(fee_input.value);
+    const amount = greendoge_to_dog(amount_input.value);
+    const fee = greendoge_to_dog(fee_input.value);
     dispatch(create_cc_action(amount, fee));
   }
 
