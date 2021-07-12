@@ -7,7 +7,7 @@ from greendoge.util.ints import uint32
 # EIP 2334 bls key derivation
 # https://eips.ethereum.org/EIPS/eip-2334
 # 12381 = bls spec number
-# 8444 = GreenDoge blockchain number and port number for compatibility
+# 8444 = Chia blockchain number and port number
 # 0, 1, 2, 3, 4, farmer, pool, wallet, local, backup key numbers
 
 
