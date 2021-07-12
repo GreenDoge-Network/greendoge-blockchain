@@ -19,7 +19,7 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 
 * The maximum value of UINT64 is 18,446,744,073,709,551,615<br>
 * _mojo_per_chia is 1,000,000,000,000<br>
-* 18,446,744,073,709,551,615 / 1,000,000,000,000 = 18,446,744 (Not enough at all)
+* 18,446,744,073,709,551,615 / 1,000,000,000,000 = 18,446,744 (very limited)
 
 ## Installing
 
