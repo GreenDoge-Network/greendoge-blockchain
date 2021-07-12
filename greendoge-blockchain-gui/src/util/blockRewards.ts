@@ -7,7 +7,7 @@ export function calculatePoolReward(height: number): Big {
   if (height === 0) {
     return DOG_PER_GREENDOGE.times(21000000).times(7 / 8);
   }
-  if (height < (3 / 12) * BLOCKS_PER_YEAR) {
+  if (height < (1 / 12) * BLOCKS_PER_YEAR) {
     return DOG_PER_GREENDOGE.times(100).times(7 / 8);
   }
   if (height < 3 * BLOCKS_PER_YEAR) {
@@ -30,7 +30,7 @@ export function calculateBaseFarmerReward(height: number): Big {
   if (height === 0) {
     return DOG_PER_GREENDOGE.times(21000000).times(1 / 8);
   }
-  if (height < (3 / 12) * BLOCKS_PER_YEAR) {
+  if (height < (1 / 12) * BLOCKS_PER_YEAR) {
     return DOG_PER_GREENDOGE.times(100).times(1 / 8);
   }
   if (height < 3 * BLOCKS_PER_YEAR) {
