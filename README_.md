@@ -37,7 +37,7 @@ is available from the repository
 
 ## Telegram
 [GreenDoge coin Promotion Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
-[绿狗币推广群](https://t.me/joinchat/b11R4pYF41c5MWNl)
+[GreenDoge Chinese Promotion Group](https://t.me/joinchat/b11R4pYF41c5MWNl)
 
 ## Reddit
 https://www.reddit.com/r/GreenDogecoin/
