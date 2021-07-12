@@ -48,7 +48,7 @@ https://www.reddit.com/r/GreenDogecoin/
 [GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
 ## Sponsor 
-Sponsor the developer for renting the Intorducer and Timelord server.
+Sponsor the developer for renting the Intorducer and Timelord servers.
 * BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz<br>
 * ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581<br>
 * BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505<br>
