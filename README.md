@@ -20,36 +20,3 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * The maximum value of UINT64 is 18,446,744,073,709,551,615<br>
 * _mojo_per_chia is 1,000,000,000,000<br>
 * 18,446,744,073,709,551,615 / 1,000,000,000,000 = 18,446,744 (very limited)
-
-## Installing
-
-Install instructions are available in the
-[INSTALL](https://github.com/Chia-Network/chia-blockchain/wiki/INSTALL)
-section of the
-[chia-blockchain repository wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
-
-## Running
-
-Once installed, a
-[Quick Start Guide](https://github.com/Chia-Network/chia-blockchain/wiki/Quick-Start-Guide)
-is available from the repository
-[wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
-
-## Telegram
-[GreenDoge coin Promotion Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
-[绿狗币推广群](https://t.me/joinchat/b11R4pYF41c5MWNl)
-
-## Reddit
-https://www.reddit.com/r/GreenDogecoin/
-
-## Community
-[GreenDoge Promotion Community](https://discord.gg/2jSC6W9N)<br>
-[GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
-[GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
-
-## Sponsor 
-Sponsor the developer for renting the Intorducer and Timelord server.
-* BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz<br>
-* ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581<br>
-* BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505<br>
-* TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
