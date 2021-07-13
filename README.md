@@ -43,7 +43,7 @@ is available from the repository
 https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
-[GreenDoge Promotion Community](https://discord.gg/2jSC6W9N)<br>
+[GreenDoge Promotion Community](https://discord.gg/3vwEfD2kws)<br>
 [GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
