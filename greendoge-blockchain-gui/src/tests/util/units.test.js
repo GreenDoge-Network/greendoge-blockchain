@@ -112,14 +112,14 @@ describe("units", () => {
     });
     it("updates an existing display", () => {
       units.setDisplay("greendoge", {
-        format: "{amount} TGDOG",
+        format: "{amount} TXDG",
         fractionDigits: 0
       });
 
       const result = units.getDisplay("greendoge");
 
       expect(result).toEqual({
-        format: "{amount} TGDOG",
+        format: "{amount} TXDG",
         fractionDigits: 0
       });
     });
