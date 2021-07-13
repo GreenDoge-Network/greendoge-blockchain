@@ -16,11 +16,11 @@ from greendoge.util.ints import uint32, uint64
 def spend_bundle_to_serialized_coin_solution_entry_list(bundle: SpendBundle) -> bytes:
     r = b""
     for coin_solution in bundle.coin_solutions:
-        r += b"\gdog"
-        r += b"\gdog" + SExp.to(coin_solution.coin.parent_coin_info).as_bin()
-        r += b"\gdog" + bytes(coin_solution.puzzle_reveal)
-        r += b"\gdog" + SExp.to(coin_solution.coin.amount).as_bin()
-        r += b"\gdog" + bytes(coin_solution.solution)
+        r += b"\xff"
+        r += b"\xff" + SExp.to(coin_solution.coin.parent_coin_info).as_bin()
+        r += b"\xff" + bytes(coin_solution.puzzle_reveal)
+        r += b"\xff" + SExp.to(coin_solution.coin.amount).as_bin()
+        r += b"\xff" + bytes(coin_solution.solution)
         r += b"\x80"
     r += b"\x80"
     return r
@@ -31,11 +31,11 @@ def simple_solution_generator(bundle: SpendBundle) -> BlockGenerator:
     Simply quotes the solutions we know.
     """
     cse_list = spend_bundle_to_serialized_coin_solution_entry_list(bundle)
-    block_program = b"\gdog"
+    block_program = b"\xff"
 
     block_program += SExp.to(binutils.assemble("#q")).as_bin()
 
-    block_program += b"\gdog" + cse_list + b"\x80"
+    block_program += b"\xff" + cse_list + b"\x80"
 
     return BlockGenerator(SerializedProgram.from_bytes(block_program), [])
 
