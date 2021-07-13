@@ -356,10 +356,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'GreenDoge Blockchain Wiki' }),
+            label: i18n._(/* i18n */ { id: 'GreenDoge Blockchain Website' }),
             click: () => {
               openExternal(
-                'https://github.com/GreenDoge-Network/greendoge-blockchain/wiki',
+                'https://greendoge.dog',
               );
             },
           },
@@ -401,13 +401,13 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://discord.gg/TgJyxsEFFc');
+              openExternal('https://discord.gg/3vwEfD2kws');
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/greendoge_project');
+              openExternal('https://twitter.com/green_dogecoin');
             },
           },
         ],
