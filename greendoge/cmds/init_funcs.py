@@ -56,8 +56,8 @@ def check_keys(new_root: Path) -> None:
     config: Dict = load_config(new_root, "config.yaml")
     pool_child_pubkeys = [master_sk_to_pool_sk(sk).get_g1() for sk, _ in all_sks]
     all_targets = []
-    stop_searching_for_farmer = "xgd_target_address" not in config["farmer"]
-    stop_searching_for_pool = "xgd_target_address" not in config["pool"]
+    stop_searching_for_farmer = "gdog_target_address" not in config["farmer"]
+    stop_searching_for_pool = "gdog_target_address" not in config["pool"]
     number_of_ph_to_search = 500
     selected = config["selected_network"]
     prefix = config["network_overrides"]["config"][selected]["address_prefix"]
@@ -68,32 +68,32 @@ def check_keys(new_root: Path) -> None:
             all_targets.append(
                 encode_puzzle_hash(create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(i)).get_g1()), prefix)
             )
-            if all_targets[-1] == config["farmer"].get("xgd_target_address"):
+            if all_targets[-1] == config["farmer"].get("gdog_target_address"):
                 stop_searching_for_farmer = True
-            if all_targets[-1] == config["pool"].get("xgd_target_address"):
+            if all_targets[-1] == config["pool"].get("gdog_target_address"):
                 stop_searching_for_pool = True
 
     # Set the destinations
-    if "xgd_target_address" not in config["farmer"]:
-        print(f"Setting the xgd destination address for coinbase fees reward to {all_targets[0]}")
-        config["farmer"]["xgd_target_address"] = all_targets[0]
-    elif config["farmer"]["xgd_target_address"] not in all_targets:
+    if "gdog_target_address" not in config["farmer"]:
+        print(f"Setting the gdog destination address for coinbase fees reward to {all_targets[0]}")
+        config["farmer"]["gdog_target_address"] = all_targets[0]
+    elif config["farmer"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a farmer address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['farmer']['xgd_target_address']} with {all_targets[0]}"
+            f"{config['farmer']['gdog_target_address']} with {all_targets[0]}"
         )
 
     if "pool" not in config:
         config["pool"] = {}
-    if "xgd_target_address" not in config["pool"]:
-        print(f"Setting the xgd destination address for coinbase reward to {all_targets[0]}")
-        config["pool"]["xgd_target_address"] = all_targets[0]
-    elif config["pool"]["xgd_target_address"] not in all_targets:
+    if "gdog_target_address" not in config["pool"]:
+        print(f"Setting the gdog destination address for coinbase reward to {all_targets[0]}")
+        config["pool"]["gdog_target_address"] = all_targets[0]
+    elif config["pool"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a pool address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['pool']['xgd_target_address']} with {all_targets[0]}"
+            f"{config['pool']['gdog_target_address']} with {all_targets[0]}"
         )
 
     # Set the pool pks in the farmer

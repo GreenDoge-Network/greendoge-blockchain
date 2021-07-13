@@ -240,9 +240,9 @@ const IncompleteCard = (props) => {
 
   function submit() {
     const ip_val = ip_input.value;
-    const hexgdeck = /[\da-f]+$/gi;
+    const hegdogeck = /[\da-f]+$/gi;
 
-    if (!hexgdeck.test(ip_val) || ip_val.value === '') {
+    if (!hegdogeck.test(ip_val) || ip_val.value === '') {
       dispatch(openDialog('Please enter a valid info packet'));
       return;
     }

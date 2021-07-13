@@ -692,7 +692,7 @@ msgid "Fee"
 msgstr "Veloitus"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TXDG)"
+#~ msgid "Fee (TGDOG)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1627,23 +1627,23 @@ msgstr "Synkronoi <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TXDG Block Rewards"
+#~ msgid "TGDOG Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TXDG Farming Rewards"
+#~ msgid "TGDOG Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TXDG Fees Collected"
+#~ msgid "TGDOG Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TXDG User Fees"
-#~ msgstr "TXDG User Fees"
+#~ msgid "TGDOG User Fees"
+#~ msgstr "TGDOG User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TXDG User Transaction Fees"
+#~ msgid "TGDOG User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/plot/add/PlotAddChooseSize.tsx:18
