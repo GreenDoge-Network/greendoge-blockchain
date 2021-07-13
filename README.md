@@ -44,7 +44,7 @@ https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
 [GreenDoge Community](https://discord.gg/3vwEfD2kws)<br>
-[GreenDoge Coin Community](https://discord.gg/xjvxH5jD) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
+[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge discord](https://discord.gg/6xcXWpFt) (Hosted by Vemika)
 
 ## Sponsor 
