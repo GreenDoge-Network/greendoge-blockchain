@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from greendoge.full_node.sync_store import SyncStore
-from greendoge.util.hash import std_hash
+from chia.full_node.sync_store import SyncStore
+from chia.util.hash import std_hash
 
 
 @pytest.fixture(scope="module")

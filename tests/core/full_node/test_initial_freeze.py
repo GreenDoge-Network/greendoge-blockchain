@@ -3,18 +3,18 @@ import time
 
 import pytest
 
-from greendoge.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from greendoge.consensus.blockchain import ReceiveBlockResult
-from greendoge.protocols import full_node_protocol, wallet_protocol
-from greendoge.protocols.protocol_message_types import ProtocolMessageTypes
-from greendoge.server.outbound_message import Message
-from greendoge.simulator.full_node_simulator import FullNodeSimulator
-from greendoge.simulator.simulator_protocol import FarmNewBlockProtocol
-from greendoge.types.mempool_inclusion_status import MempoolInclusionStatus
-from greendoge.types.peer_info import PeerInfo
-from greendoge.util.errors import Err
-from greendoge.util.ints import uint16, uint32
-from greendoge.wallet.transaction_record import TransactionRecord
+from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from chia.consensus.blockchain import ReceiveBlockResult
+from chia.protocols import full_node_protocol, wallet_protocol
+from chia.protocols.protocol_message_types import ProtocolMessageTypes
+from chia.server.outbound_message import Message
+from chia.simulator.full_node_simulator import FullNodeSimulator
+from chia.simulator.simulator_protocol import FarmNewBlockProtocol
+from chia.types.mempool_inclusion_status import MempoolInclusionStatus
+from chia.types.peer_info import PeerInfo
+from chia.util.errors import Err
+from chia.util.ints import uint16, uint32
+from chia.wallet.transaction_record import TransactionRecord
 from tests.core.full_node.test_full_node import add_dummy_connection
 from tests.setup_nodes import bt, self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert

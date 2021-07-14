@@ -1,6 +1,6 @@
 import pytest
 
-from greendoge.wallet.greendogelisp import (
+from chia.wallet.chialisp import (
     apply,
     args,
     cons,
@@ -17,7 +17,7 @@ from greendoge.wallet.greendogelisp import (
 )
 
 
-class TestGreenDogelisp:
+class TestChialisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"

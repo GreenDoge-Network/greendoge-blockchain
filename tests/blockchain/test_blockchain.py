@@ -10,31 +10,31 @@ import pytest
 from blspy import AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-from greendoge.consensus.block_rewards import calculate_base_farmer_reward
-from greendoge.consensus.blockchain import ReceiveBlockResult
-from greendoge.consensus.coinbase import create_farmer_coin
-from greendoge.consensus.pot_iterations import is_overflow_block
-from greendoge.full_node.bundle_tools import detect_potential_template_generator
-from greendoge.types.blockchain_format.classgroup import ClassgroupElement
-from greendoge.types.blockchain_format.coin import Coin
-from greendoge.types.blockchain_format.foliage import TransactionsInfo
-from greendoge.types.blockchain_format.program import SerializedProgram
-from greendoge.types.blockchain_format.sized_bytes import bytes32
-from greendoge.types.blockchain_format.slots import InfusedChallengeChainSubSlot
-from greendoge.types.blockchain_format.vdf import VDFInfo, VDFProof
-from greendoge.types.condition_opcodes import ConditionOpcode
-from greendoge.types.condition_with_args import ConditionWithArgs
-from greendoge.types.end_of_slot_bundle import EndOfSubSlotBundle
-from greendoge.types.full_block import FullBlock
-from greendoge.types.spend_bundle import SpendBundle
-from greendoge.types.unfinished_block import UnfinishedBlock
-from greendoge.util.block_tools import BlockTools, get_vdf_info_and_proof
-from greendoge.util.errors import Err
-from greendoge.util.hash import std_hash
-from greendoge.util.ints import uint8, uint64, uint32
-from greendoge.util.merkle_set import MerkleSet
-from greendoge.util.recursive_replace import recursive_replace
-from greendoge.util.wallet_tools import WalletTool
+from chia.consensus.block_rewards import calculate_base_farmer_reward
+from chia.consensus.blockchain import ReceiveBlockResult
+from chia.consensus.coinbase import create_farmer_coin
+from chia.consensus.pot_iterations import is_overflow_block
+from chia.full_node.bundle_tools import detect_potential_template_generator
+from chia.types.blockchain_format.classgroup import ClassgroupElement
+from chia.types.blockchain_format.coin import Coin
+from chia.types.blockchain_format.foliage import TransactionsInfo
+from chia.types.blockchain_format.program import SerializedProgram
+from chia.types.blockchain_format.sized_bytes import bytes32
+from chia.types.blockchain_format.slots import InfusedChallengeChainSubSlot
+from chia.types.blockchain_format.vdf import VDFInfo, VDFProof
+from chia.types.condition_opcodes import ConditionOpcode
+from chia.types.condition_with_args import ConditionWithArgs
+from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
+from chia.types.full_block import FullBlock
+from chia.types.spend_bundle import SpendBundle
+from chia.types.unfinished_block import UnfinishedBlock
+from chia.util.block_tools import BlockTools, get_vdf_info_and_proof
+from chia.util.errors import Err
+from chia.util.hash import std_hash
+from chia.util.ints import uint8, uint64, uint32
+from chia.util.merkle_set import MerkleSet
+from chia.util.recursive_replace import recursive_replace
+from chia.util.wallet_tools import WalletTool
 from tests.core.fixtures import default_400_blocks  # noqa: F401; noqa: F401
 from tests.core.fixtures import default_1000_blocks  # noqa: F401
 from tests.core.fixtures import default_10000_blocks  # noqa: F401

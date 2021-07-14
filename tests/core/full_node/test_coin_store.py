@@ -6,20 +6,20 @@ from typing import List, Optional, Set, Tuple
 import aiosqlite
 import pytest
 
-from greendoge.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from greendoge.consensus.blockchain import Blockchain, ReceiveBlockResult
-from greendoge.consensus.coinbase import create_farmer_coin, create_pool_coin
-from greendoge.full_node.block_store import BlockStore
-from greendoge.full_node.coin_store import CoinStore
-from greendoge.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from greendoge.types.blockchain_format.coin import Coin
-from greendoge.types.coin_record import CoinRecord
-from greendoge.types.full_block import FullBlock
-from greendoge.types.generator_types import BlockGenerator
-from greendoge.util.generator_tools import tx_removals_and_additions
-from greendoge.util.ints import uint64, uint32
-from greendoge.util.wallet_tools import WalletTool
-from greendoge.util.db_wrapper import DBWrapper
+from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from chia.consensus.blockchain import Blockchain, ReceiveBlockResult
+from chia.consensus.coinbase import create_farmer_coin, create_pool_coin
+from chia.full_node.block_store import BlockStore
+from chia.full_node.coin_store import CoinStore
+from chia.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from chia.types.blockchain_format.coin import Coin
+from chia.types.coin_record import CoinRecord
+from chia.types.full_block import FullBlock
+from chia.types.generator_types import BlockGenerator
+from chia.util.generator_tools import tx_removals_and_additions
+from chia.util.ints import uint64, uint32
+from chia.util.wallet_tools import WalletTool
+from chia.util.db_wrapper import DBWrapper
 from tests.setup_nodes import bt, test_constants
 
 

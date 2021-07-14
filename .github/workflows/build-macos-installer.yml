@@ -34,7 +34,6 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
-        token: ${{ secrets.PAT }}
 
     - name: Setup Python environment
       uses: actions/setup-python@v2
@@ -104,7 +103,7 @@ jobs:
         APPLE_NOTARIZE_PASSWORD: "${{ secrets.APPLE_NOTARIZE_PASSWORD }}"
       run: |
         . ./activate
-        cd ./greendoge-blockchain-gui
+        cd ./chia-blockchain-gui
         git status
         cd ../build_scripts
         sh build_macos.sh
@@ -112,5 +111,5 @@ jobs:
     - name: Upload MacOS artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: GreenDoge-Installer-on-MacOS-10.15-dmg
+        name: Chia-Installer-on-MacOS-10.15-dmg
         path: ${{ github.workspace }}/build_scripts/final_installer/

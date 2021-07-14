@@ -3,43 +3,43 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from greendoge.types.blockchain_format.program import Program, SerializedProgram
+from chia.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "greendoge/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "greendoge/wallet/puzzles/cc.clvm",
-        "greendoge/wallet/puzzles/greendogelisp_deserialisation.clvm",
-        "greendoge/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "greendoge/wallet/puzzles/generator_for_single_coin.clvm",
-        "greendoge/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "greendoge/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "greendoge/wallet/puzzles/lock.inner.puzzle.clvm",
-        "greendoge/wallet/puzzles/p2_conditions.clvm",
-        "greendoge/wallet/puzzles/p2_delegated_conditions.clvm",
-        "greendoge/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "greendoge/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "greendoge/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "greendoge/wallet/puzzles/p2_puzzle_hash.clvm",
-        "greendoge/wallet/puzzles/rl_aggregation.clvm",
-        "greendoge/wallet/puzzles/rl.clvm",
-        "greendoge/wallet/puzzles/sha256tree_module.clvm",
-        "greendoge/wallet/puzzles/singleton_top_layer.clvm",
-        "greendoge/wallet/puzzles/did_innerpuz.clvm",
-        "greendoge/wallet/puzzles/decompress_puzzle.clvm",
-        "greendoge/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
-        "greendoge/wallet/puzzles/decompress_coin_solution_entry.clvm",
-        "greendoge/wallet/puzzles/block_program_zero.clvm",
-        "greendoge/wallet/puzzles/test_generator_deserialize.clvm",
-        "greendoge/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "chia/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "chia/wallet/puzzles/cc.clvm",
+        "chia/wallet/puzzles/chialisp_deserialisation.clvm",
+        "chia/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "chia/wallet/puzzles/generator_for_single_coin.clvm",
+        "chia/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "chia/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "chia/wallet/puzzles/lock.inner.puzzle.clvm",
+        "chia/wallet/puzzles/p2_conditions.clvm",
+        "chia/wallet/puzzles/p2_delegated_conditions.clvm",
+        "chia/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "chia/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "chia/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "chia/wallet/puzzles/p2_puzzle_hash.clvm",
+        "chia/wallet/puzzles/rl_aggregation.clvm",
+        "chia/wallet/puzzles/rl.clvm",
+        "chia/wallet/puzzles/sha256tree_module.clvm",
+        "chia/wallet/puzzles/singleton_top_layer.clvm",
+        "chia/wallet/puzzles/did_innerpuz.clvm",
+        "chia/wallet/puzzles/decompress_puzzle.clvm",
+        "chia/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
+        "chia/wallet/puzzles/decompress_coin_solution_entry.clvm",
+        "chia/wallet/puzzles/block_program_zero.clvm",
+        "chia/wallet/puzzles/test_generator_deserialize.clvm",
+        "chia/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["greendoge/wallet/puzzles/create-lock-puzzlehash.clvm", "greendoge/wallet/puzzles/condition_codes.clvm"]
+    ["chia/wallet/puzzles/create-lock-puzzlehash.clvm", "chia/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "greendoge/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "chia/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -66,7 +66,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to greendoge/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to chia/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

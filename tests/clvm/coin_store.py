@@ -2,17 +2,17 @@ from collections import defaultdict
 from dataclasses import dataclass, replace
 from typing import Dict, Iterator, Set
 
-from greendoge.full_node.mempool_check_conditions import mempool_check_conditions_dict
-from greendoge.types.blockchain_format.coin import Coin
-from greendoge.types.blockchain_format.sized_bytes import bytes32
-from greendoge.types.coin_record import CoinRecord
-from greendoge.types.spend_bundle import SpendBundle
-from greendoge.util.condition_tools import (
+from chia.full_node.mempool_check_conditions import mempool_check_conditions_dict
+from chia.types.blockchain_format.coin import Coin
+from chia.types.blockchain_format.sized_bytes import bytes32
+from chia.types.coin_record import CoinRecord
+from chia.types.spend_bundle import SpendBundle
+from chia.util.condition_tools import (
     conditions_dict_for_solution,
     coin_announcement_names_for_conditions_dict,
     puzzle_announcement_names_for_conditions_dict,
 )
-from greendoge.util.ints import uint32, uint64
+from chia.util.ints import uint32, uint64
 
 
 class BadSpendBundleError(Exception):

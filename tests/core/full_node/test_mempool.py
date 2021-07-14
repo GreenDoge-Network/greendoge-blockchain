@@ -5,25 +5,25 @@ from typing import Dict, List
 
 import pytest
 
-from greendoge.full_node.mempool import Mempool
-from greendoge.protocols import full_node_protocol
-from greendoge.simulator.simulator_protocol import FarmNewBlockProtocol
-from greendoge.types.announcement import Announcement
-from greendoge.types.blockchain_format.coin import Coin
-from greendoge.types.coin_solution import CoinSolution
-from greendoge.types.condition_opcodes import ConditionOpcode
-from greendoge.types.condition_with_args import ConditionWithArgs
-from greendoge.types.spend_bundle import SpendBundle
-from greendoge.util.clvm import int_to_bytes
-from greendoge.util.condition_tools import conditions_for_solution
-from greendoge.util.errors import Err
-from greendoge.util.ints import uint64
+from chia.full_node.mempool import Mempool
+from chia.protocols import full_node_protocol
+from chia.simulator.simulator_protocol import FarmNewBlockProtocol
+from chia.types.announcement import Announcement
+from chia.types.blockchain_format.coin import Coin
+from chia.types.coin_solution import CoinSolution
+from chia.types.condition_opcodes import ConditionOpcode
+from chia.types.condition_with_args import ConditionWithArgs
+from chia.types.spend_bundle import SpendBundle
+from chia.util.clvm import int_to_bytes
+from chia.util.condition_tools import conditions_for_solution
+from chia.util.errors import Err
+from chia.util.ints import uint64
 
 from tests.connection_utils import connect_and_get_peer
 from tests.core.node_height import node_height_at_least
 from tests.setup_nodes import bt, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
-from greendoge.types.blockchain_format.program import Program, INFINITE_COST
+from chia.types.blockchain_format.program import Program, INFINITE_COST
 
 BURN_PUZZLE_HASH = b"0" * 32
 BURN_PUZZLE_HASH_2 = b"1" * 32

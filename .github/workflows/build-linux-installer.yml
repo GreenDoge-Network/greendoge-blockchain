@@ -34,7 +34,6 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
-        token: ${{ secrets.PAT }}
 
     - name: Setup Python environment
       uses: actions/setup-python@v2
@@ -85,7 +84,7 @@ jobs:
         . ./activate
         sudo apt-get -y install rpm
         ldd --version
-        cd ./greendoge-blockchain-gui
+        cd ./chia-blockchain-gui
         git status
         cd ../build_scripts
         sh build_linux.sh amd64

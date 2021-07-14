@@ -14,16 +14,16 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from greendoge.consensus.blockchain import ReceiveBlockResult
-from greendoge.consensus.constants import ConsensusConstants
-from greendoge.types.announcement import Announcement
-from greendoge.types.blockchain_format.program import Program
-from greendoge.types.coin_solution import CoinSolution
-from greendoge.types.condition_opcodes import ConditionOpcode
-from greendoge.types.full_block import FullBlock
-from greendoge.types.spend_bundle import SpendBundle
-from greendoge.util.block_tools import BlockTools, test_constants
-from greendoge.util.errors import Err
+from chia.consensus.blockchain import ReceiveBlockResult
+from chia.consensus.constants import ConsensusConstants
+from chia.types.announcement import Announcement
+from chia.types.blockchain_format.program import Program
+from chia.types.coin_solution import CoinSolution
+from chia.types.condition_opcodes import ConditionOpcode
+from chia.types.full_block import FullBlock
+from chia.types.spend_bundle import SpendBundle
+from chia.util.block_tools import BlockTools, test_constants
+from chia.util.errors import Err
 
 from .ram_db import create_ram_blockchain
 
