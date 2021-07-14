@@ -18,13 +18,13 @@ def calculate_pool_reward(height: uint32) -> uint64:
         return uint64(int((7 / 8) * 21000000 * _dog_per_greendoge))
     elif height < (1 / 12) * _blocks_per_year:
         return uint64(int((7 / 8) * 100 * _dog_per_greendoge)) #Reward for early participants in the community.
-    elif height < 3 * _blocks_per_year:
+    elif height < 2 * _blocks_per_year:
         return uint64(int((7 / 8) * 20 * _dog_per_greendoge))
-    elif height < 6 * _blocks_per_year:
+    elif height < 4 * _blocks_per_year:
         return uint64(int((7 / 8) * 10 * _dog_per_greendoge))
-    elif height < 9 * _blocks_per_year:
+    elif height < 6 * _blocks_per_year:
         return uint64(int((7 / 8) * 5 * _dog_per_greendoge))
-    elif height < 12 * _blocks_per_year:
+    elif height < 8 * _blocks_per_year:
         return uint64(int((7 / 8) * 2.5 * _dog_per_greendoge))
     else:
         return uint64(int((7 / 8) * 1.25 * _dog_per_greendoge))
@@ -43,13 +43,13 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
         return uint64(int((1 / 8) * 21000000 * _dog_per_greendoge))
     elif height < (1 / 12) * _blocks_per_year:
         return uint64(int((1 / 8) * 100 * _dog_per_greendoge)) #Reward for early participants in the community.
-    elif height < 3 * _blocks_per_year:
+    elif height < 2 * _blocks_per_year:
         return uint64(int((1 / 8) * 20 * _dog_per_greendoge))
-    elif height < 6 * _blocks_per_year:
+    elif height < 4 * _blocks_per_year:
         return uint64(int((1 / 8) * 10 * _dog_per_greendoge))
-    elif height < 9 * _blocks_per_year:
+    elif height < 6 * _blocks_per_year:
         return uint64(int((1 / 8) * 5 * _dog_per_greendoge))
-    elif height < 12 * _blocks_per_year:
+    elif height < 8 * _blocks_per_year:
         return uint64(int((1 / 8) * 2.5 * _dog_per_greendoge))
     else:
         return uint64(int((1 / 8) * 1.25 * _dog_per_greendoge))
