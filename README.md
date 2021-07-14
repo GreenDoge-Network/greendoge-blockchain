@@ -26,6 +26,9 @@ Once installed, a
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
+## Block Rewards
+https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
+
 ## Telegram
 [GreenDoge International Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
 [GreenDoge Chinese Group](https://t.me/joinchat/b11R4pYF41c5MWNl)
