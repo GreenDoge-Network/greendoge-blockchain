@@ -53,3 +53,4 @@ Sponsor the developer for renting the Intorducer and Timelord servers.
 * ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581<br>
 * BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505<br>
 * TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
+* XCH: xch1wz5u3hj3wq6lzpsf5qxrhae6w2ff08mxekum03htpsgw3t98zfws2r24pu
