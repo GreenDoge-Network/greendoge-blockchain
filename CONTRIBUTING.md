@@ -15,11 +15,11 @@ Please review this [diagram](https://drive.google.com/file/d/1r7AXTrj7gtD0Xy-9Bt
 
 We would be pleased to accept code contributions to this project.
 As we have now released, the main priority is improving the mainnet blockchain.
-You can visit our [Trello project board](https://trello.com/b/ZuNx7sET) to get a sense of what is in the backlog.
+You can visit our [Trello project board]() to get a sense of what is in the backlog.
 Generally, things to the left are in progress or done. Some things go through "Coming up soon", but some will come directly out of other columns.
 Usually, the things closer to the top of each column are the ones that will be worked on soonest.
 If you are interested in cryptography, math, or just like hacking in python, there are many interesting problems to work on.
-Contact any of the team members on [Discord](https://discord.gg/YJaBQ9a6), which we use as the main communication method. You can also comment on any Trello card.
+Contact any of the team members on [Discord](https://discord.gg/3vwEfD2kws), which we use as the main communication method. You can also comment on any Trello card.
 
 We ask that external contributors create a fork of the `main` branch for any feature work they wish to take on.
 
