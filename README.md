@@ -12,6 +12,9 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 
+## Latest News
+- The 500 GDOG rewards for registered early community participants have been sent.
+
 ## Installing
 
 Install instructions are available in the
