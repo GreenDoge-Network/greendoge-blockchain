@@ -41,9 +41,9 @@ https://www.reddit.com/r/GreenDogecoin/
 [GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
 
-## Full Nodes and Timelord
+## Node Information
 - dns-introducer.greendoge.dog (AWS)
-- introducer.greendoge.dog (AWS)
+- introducer.greendoge.dog:6545 (AWS)
 - 18.141.194.162:6544 (AWS)
 - 18.206.194.242:6544 (AWS)
 
