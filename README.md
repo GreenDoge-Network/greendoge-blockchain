@@ -29,6 +29,9 @@ is available from the repository
 ## Block Rewards
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
 
+## Compare with Chia 1.1.7
+https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182
+
 ## Telegram
 [GreenDoge International Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
 [GreenDoge Chinese Group](https://t.me/joinchat/b11R4pYF41c5MWNl)
