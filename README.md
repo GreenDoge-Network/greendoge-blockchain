@@ -41,6 +41,12 @@ https://www.reddit.com/r/GreenDogecoin/
 [GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
 
+## Notes
+dns-introducer.greendoge.dog
+introducer.greendoge.dog
+18.141.194.162:6544
+18.206.194.242:6544
+
 ## Sponsor 
 Sponsor the developer for renting the Intorducer and Timelord servers.
 - BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz
