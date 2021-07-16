@@ -33,8 +33,9 @@ is available from the repository
 ## Block Rewards
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
 
-## Compare with Chia 1.1.7
-https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182
+## Compare with Chia
+- [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
+- [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Telegram
 [GreenDoge International Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
