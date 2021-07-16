@@ -62,3 +62,4 @@ Sponsor the developer for renting the Intorducer and Timelord servers.
 - BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505
 - TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
 - XCH: xch1wz5u3hj3wq6lzpsf5qxrhae6w2ff08mxekum03htpsgw3t98zfws2r24pu
+- GDOG: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
