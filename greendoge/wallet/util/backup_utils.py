@@ -7,7 +7,7 @@ from blspy import AugSchemeMPL, PrivateKey, PublicKeyMPL, SignatureMPL
 from cryptography.fernet import Fernet
 
 from greendoge.server.server import ssl_context_for_root
-from greendoge.ssl.create_ssl import get_mozzila_ca_crt
+from greendoge.ssl.create_ssl import get_mozilla_ca_crt
 from greendoge.util.byte_types import hexstr_to_bytes
 from greendoge.util.hash import std_hash
 from greendoge.wallet.derive_keys import master_sk_to_backup_sk
