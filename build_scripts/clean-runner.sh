@@ -3,7 +3,7 @@
 
 rm -rf ../venv || true
 rm -rf venv || true
-rm -rf chia_blockchain.egg-info || true
+rm -rf greendoge_blockchain.egg-info || true
 rm -rf build_scripts/final_installer || true
 rm -rf build_scripts/dist || true
 rm -rf build_scripts/pyinstaller || true
