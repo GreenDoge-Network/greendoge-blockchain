@@ -220,12 +220,7 @@ class FarmerAPI:
                 }
                 try:
                     async with aiohttp.ClientSession() as session:
-                        async with session.post(
-                            f"{pool_url}/partial",
-                            data=post_partial_body,
-                            headers=headers,
-                            ssl=ssl_context_for_root(get_mozilla_ca_crt()),
-                        ) as resp:
+                        async with session.post(f"{pool_url}/partial", data=post_partial_body, headers=headers) as resp:
                             if resp.ok:
                                 pool_response: Dict = json.loads(await resp.text())
                                 self.farmer.log.info(f"Pool response: {pool_response}")
