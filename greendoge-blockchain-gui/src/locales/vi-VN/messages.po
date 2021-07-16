@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore Chia’s blocks further? Check out <0>Chia Explorer</0> built by an open source developer."
-msgstr "* Bạn muốn khám phá thêm về Chia Blockchain? Xem <0> Chia Explorer </0> được xây dựng bởi các nhà phát triển nguồn mở."
+msgid "*Want to explore GreenDoge’s blocks further? Check out <0>GreenDoge Explorer</0> built by an open source developer."
+msgstr "* Bạn muốn khám phá thêm về GreenDoge Blockchain? Xem <0> GreenDoge Explorer </0> được xây dựng bởi các nhà phát triển nguồn mở."
 
 #: src/components/plot/add/PlotAddNFT.tsx:127
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Harvester là một dịch vụ chạy trên một máy chứa các tệ
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About Chia Blockchain"
-msgstr "Về Chia Blockchain"
+msgid "About GreenDoge Blockchain"
+msgstr "Về GreenDoge Blockchain"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Khối VDF lặp lại"
 
 #: src/components/block/Block.jsx:338
-msgid "Block at height {0} in the Chia blockchain"
-msgstr "Khối tại height {0} trong Chia blockchain"
+msgid "Block at height {0} in the GreenDoge blockchain"
+msgstr "Khối tại height {0} trong GreenDoge blockchain"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -309,16 +309,16 @@ msgid "Chat on KeyBase"
 msgstr "Chat trên Keybase"
 
 #: src/electron/main.tsx:419
-msgid "Chia"
-msgstr "Chia"
+msgid "GreenDoge"
+msgstr "GreenDoge"
 
 #: src/electron/main.tsx:358
-msgid "Chia Blockchain Wiki"
-msgstr "Chia Blockchain Wiki"
+msgid "GreenDoge Blockchain Wiki"
+msgstr "GreenDoge Blockchain Wiki"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "Chia Wallet"
-msgstr "Ví Chia"
+msgid "GreenDoge Wallet"
+msgstr "Ví GreenDoge"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -686,8 +686,8 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your Chia wallet."
-msgstr "Nhập 24 từ ghi nhớ mà bạn đã lưu để khôi phục ví Chia của bạn."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your GreenDoge wallet."
+msgstr "Nhập 24 từ ghi nhớ mà bạn đã lưu để khôi phục ví GreenDoge của bạn."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Phí"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TXCH)"
+#~ msgid "Fee (TGDOG)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1011,15 +1011,15 @@ msgid "Join a Pool"
 msgstr ""
 
 #: src/components/plot/add/PlotAddNFT.tsx:44
-msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile."
+msgid "Join a pool and get consistent GDOG farming rewards. The average returns are the same, but it is much less volatile."
 msgstr ""
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:59
-msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
+msgid "Join a pool and get consistent GDOG farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
 msgstr ""
 
 #: src/components/plot/add/PlotAddNFT.tsx:137
-msgid "Join a pool and get more consistent XCH farming rewards. Create a plot NFT and assign your new plots to a group."
+msgid "Join a pool and get more consistent GDOG farming rewards. Create a plot NFT and assign your new plots to a group."
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:63
@@ -1249,7 +1249,7 @@ msgid "Not found Plots"
 msgstr "Plot không tồn tại"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:186
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XCH reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:115
@@ -1468,8 +1468,8 @@ msgid "Plots Passed Filter"
 msgstr "Plot đã lọc"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:28
-msgid "Plots are allocated space on your hard drive used to farm and earn Chia. <0>Learn more</0>"
-msgstr "Plot được phân bổ không gian trên ổ cứng của bạn dùng để farm và thu về Chia. <0> Tìm hiểu thêm </0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn GreenDoge. <0>Learn more</0>"
+msgstr "Plot được phân bổ không gian trên ổ cứng của bạn dùng để farm và thu về GreenDoge. <0> Tìm hiểu thêm </0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1816,7 +1816,7 @@ msgid "Self Pooling"
 msgstr ""
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
-msgid "Self pool. When you win a block you will earn XCH rewards."
+msgid "Self pool. When you win a block you will earn GDOG rewards."
 msgstr ""
 
 #: src/components/trading/CreateOffer.jsx:164
@@ -1869,7 +1869,7 @@ msgid "Skips adding a final directory to harvester for farming"
 msgstr "Bỏ qua việc thêm thư mục cuối cùng vào harvester để farm"
 
 #: src/components/pool/PoolHero.tsx:26
-msgid "Smooth out your XCH farming rewards by joining a pool."
+msgid "Smooth out your GDOG farming rewards by joining a pool."
 msgstr ""
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:60
@@ -1954,8 +1954,8 @@ msgstr "Tình trạng:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the Chia blockchain"
-#~ msgstr "Sub Block at height {0} in the Chia blockchain"
+#~ msgid "Sub Block at height {0} in the GreenDoge blockchain"
+#~ msgstr "Sub Block at height {0} in the GreenDoge blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1982,23 +1982,23 @@ msgstr "Đang đồng bộ <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TXCH Block Rewards"
+#~ msgid "TGDOG Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TXCH Farming Rewards"
+#~ msgid "TGDOG Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TXCH Fees Collected"
+#~ msgid "TGDOG Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TXCH User Fees"
-#~ msgstr "TXCH User Fees"
+#~ msgid "TGDOG User Fees"
+#~ msgstr "TGDOG User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TXCH User Transaction Fees"
+#~ msgid "TGDOG User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2071,7 +2071,7 @@ msgid "The total transactions fees in this block. Rewarded to the farmer."
 msgstr "Tổng phí giao dịch trong khối này. Thưởng cho farmer."
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:90
-msgid "These are the instructions for how the farmer wants to get paid. By default this will be an XCH address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
+msgid "These are the instructions for how the farmer wants to get paid. By default this will be an GDOG address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
 msgstr ""
 
 #: src/components/plot/PlotsFailed.tsx:40
@@ -2094,8 +2094,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Tính năng này chỉ khả dụng trên GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of Chia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and Chia that you have just spent but is not yet in the blockchain."
-msgstr "Đây là số lượng Chia mà bạn hiện có thể sử dụng để thực hiện các giao dịch. Nó không bao gồm phần thưởng farm đang chờ xử lý, các giao dịch đến đang chờ xử lý và Chia mà bạn vừa chi tiêu nhưng chưa có trong blockchain."
+msgid "This is the amount of GreenDoge that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and GreenDoge that you have just spent but is not yet in the blockchain."
+msgstr "Đây là số lượng GreenDoge mà bạn hiện có thể sử dụng để thực hiện các giao dịch. Nó không bao gồm phần thưởng farm đang chờ xử lý, các giao dịch đến đang chờ xử lý và GreenDoge mà bạn vừa chi tiêu nhưng chưa có trong blockchain."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2160,8 +2160,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Giao dịch này đã được đưa vào blockchain ở chiều cao khối này"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of Chia is no longer compatible with the blockchain and can not safely farm."
-msgstr "Phiên bản Chia này không còn tương thích với blockchain và không thể farm một cách an toàn."
+msgid "This version of GreenDoge is no longer compatible with the blockchain and can not safely farm."
+msgstr "Phiên bản GreenDoge này không còn tương thích với blockchain và không thể farm một cách an toàn."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2185,8 +2185,8 @@ msgstr "Đến"
 msgid "Total Balance"
 msgstr "Tổng số dư"
 
-#: src/components/farm/card/FarmCardTotalChiaFarmed.tsx:15
-#~ msgid "Total Chia Farmed"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#~ msgid "Total GreenDoge Farmed"
 #~ msgstr ""
 
 #: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
@@ -2396,8 +2396,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:133
-msgid "Want to earn more Chia? Add more plots to your farm."
-msgstr "Muốn thêm Chia? Thêm nhiều plot vào farm của bạn."
+msgid "Want to earn more GreenDoge? Add more plots to your farm."
+msgstr "Muốn thêm GreenDoge? Thêm nhiều plot vào farm của bạn."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2412,8 +2412,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Trọng lượng là tổng độ khó cộng thêm của tất cả các khối phụ lên đến và bao gồm khối này"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to Chia. Please log in with an existing key, or create a new key."
-msgstr "Chào mừng đến với Chia. Vui lòng đăng nhập bằng khóa hiện có hoặc tạo khóa mới."
+msgid "Welcome to GreenDoge. Please log in with an existing key, or create a new key."
+msgstr "Chào mừng đến với GreenDoge. Vui lòng đăng nhập bằng khóa hiện có hoặc tạo khóa mới."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2483,8 +2483,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the Chia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the Chia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the GreenDoge application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the GreenDoge application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2571,15 +2571,15 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} phần thưởng khối"
 
-#: src/components/farm/card/FarmCardTotalChiaFarmed.tsx:29
-msgid "{currencyCode} Total Chia Farmed"
-msgstr "{currencyCode} Tổng số Chia thu được"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+msgid "{currencyCode} Total GreenDoge Farmed"
+msgstr "{currencyCode} Tổng số GreenDoge thu được"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Phí giao dịch của người dùng"
 
 #: src/components/core/components/Amount/Amount.tsx:52
-msgid "{mojo, plural, one {mojo} other {mojos}}"
+msgid "{dog, plural, one {dog} other {dogs}}"
 msgstr ""
 
