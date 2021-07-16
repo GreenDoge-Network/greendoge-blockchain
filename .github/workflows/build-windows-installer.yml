@@ -61,22 +61,6 @@ jobs:
       with:
         python-version: "3.9"
 
-    - name: Test for secrets access
-      id: check_secrets
-      shell: bash
-      run: |
-        unset HAS_SIGNING_SECRET
-        unset HAS_AWS_SECRET
-
-        if [ -n "$SIGNING_SECRET" ]; then HAS_SIGNING_SECRET='true' ; fi
-        echo "::set-output name=HAS_SIGNING_SECRET::${HAS_SIGNING_SECRET}"
-
-        if [ -n "$AWS_SECRET" ]; then HAS_AWS_SECRET='true' ; fi
-        echo ::set-output name=HAS_AWS_SECRET::${HAS_AWS_SECRET}
-      env:
-        SIGNING_SECRET: "${{ secrets.WIN_CODE_SIGN_CERT }}"
-        AWS_SECRET: "${{ secrets.INSTALLER_UPLOAD_KEY }}"
-
     - name: Decode code signing cert into an encrypted file
       if: steps.check_secrets.outputs.HAS_SIGNING_SECRET
       uses: kitek/decode-base64-into-file-action@1.0
@@ -118,27 +102,6 @@ jobs:
         path: ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\
 
 
-    - name: Install AWS CLI
-      if: steps.check_secrets.outputs.HAS_AWS_SECRET
-      run: |
-          msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
-
-    - name: Configure AWS Credentials
-      if: steps.check_secrets.outputs.HAS_AWS_SECRET
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.INSTALLER_UPLOAD_KEY }}
-        aws-secret-access-key: ${{ secrets.INSTALLER_UPLOAD_SECRET }}
-        aws-region: us-west-2
-
-    - name: Upload to s3
-      if: steps.check_secrets.outputs.HAS_AWS_SECRET
-      env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
-      run: |
-        ls ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\
-        aws s3 cp ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe s3://download-greendoge-dog/builds/
-
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/')
       env:
@@ -151,22 +114,6 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       run: |
         pip3 install py3createtorrent
-
-    - name: Create torrent
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe -o ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.torrent --webseed https://download-greendoge-dog.s3.us-west-2.amazonaws.com/install/GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe
-        ls
-
-    - name: Upload Release Files
-      if: steps.check_secrets.outputs.HAS_AWS_SECRET && startsWith(github.ref, 'refs/tags/')
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.INSTALLER_UPLOAD_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.INSTALLER_UPLOAD_SECRET }}
-      run: |
-        aws s3 cp ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe s3://download-greendoge-dog/install/
-        aws s3 cp ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.checksum s3://download-greendoge-dog/install/
-        aws s3 cp ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.torrent s3://download-greendoge-dog/torrents/
 
     - name: Get tag name
       if: startsWith(github.ref, 'refs/tags/')
