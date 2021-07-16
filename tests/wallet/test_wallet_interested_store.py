@@ -4,11 +4,11 @@ from secrets import token_bytes
 import aiosqlite
 import pytest
 
-from chia.types.blockchain_format.coin import Coin
-from chia.util.db_wrapper import DBWrapper
-from chia.util.ints import uint64
+from greendoge.types.blockchain_format.coin import Coin
+from greendoge.util.db_wrapper import DBWrapper
+from greendoge.util.ints import uint64
 
-from chia.wallet.wallet_interested_store import WalletInterestedStore
+from greendoge.wallet.wallet_interested_store import WalletInterestedStore
 
 
 @pytest.fixture(scope="module")

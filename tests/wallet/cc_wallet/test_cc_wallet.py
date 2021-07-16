@@ -3,18 +3,18 @@ from typing import List
 
 import pytest
 
-from chia.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from chia.full_node.mempool_manager import MempoolManager
-from chia.simulator.simulator_protocol import FarmNewBlockProtocol
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.peer_info import PeerInfo
-from chia.util.ints import uint16, uint32, uint64
-from chia.wallet.cc_wallet.cc_utils import cc_puzzle_hash_for_inner_puzzle_hash
-from chia.wallet.cc_wallet.cc_wallet import CCWallet
-from chia.wallet.puzzles.cc_loader import CC_MOD
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.wallet_coin_record import WalletCoinRecord
+from greendoge.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from greendoge.full_node.mempool_manager import MempoolManager
+from greendoge.simulator.simulator_protocol import FarmNewBlockProtocol
+from greendoge.types.blockchain_format.coin import Coin
+from greendoge.types.blockchain_format.sized_bytes import bytes32
+from greendoge.types.peer_info import PeerInfo
+from greendoge.util.ints import uint16, uint32, uint64
+from greendoge.wallet.cc_wallet.cc_utils import cc_puzzle_hash_for_inner_puzzle_hash
+from greendoge.wallet.cc_wallet.cc_wallet import CCWallet
+from greendoge.wallet.puzzles.cc_loader import CC_MOD
+from greendoge.wallet.transaction_record import TransactionRecord
+from greendoge.wallet.wallet_coin_record import WalletCoinRecord
 from tests.setup_nodes import setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

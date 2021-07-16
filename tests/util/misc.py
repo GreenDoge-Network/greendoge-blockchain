@@ -1,6 +1,6 @@
 import pytest
-from chia.util.misc import format_bytes
-from chia.util.misc import format_minutes
+from greendoge.util.misc import format_bytes
+from greendoge.util.misc import format_minutes
 
 
 class TestMisc:
