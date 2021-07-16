@@ -75,7 +75,7 @@ jobs:
         python3 -m venv ../venv
         . ../venv/bin/activate
         pip3 install setuptools_scm
-        echo "::set-output name=CHIA_INSTALLER_VERSION::$(python3 ./build_scripts/installer-version.py)"
+        echo "::set-output name=GREENDOGE_INSTALLER_VERSION::$(python3 ./build_scripts/installer-version.py)"
         deactivate
 
     - name: Test for secrets access
@@ -96,7 +96,7 @@ jobs:
         sh install.sh
 
     - name: Setup Node 12.x
-      uses: actions/setup-node@v2.1.5
+      uses: actions/setup-node@v2.2.0
       with:
         node-version: '12.x'
 
@@ -105,7 +105,7 @@ jobs:
         . ./activate
         sudo apt-get -y install rpm
         ldd --version
-        cd ./chia-blockchain-gui
+        cd ./greendoge-blockchain-gui
         git status
         cd ../build_scripts
         sh build_linux_rpm.sh amd64
@@ -127,18 +127,18 @@ jobs:
     - name: Upload to s3
       if: steps.check_secrets.outputs.HAS_SECRET
       env:
-          CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
+          GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
       run: |
           ls ${{ github.workspace }}/build_scripts/final_installer/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/*.rpm s3://download-chia-net/builds/
+          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/*.rpm s3://download-greendoge-dog/builds/
 
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/')
       env:
-        CHIA_INSTALLER_VERSION: ${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}
+        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
       run: |
          ls ${{ github.workspace }}/build_scripts/final_installer/
-         sha256sum ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm > ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm.sha256
+         sha256sum ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm > ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm.sha256
          ls ${{ github.workspace }}/build_scripts/final_installer/
 
     - name: Install py3createtorrent
@@ -149,15 +149,15 @@ jobs:
     - name: Create .rpm torrent
       if: startsWith(github.ref, 'refs/tags/')
       run: |
-          py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm -o ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm.torrent --webseed https://download-chia-net.s3.us-west-2.amazonaws.com/install/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm
+          py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm -o ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm.torrent --webseed https://download-greendoge-dog.s3.us-west-2.amazonaws.com/install/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm
           ls
 
     - name: Upload Release Files
       if: steps.check_secrets.outputs.HAS_SECRET && startsWith(github.ref, 'refs/tags/')
       run: |
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm s3://download-chia-net/install/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm.sha256 s3://download-chia-net/install/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/chia-blockchain-${{ steps.version_number.outputs.CHIA_INSTALLER_VERSION }}-1.x86_64.rpm.torrent s3://download-chia-net/torrents/
+          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm s3://download-greendoge-dog/install/
+          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm.sha256 s3://download-greendoge-dog/install/
+          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}-1.x86_64.rpm.torrent s3://download-greendoge-dog/torrents/
 
     - name: Get tag name
       if: startsWith(github.ref, 'refs/tags/')
@@ -169,4 +169,4 @@ jobs:
     - name: Mark installer complete
       if: startsWith(github.ref, 'refs/tags/')
       run: |
-          curl -s -XPOST -H "Authorization: Bearer ${{ secrets.GLUE_ACCESS_TOKEN }}" --data '{"chia_ref": "${{ steps.tag-name.outputs.TAG_NAME }}"}' ${{ secrets.GLUE_API_URL }}/api/v1/${{ steps.tag-name.outputs.REPO_NAME }}/${{ steps.tag-name.outputs.TAG_NAME }}/success/build-linux-rpm
+          curl -s -XPOST -H "Authorization: Bearer ${{ secrets.GLUE_ACCESS_TOKEN }}" --data '{"greendoge_ref": "${{ steps.tag-name.outputs.TAG_NAME }}"}' ${{ secrets.GLUE_API_URL }}/api/v1/${{ steps.tag-name.outputs.REPO_NAME }}/${{ steps.tag-name.outputs.TAG_NAME }}/success/build-linux-rpm
