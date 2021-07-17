@@ -1826,7 +1826,7 @@ msgstr "正在為自己的農會耕種中"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
 msgid "Self pool. When you win a block you will earn GDOG rewards."
-msgstr "自己的農會。當你贏取一個區塊時你將獲得完整的 GDOG 獎勵 (2 GDOG)。"
+msgstr "自己的農會。當你贏取一個區塊時你將獲得完整的 GDOG 獎勵。"
 
 #: src/components/trading/CreateOffer.jsx:164
 #: src/components/trading/TradesTable.tsx:47
