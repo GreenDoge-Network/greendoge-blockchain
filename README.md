@@ -33,8 +33,9 @@ is available from the repository
 ## Block Rewards
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
 
-## Compare with Chia 1.1.7
-https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182
+## Compare with Chia
+- [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
+- [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Telegram
 [GreenDoge International Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
@@ -61,3 +62,4 @@ Sponsor the developer for renting the Intorducer and Timelord servers.
 - BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505
 - TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
 - XCH: xch1wz5u3hj3wq6lzpsf5qxrhae6w2ff08mxekum03htpsgw3t98zfws2r24pu
+- GDOG: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
