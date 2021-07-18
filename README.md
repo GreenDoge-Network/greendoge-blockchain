@@ -14,6 +14,8 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 
 ## Latest News
 - The 500 GDOG rewards for registered early community participants have been sent.
+- The rewards on the testnet will not be retained, please make sure you are on the mainnet.
+![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/79a9291b3d70f2dd03702e1822193f4d6ca16601/make_sure_mainnet.png)
 
 ## Installing
 
