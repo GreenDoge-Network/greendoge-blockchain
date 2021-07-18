@@ -46,7 +46,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
-[GreenDoge Community](https://discord.gg/3vwEfD2kws)<br>
+[GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
 [GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
 [GreenDoge Discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
 
