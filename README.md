@@ -56,6 +56,11 @@ https://www.reddit.com/r/GreenDogecoin/
 - 18.141.194.162:6544 (AWS)
 - 18.206.194.242:6544 (AWS)
 
+## History
+- The testnet launched on July 4.
+- The name changed from ChiaDoge to GreenDoge on July 7.
+- The mainnet launched on July 9.
+
 ## Sponsor 
 Sponsor the developer for renting the Intorducer and Timelord servers.
 - BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz
