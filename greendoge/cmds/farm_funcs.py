@@ -302,6 +302,11 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
         FarmingStatus = "Not running"
     else:
         FarmingStatus = "Farming"
+        
+    if blockchain_state is not None:
+        EstimatedNetworkSpace = format_bytes(blockchain_state["space"])
+    else:
+        EstimatedNetworkSpace = "Unknown"
 
     class PlotStats:
         total_plot_size = 0
