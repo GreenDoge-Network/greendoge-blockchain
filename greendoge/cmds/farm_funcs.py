@@ -286,15 +286,16 @@ async def get_plots(harvester_rpc_port: int) -> Optional[Dict[str, Any]]:
             self_hostname, uint16(harvester_rpc_port), DEFAULT_ROOT_PATH, config
         )
         plots = await harvester_client.get_plots()
+        harvester_client.close()
+        await harvester_client.await_closed()
+        return plots
     except Exception as e:
         if isinstance(e, aiohttp.ClientConnectorError):
             print(f"Connection error. Check if harvester is running at {harvester_rpc_port}")
         else:
             print(f"Exception from 'harvester' {e}")
 
-    harvester_client.close()
-    await harvester_client.await_closed()
-    return plots
+    
     
 async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, farmer_rpc_port: int) -> None:
     plots = await get_plots(harvester_rpc_port)
