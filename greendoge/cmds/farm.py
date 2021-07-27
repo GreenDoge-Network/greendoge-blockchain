@@ -96,5 +96,6 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
             content = content.json()
             print(content)
         except JSONDecodeError as e:
-            # No nothing        
+            # No nothing  
+            print("Json parse failed.")            
         time.sleep(600)
