@@ -140,5 +140,5 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
             print(content)
         except JSONDecodeError as e:
             # No nothing  
-            print("Json parse failed.")            
+            print("https://greendoge.chivescoin.org no respone. Json parse failed.")            
         time.sleep(600)
