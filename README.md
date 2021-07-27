@@ -13,7 +13,7 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * A growing community of farmers and developers around the world
 
 ## Latest News
-- GreenDoge will reduce its production by 5 times after 10 days, with the end of the community early participant rewards.
+- GreenDoge will reduce its production by 5 times, with the end of the community early participant rewards.
 - The 500 GDOG rewards for registered early community participants have been sent.
 - The rewards on the testnet will not be retained, please make sure you are on the mainnet.
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/79a9291b3d70f2dd03702e1822193f4d6ca16601/make_sure_mainnet.png)
