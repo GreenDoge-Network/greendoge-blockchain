@@ -76,3 +76,25 @@ def challenges_cmd(farmer_rpc_port: int, limit: int) -> None:
     import asyncio
 
     asyncio.run(challenges(farmer_rpc_port, limit))
+    
+def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, farmer_rpc_port: int) -> None:
+    print("Ready to upload harvester data to greendoge.chivescoin.org...")
+    from .farm_funcs import summary,challenges,uploadfarmerdata
+    import asyncio
+    import requests
+    import time
+    import json
+    from datetime import datetime
+    while 1==1:
+        FarmerSatus = asyncio.run(uploadfarmerdata(rpc_port, wallet_rpc_port, harvester_rpc_port, farmer_rpc_port))
+        FarmerSatusJson = json.dumps(FarmerSatus)
+        print('------------------------------------------------------------------')
+        print(datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S"))
+        print(f"Upload the farm summary and challenges data to community.chivescoin.org, and you can query the data in this site.")
+        content = requests.post('https://greendoge.chivescoin.org/farmerinfor/uploaddata.php', data={'FarmerSatus':FarmerSatusJson})
+        try:
+            content = content.json()
+            print(content)
+        except JSONDecodeError as e:
+            # No nothing        
+        time.sleep(600)
