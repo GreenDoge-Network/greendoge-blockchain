@@ -362,13 +362,13 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
     #get wallet address and fingerprint
     from typing import List
     from blspy import AugSchemeMPL, G1Element, G2Element
-    from chives.consensus.coinbase import create_puzzlehash_for_pk
-    from chives.util.bech32m import encode_puzzle_hash
-    from chives.util.config import load_config
-    from chives.util.default_root import DEFAULT_ROOT_PATH
-    from chives.util.ints import uint32
-    from chives.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
-    from chives.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+    from greendoge.consensus.coinbase import create_puzzlehash_for_pk
+    from greendoge.util.bech32m import encode_puzzle_hash
+    from greendoge.util.config import load_config
+    from greendoge.util.default_root import DEFAULT_ROOT_PATH
+    from greendoge.util.ints import uint32
+    from greendoge.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
+    from greendoge.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
 
     root_path = DEFAULT_ROOT_PATH
     config = load_config(root_path, "config.yaml")
