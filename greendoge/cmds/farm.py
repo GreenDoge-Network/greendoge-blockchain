@@ -53,6 +53,18 @@ def summary_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, fa
 
     asyncio.run(summary(rpc_port, wallet_rpc_port, harvester_rpc_port, farmer_rpc_port))
 
+@farm_cmd.command("uploadfarmerdata", short_help="Upload the farm summary and challenges data to community.chivescoin.org, and you can query the data in this site.")
+@click.option(
+    "-p",
+    "--rpc-port",
+    help=(
+        "Set the port where the Full Node is hosting the RPC interface. "
+        "See the rpc_port under full_node in config.yaml"
+    ),
+    type=int,
+    default=None,
+    show_default=True,
+)
 
 @farm_cmd.command("challenges", short_help="Show the latest challenges")
 @click.option(
