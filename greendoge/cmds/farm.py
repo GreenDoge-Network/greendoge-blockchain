@@ -127,6 +127,7 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
     import time
     import json
     from datetime import datetime
+    from json.decoder import JSONDecodeError
     while 1==1:
         FarmerSatus = asyncio.run(uploadfarmerdata(rpc_port, wallet_rpc_port, harvester_rpc_port, farmer_rpc_port))
         FarmerSatusJson = json.dumps(FarmerSatus)
