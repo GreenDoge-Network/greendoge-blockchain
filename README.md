@@ -40,8 +40,8 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Telegram
-[GreenDoge International Group](https://t.me/joinchat/oY75zFYg9Wg0NDQ9)<br>
-[GreenDoge Chinese Group](https://t.me/joinchat/b11R4pYF41c5MWNl)
+[GreenDoge International Group](https://t.me/green_doge)<br>
+[GreenDoge Chinese Group](https://t.me/green_dogecoin)
 
 ## Reddit
 https://www.reddit.com/r/GreenDogecoin/
