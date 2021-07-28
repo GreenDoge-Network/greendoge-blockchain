@@ -13,6 +13,7 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * A growing community of farmers and developers around the world
 
 ## Latest News
+- GreenDoge will be listed on [forks.green](https://www.forks.green/) at 15:00 GMT+0 on July 30th.
 - GreenDoge will reduce its production by 5 times, with the end of the community early participant rewards.
 - The 500 GDOG rewards for registered early community participants have been sent.
 - The rewards on the testnet will not be retained, please make sure you are on the mainnet.
@@ -48,7 +49,7 @@ https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
 [GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
-[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage, Azile, dogdream, volar)👑<br>
+[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)<br>
 [GreenDoge Discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
 
 ## Node Information
