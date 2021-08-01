@@ -33,8 +33,8 @@ Once installed, a
 is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
-## Synchronizing Database
-https://chiadb.org/
+## Syncing
+If you need a quick synchronization, you can [download the database](https://chiadb.org/) and overwrite ".greendoge\mainnet\db\blockchain_v1_mainnet.sqlite".
 
 ## Block Rewards
 https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
