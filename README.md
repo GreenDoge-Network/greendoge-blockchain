@@ -62,7 +62,7 @@ https://www.reddit.com/r/GreenDogecoin/
 - 18.206.194.242:6544 (AWS)
 
 ## History
-- The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 12.
+- The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
 - The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
 - The mainnet launched on July 9.
 
