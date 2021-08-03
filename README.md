@@ -57,9 +57,9 @@ https://www.reddit.com/r/GreenDogecoin/
 
 ## Node Information
 - dns-introducer.greendoge.dog
-- introducer.greendoge.dog:6545 (AWS)
-- 18.141.194.162:6544 (AWS)
-- 18.206.194.242:6544 (AWS)
+- introducer.greendoge.dog:6545
+- 18.206.194.242:6544 - US East (N. Virginia)
+- 18.141.194.162:6544 - Asia Pacific (Singapore)
 
 ## History
 - The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
