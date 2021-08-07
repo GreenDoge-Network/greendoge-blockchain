@@ -52,8 +52,7 @@ https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
 [GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
-[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)<br>
-[GreenDoge Discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
+[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)
 
 ## Node Information
 - dns-introducer.greendoge.dog
