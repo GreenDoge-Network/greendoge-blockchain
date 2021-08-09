@@ -2,7 +2,7 @@
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
 
-GreenDoge: A new blockchain and smart transaction platform that is extremely low energy consumption, when mining with Chia.
+GreenDoge: A new blockchain and smart transaction platform that is easier to use, more efficient, secure, and extremely low energy consumption when mining with Chia. 
 
 It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase, reduces the pre-mined value by increasing the block reward by 10~50 times. Here are some of the features and benefits: 
 * [Proof of space and time](https://docs.google.com/document/d/1tmRIb7lgi4QfKkNaxuKOBHRmwbVlGL4f7EsBDr_5xZE/edit) based consensus which allows anyone to farm with commodity hardware
