@@ -48,9 +48,8 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
-## Telegram
-[GreenDoge International Group](https://t.me/green_doge)<br>
-[GreenDoge Chinese Group](https://t.me/green_dogecoin)
+## Twitter
+https://twitter.com/green_dogecoin
 
 ## Reddit
 https://www.reddit.com/r/GreenDogecoin/
@@ -58,6 +57,10 @@ https://www.reddit.com/r/GreenDogecoin/
 ## Community
 [GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
 [GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)
+
+## Telegram
+[GreenDoge International Group](https://t.me/green_doge)<br>
+[GreenDoge Chinese Group](https://t.me/green_dogecoin)
 
 ## Node Information
 - dns-introducer.greendoge.dog
