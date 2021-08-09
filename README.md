@@ -60,7 +60,7 @@ https://www.reddit.com/r/GreenDogecoin/
 ## Node Information
 - dns-introducer.greendoge.dog
 - introducer.greendoge.dog:6545
-- 18.206.194.242:6544 - US East (N. Virginia)
+- 18.214.88.31:6544 - US East (N. Virginia)
 - 18.141.194.162:6544 - Asia Pacific (Singapore)
 
 ## History
