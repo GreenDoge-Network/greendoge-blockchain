@@ -16,7 +16,7 @@ It is a community-supported fork of the [Chia Network](https://github.com/Chia-N
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
-- The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards.
+- The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
 - GreenDoge has been listed on [forks.green](https://www.forks.green/).
 - The 500 GDOG rewards for registered early community participants have been sent.
 - The rewards on the testnet will not be retained, please make sure you are on the mainnet.
