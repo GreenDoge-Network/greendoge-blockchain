@@ -6,6 +6,7 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 
 It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase, reduces the pre-mined value by increasing the block reward by 10~50 times. Here are some of the features and benefits: 
 * Support Chia OG and new portable NFT plots
+* Extremely low energy consumption when mining with Chia
 * [Proof of space and time](https://docs.google.com/document/d/1tmRIb7lgi4QfKkNaxuKOBHRmwbVlGL4f7EsBDr_5xZE/edit) based consensus which allows anyone to farm with commodity hardware
 * Very easy to use full node and farmer GUI and cli (thousands of nodes active on mainnet)
 * Simplified UTXO based transaction model, with small on-chain state
