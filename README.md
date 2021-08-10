@@ -2,8 +2,11 @@
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
 
-GreenDoge is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase. GreenDoge reduces the pre-farm value by increasing the block reward by 10~50 times. You can earn more money today. For more information, see our website and downloads at https://greendoge.dog.
+GreenDoge: A new blockchain and smart transaction platform that is easier to use, more efficient, secure, and ultra-low energy consumption when mining with Chia. 
 
+It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase, reduces the pre-mined value by increasing the block rewards by 10~50 times. Here are some of the features and benefits: 
+* Support Chia OG and new portable NFT plots without replotting
+* Ultra-low energy consumption when mining with Chia
 * [Proof of space and time](https://docs.google.com/document/d/1tmRIb7lgi4QfKkNaxuKOBHRmwbVlGL4f7EsBDr_5xZE/edit) based consensus which allows anyone to farm with commodity hardware
 * Very easy to use full node and farmer GUI and cli (thousands of nodes active on mainnet)
 * Simplified UTXO based transaction model, with small on-chain state
@@ -12,9 +15,11 @@ GreenDoge is a modern community-centric green cryptocurrency based on a proof-of
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 
+For more information, see our website and downloads at https://greendoge.dog.
+
 ## Latest News
-- The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards.
-- GreenDoge will be listed on [forks.green](https://www.forks.green/) at 15:00 GMT+0 on July 30th.
+- The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
+- GreenDoge has been listed on [forks.green](https://www.forks.green/) and [market.posat.io](https://market.posat.io/).
 - The 500 GDOG rewards for registered early community participants have been sent.
 - The rewards on the testnet will not be retained, please make sure you are on the mainnet.
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/79a9291b3d70f2dd03702e1822193f4d6ca16601/make_sure_mainnet.png)
@@ -43,22 +48,24 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
-## Telegram
-[GreenDoge International Group](https://t.me/green_doge)<br>
-[GreenDoge Chinese Group](https://t.me/green_dogecoin)
+## Twitter
+https://twitter.com/green_dogecoin
 
 ## Reddit
 https://www.reddit.com/r/GreenDogecoin/
 
 ## Community
 [GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
-[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)<br>
-[GreenDoge Discord](https://discord.gg/MysJnHH7wT) (Hosted by Vemika)
+[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)
+
+## Telegram
+[GreenDoge International Group](https://t.me/green_doge)<br>
+[GreenDoge Chinese Group](https://t.me/green_dogecoin)
 
 ## Node Information
 - dns-introducer.greendoge.dog
 - introducer.greendoge.dog:6545
-- 18.206.194.242:6544 - US East (N. Virginia)
+- 18.214.88.31:6544 - US East (N. Virginia)
 - 18.141.194.162:6544 - Asia Pacific (Singapore)
 
 ## History
