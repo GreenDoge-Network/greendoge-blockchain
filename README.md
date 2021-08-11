@@ -47,6 +47,17 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
+## Node Information
+- dns-introducer.greendoge.dog
+- introducer.greendoge.dog:6545
+- 18.214.88.31:6544 - US East (N. Virginia)
+- 18.141.194.162:6544 - Asia Pacific (Singapore)
+
+## History
+- The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
+- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
+- The mainnet launched on July 9.
+
 ## Links
 Website: <br>
 https://greendoge.dog/ <br>
@@ -75,17 +86,6 @@ Explorer: <br>
 https://greendoge.posat.io/ <br>
 https://alltheblocks.net/greendoge <br>
 https://greendoge.chivescoin.org/
-
-## Node Information
-- dns-introducer.greendoge.dog
-- introducer.greendoge.dog:6545
-- 18.214.88.31:6544 - US East (N. Virginia)
-- 18.141.194.162:6544 - Asia Pacific (Singapore)
-
-## History
-- The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
-- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
-- The mainnet launched on July 9.
 
 ## Sponsor 
 Sponsor the developer for renting the Intorducer and Timelord servers.
