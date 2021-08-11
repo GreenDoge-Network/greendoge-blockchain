@@ -48,14 +48,22 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Links
-Website: https://greendoge.dog/ <br>
-Discord: https://discord.gg/xFNJN9srJP <br>
-Twitter: https://twitter.com/Green_Dogecoin <br>
-Reddit: https://www.reddit.com/r/GreenDogecoin <br>
-Facebook page: https://www.facebook.com/GreenDoge-102281638814048 <br>
-Facebook group: https://www.facebook.com/groups/1152820041873426 <br>
-GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain <br>
-Calculator: https://chiaforkscalculator.com/greendoge <br>
+Website: <br>
+https://greendoge.dog/ <br>
+Discord: <br>
+https://discord.gg/xFNJN9srJP <br>
+Twitter: <br>
+https://twitter.com/Green_Dogecoin <br>
+Reddit: <br>
+https://www.reddit.com/r/GreenDogecoin <br>
+Facebook page: <br>
+https://www.facebook.com/GreenDoge-102281638814048 <br>
+Facebook group: <br>
+https://www.facebook.com/groups/1152820041873426 <br>
+GitHub: <br>
+https://github.com/GreenDoge-Network/greendoge-blockchain <br>
+Calculator: <br>
+https://chiaforkscalculator.com/greendoge <br>
 Telegram: <br>
 https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
