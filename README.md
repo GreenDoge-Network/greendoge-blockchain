@@ -48,24 +48,24 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Links
-Website: https://greendoge.dog/
-Discord: https://discord.gg/xFNJN9srJP
-Twitter: https://twitter.com/Green_Dogecoin
-Reddit: https://www.reddit.com/r/GreenDogecoin
-Facebook page: https://www.facebook.com/GreenDoge-102281638814048
-Facebook group: https://www.facebook.com/groups/1152820041873426
-GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain
-Calculator: https://chiaforkscalculator.com/greendoge
-Telegram:
-https://t.me/green_doge (English)
-https://t.me/green_dogecoin (Chinese)
-Trade:
-https://www.forks.green/signup?refid=ID0C152B1351
-https://market.posat.io/
-https://chiaforktraders.com/
-Explorer:
-https://greendoge.posat.io/
-https://alltheblocks.net/greendoge
+Website: https://greendoge.dog/ <br>
+Discord: https://discord.gg/xFNJN9srJP <br>
+Twitter: https://twitter.com/Green_Dogecoin <br>
+Reddit: https://www.reddit.com/r/GreenDogecoin <br>
+Facebook page: https://www.facebook.com/GreenDoge-102281638814048 <br>
+Facebook group: https://www.facebook.com/groups/1152820041873426 <br>
+GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain <br>
+Calculator: https://chiaforkscalculator.com/greendoge <br>
+Telegram: <br>
+https://t.me/green_doge (English) <br>
+https://t.me/green_dogecoin (Chinese) <br>
+Trade: <br>
+https://www.forks.green/signup?refid=ID0C152B1351 <br>
+https://market.posat.io/ <br>
+https://chiaforktraders.com/ <br>
+Explorer: <br>
+https://greendoge.posat.io/ <br>
+https://alltheblocks.net/greendoge <br>
 https://greendoge.chivescoin.org/
 
 ## Node Information
