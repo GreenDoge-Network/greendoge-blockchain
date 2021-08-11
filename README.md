@@ -47,19 +47,26 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
 - [1.2.2](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
-## Twitter
-https://twitter.com/green_dogecoin
-
-## Reddit
-https://www.reddit.com/r/GreenDogecoin/
-
-## Community
-[GreenDoge Community](https://discord.gg/3vwEfD2kws) (Official)<br>
-[GreenDoge Coin Community](https://discord.gg/J6D5MBDP5s) (Hosted by Wolfrage)
-
-## Telegram
-[GreenDoge International Group](https://t.me/green_doge)<br>
-[GreenDoge Chinese Group](https://t.me/green_dogecoin)
+## Links
+Website: https://greendoge.dog/
+Discord: https://discord.gg/xFNJN9srJP
+Twitter: https://twitter.com/Green_Dogecoin
+Reddit: https://www.reddit.com/r/GreenDogecoin
+Facebook page: https://www.facebook.com/GreenDoge-102281638814048
+Facebook group: https://www.facebook.com/groups/1152820041873426
+GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain
+Calculator: https://chiaforkscalculator.com/greendoge
+Telegram:
+https://t.me/green_doge (English)
+https://t.me/green_dogecoin (Chinese)
+Trade:
+https://www.forks.green/signup?refid=ID0C152B1351
+https://market.posat.io/
+https://chiaforktraders.com/
+Explorer:
+https://greendoge.posat.io/
+https://alltheblocks.net/greendoge
+https://greendoge.chivescoin.org/
 
 ## Node Information
 - dns-introducer.greendoge.dog
