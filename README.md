@@ -54,7 +54,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 - 18.141.194.162:6544 - Asia Pacific (Singapore)
 
 ## History
-- The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
+- The ChiaDoge(CDOG) testnet launched on July , different from ChiaDogecoin(XCD) that launched on July 10.
 - The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
 - The mainnet launched on July 9.
 
