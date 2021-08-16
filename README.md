@@ -60,7 +60,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 
 ## Links
 Website: <br>
-https://greendoge.dog/ <br>
+https://greendoge.dog <br>
 Discord: <br>
 https://discord.gg/xFNJN9srJP <br>
 Twitter: <br>
@@ -80,14 +80,14 @@ https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
 Trade: <br>
 https://www.forks.green/signup?refid=ID0C152B1351 <br>
-https://market.posat.io/ <br>
-https://chiaforktraders.com/ <br>
+https://market.posat.io <br>
+https://chiaforktraders.com <br>
 Explorer: <br>
-https://greendoge.posat.io/ <br>
+https://greendoge.posat.io <br>
 https://alltheblocks.net/greendoge <br>
-https://greendoge.chivescoin.org/ <br>
+https://greendoge.chivescoin.org <br>
 Database: <br>
-https://chiadb.org/
+https://chiadb.org
 
 ## Sponsor 
 Sponsor the developer for renting the Intorducer and Timelord servers.
