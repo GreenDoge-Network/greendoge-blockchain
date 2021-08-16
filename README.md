@@ -85,7 +85,7 @@ https://chiaforktraders.com/ <br>
 Explorer: <br>
 https://greendoge.posat.io/ <br>
 https://alltheblocks.net/greendoge <br>
-https://greendoge.chivescoin.org/ <bt>
+https://greendoge.chivescoin.org/ <br>
 Database: <br>
 https://chiadb.org/
 
