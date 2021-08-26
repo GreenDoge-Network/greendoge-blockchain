@@ -70,7 +70,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://greendoge.dog/';
+const url = 'https://greendoge.dog';
 
 type Props = {
   version: string;
