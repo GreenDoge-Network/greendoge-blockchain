@@ -123,7 +123,7 @@ jobs:
       env:
         GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
       run: |
-         certutil.exe -hashfile ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.checksum
+         certutil.exe -hashfile ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.sha256
          ls ${{ github.workspace }}\greendoge-blockchain-gui\release-builds\windows-installer\
 
     - name: Get tag name

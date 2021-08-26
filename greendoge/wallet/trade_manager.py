@@ -11,7 +11,7 @@ from greendoge.types.blockchain_format.coin import Coin
 from greendoge.types.blockchain_format.program import Program
 from greendoge.types.blockchain_format.sized_bytes import bytes32
 from greendoge.types.spend_bundle import SpendBundle
-from greendoge.types.coin_solution import CoinSolution
+from greendoge.types.coin_spend import CoinSpend
 from greendoge.util.byte_types import hexstr_to_bytes
 from greendoge.util.db_wrapper import DBWrapper
 from greendoge.util.hash import std_hash
@@ -360,14 +360,14 @@ class TradeManager:
         if trade_offer is not None:
             offer_spend_bundle: SpendBundle = trade_offer.spend_bundle
 
-        coinsols: List[CoinSolution] = []  # [] of CoinSolutions
-        cc_coinsol_outamounts: Dict[bytes32, List[Tuple[CoinSolution, int]]] = dict()
+        coinsols: List[CoinSpend] = []  # [] of CoinSpends
+        cc_coinsol_outamounts: Dict[bytes32, List[Tuple[CoinSpend, int]]] = dict()
         aggsig = offer_spend_bundle.aggregated_signature
         cc_discrepancies: Dict[bytes32, int] = dict()
         greendoge_discrepancy = None
         wallets: Dict[bytes32, Any] = dict()  # colour to wallet dict
 
-        for coinsol in offer_spend_bundle.coin_solutions:
+        for coinsol in offer_spend_bundle.coin_spends:
             puzzle: Program = Program.from_bytes(bytes(coinsol.puzzle_reveal))
             solution: Program = Program.from_bytes(bytes(coinsol.solution))
 
@@ -414,7 +414,7 @@ class TradeManager:
             )
             if greendoge_spend_bundle is not None:
                 for coinsol in coinsols:
-                    greendoge_spend_bundle.coin_solutions.append(coinsol)
+                    greendoge_spend_bundle.coin_spends.append(coinsol)
 
         zero_spend_list: List[SpendBundle] = []
         spend_bundle = None

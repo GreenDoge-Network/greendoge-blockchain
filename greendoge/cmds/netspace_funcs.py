@@ -1,3 +1,5 @@
+from typing import Optional
+
 import aiohttp
 
 from greendoge.rpc.full_node_rpc_client import FullNodeRpcClient
@@ -8,7 +10,7 @@ from greendoge.util.ints import uint16
 from greendoge.util.misc import format_bytes
 
 
-async def netstorge_async(rpc_port: int, delta_block_height: str, start: str) -> None:
+async def netstorge_async(rpc_port: Optional[int], delta_block_height: str, start: str) -> None:
     """
     Calculates the estimated space on the network given two block header hashes.
     """

@@ -5,7 +5,7 @@ from greendoge.full_node.signage_point import SignagePoint
 from greendoge.rpc.rpc_client import RpcClient
 from greendoge.types.blockchain_format.sized_bytes import bytes32
 from greendoge.types.coin_record import CoinRecord
-from greendoge.types.coin_solution import CoinSolution
+from greendoge.types.coin_spend import CoinSpend
 from greendoge.types.end_of_slot_bundle import EndOfSubSlotBundle
 from greendoge.types.full_block import FullBlock
 from greendoge.types.spend_bundle import SpendBundle
@@ -117,6 +117,24 @@ class FullNodeRpcClient(RpcClient):
             for coin in (await self.fetch("get_coin_records_by_puzzle_hashes", d))["coin_records"]
         ]
 
+    async def get_coin_records_by_parent_ids(
+        self,
+        parent_ids: List[bytes32],
+        include_spent_coins: bool = True,
+        start_height: Optional[int] = None,
+        end_height: Optional[int] = None,
+    ) -> List:
+        parent_ids_hex = [pid.hex() for pid in parent_ids]
+        d = {"parent_ids": parent_ids_hex, "include_spent_coins": include_spent_coins}
+        if start_height is not None:
+            d["start_height"] = start_height
+        if end_height is not None:
+            d["end_height"] = end_height
+        return [
+            CoinRecord.from_json_dict(coin)
+            for coin in (await self.fetch("get_coin_records_by_parent_ids", d))["coin_records"]
+        ]
+
     async def get_additions_and_removals(self, header_hash: bytes32) -> Tuple[List[CoinRecord], List[CoinRecord]]:
         try:
             response = await self.fetch("get_additions_and_removals", {"header_hash": header_hash.hex()})
@@ -143,10 +161,10 @@ class FullNodeRpcClient(RpcClient):
     async def push_tx(self, spend_bundle: SpendBundle):
         return await self.fetch("push_tx", {"spend_bundle": spend_bundle.to_json_dict()})
 
-    async def get_puzzle_and_solution(self, coin_id: bytes32, height: uint32) -> Optional[CoinRecord]:
+    async def get_puzzle_and_solution(self, coin_id: bytes32, height: uint32) -> Optional[CoinSpend]:
         try:
             response = await self.fetch("get_puzzle_and_solution", {"coin_id": coin_id.hex(), "height": height})
-            return CoinSolution.from_json_dict(response["coin_solution"])
+            return CoinSpend.from_json_dict(response["coin_solution"])
         except Exception:
             return None
 
