@@ -24,7 +24,7 @@ type PoolState = {
     launcher_id: string;
     target: string;
     target_signature: string;
-    payout_instructions: string;
+    pool_payout_instructions: string;
     target_puzzle_hash: string;
   };
 };

@@ -18,7 +18,7 @@ describe('units', () => {
       expect(result).toBe(1e-9);
     });
     it('supports uppercase characters', () => {
-      const result = units.getUnit('GREENDOGE');
+      const result = units.getUnit('GREENDGOE');
 
       expect(result).toBe(1);
     });

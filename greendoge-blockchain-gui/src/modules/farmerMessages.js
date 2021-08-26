@@ -94,31 +94,22 @@ export const getPoolState = () => {
   };
 };
 
-export const setPayoutInstructions = (
-  launcherId,
-  payoutInstructions,
+export const setPoolPayoutInstructions = (
+  singletonGenesis,
+  poolPayoutInstructions,
 ) => {
   return async (dispatch) => {
     const { data } = await async_api(
       dispatch,
       farmerMessage({
-        command: 'set_payout_instructions',
+        command: 'set_pool_payout_instructions',
         data: {
-          launcher_id: launcherId,
-          payout_instructions: payoutInstructions,
+          singleton_genesis: singletonGenesis,
+          pool_payout_instructions: poolPayoutInstructions,
         },
       }),
       false,
     );
-
-    /*
-    console.log('data', data);
-    /*
-    const { success, error } = data;
-    if (!success) {
-      throw new Error(error);
-    }
-    */
 
     return data;
   };

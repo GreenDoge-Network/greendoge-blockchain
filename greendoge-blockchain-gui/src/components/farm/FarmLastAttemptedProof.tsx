@@ -36,11 +36,11 @@ const cols = [
 export default function FarmLastAttemptedProof() {
   const { size } = usePlots();
 
-  const lastAttemptedProof = useSelector(
+  const lastAttemtedProof = useSelector(
     (state: RootState) => state.farming_state.farmer.last_farming_info ?? [],
   );
-  const reducedLastAttemptedProof = lastAttemptedProof.slice(0, 5).sort((a,b) => a.timestamp-b.timestamp);
-  const isEmpty = !reducedLastAttemptedProof.length;
+  const reducedLastAttemtedProof = lastAttemtedProof.slice(0, 5);
+  const isEmpty = !reducedLastAttemtedProof.length;
 
   return (
     <Card
@@ -61,7 +61,7 @@ export default function FarmLastAttemptedProof() {
     >
       <Table
         cols={cols}
-        rows={reducedLastAttemptedProof}
+        rows={reducedLastAttemtedProof}
         caption={
           isEmpty && (
             <Typography>

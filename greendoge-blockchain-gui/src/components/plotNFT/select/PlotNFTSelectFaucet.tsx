@@ -16,7 +16,7 @@ export default function PlotNFTSelectFaucet(props: Props) {
   const openExternal = useOpenExternal();
 
   function handleClick() {
-    openExternal('http://faucet.greendoge.dog/');
+    openExternal('https://faucet.greendoge.dog/');
   }
 
   return (

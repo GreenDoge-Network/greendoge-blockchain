@@ -165,6 +165,7 @@ export default function PlotAdd() {
         <PlotAddNumberOfPlots />
         <PlotAddSelectTemporaryDirectory />
         <PlotAddSelectFinalDirectory />
+        <PlotAddNFT ref={addNFTref} />
         <Flex gap={1}>
           <FormBackButton variant="outlined" />
           <ButtonLoading

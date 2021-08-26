@@ -366,7 +366,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/Chia-Network/chia-blockchain/wiki/FAQ',
+                'https://github.com/GreenDoge-Network/greendoge-blockchain/wiki/FAQ',
               );
             },
           },
@@ -400,7 +400,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://discord.gg/HXbcfPGrgz');
+              openExternal('https://discord.gg/3vwEfD2kws');
             },
           },
           {

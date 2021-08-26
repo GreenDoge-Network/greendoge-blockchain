@@ -9,7 +9,7 @@ information on this project.
 
 ## Installing
 
-This is the GUI for greendoge-blockchain. It is built into distribution packages in the greendoge-blockchain repository.
+This is the GUI for chia-blockchain. It is built into distribution packages in the chia-blockchain repository.
 
 Install instructions are available in the
 [INSTALL](https://github.com/Chia-Network/chia-blockchain/wiki/INSTALL)
