@@ -1,6 +1,6 @@
 {
   "name": "greendoge-blockchain",
-  "author": "GreenDoge Network <hello@greendoge.dog> (https://greendoge.dog/)",
+  "author": "GreenDoge Network <admin@greendoge.dog> (https://greendoge.dog/)",
   "description": "GUI for GreenDoge Blockchain",
   "productName": "GreenDoge Blockchain",
   "private": true,
