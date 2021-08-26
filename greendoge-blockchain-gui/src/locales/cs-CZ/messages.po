@@ -8,7 +8,7 @@ msgstr ""
 "Language: cs_CZ\n"
 "Project-Id-Version: greendoge-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-30 08:31\n"
+"PO-Revision-Date: 2021-07-17 00:02\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
@@ -29,10 +29,6 @@ msgstr "*Chcete se o GreenDoge blocích dozvědět více? Podívej se na <0>Gree
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
 msgstr "+ Přidat nové vykreslování NFT"
-
-#: src/components/wallet/Wallets.tsx:122
-msgid "+ Add Wallet"
-msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
@@ -111,7 +107,7 @@ msgstr "Přidat složku pole"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:42
 msgid "Add {currencyCode} from the Faucet"
-msgstr "Přidat {currencyCode} z Faucet"
+msgstr "Přidat {currencyCode} z Faucetu"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:561
 #: src/components/wallet/coloured/WalletColoured.tsx:657
@@ -148,7 +144,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Jste si jisti, že chcete pole odstranit? Pole nelze obnovit."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:633
+#: src/components/wallet/standard/WalletStandard.tsx:632
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr "Opravdu chcete odstranit nepotvrzenou transakci?"
 
@@ -307,11 +303,11 @@ msgstr "Změnit"
 #: src/components/plotNFT/PlotNFTChangePool.tsx:110
 #: src/components/pool/PoolOverview.tsx:115
 msgid "Change Pool"
-msgstr "Změnit Pool"
+msgstr "Změnit sdružení"
 
 #: src/electron/main.tsx:401
-msgid "Chat on KeyBase"
-msgstr "Chat na KeyBase"
+msgid "Chat on Discord"
+msgstr "Chat na Discord"
 
 #: src/electron/main.tsx:419
 msgid "GreenDoge"
@@ -321,7 +317,7 @@ msgstr "GreenDoge"
 msgid "GreenDoge Blockchain Wiki"
 msgstr "GreenDoge Blockchain Wiki"
 
-#: src/components/wallet/standard/WalletStandard.tsx:649
+#: src/components/wallet/standard/WalletStandard.tsx:647
 msgid "GreenDoge Wallet"
 msgstr "GreenDoge peněženka"
 
@@ -336,7 +332,7 @@ msgstr "Zvolte velikost pole"
 #: src/components/plotNFT/PlotNFTCard.tsx:384
 #: src/components/pool/PoolOverview.tsx:92
 msgid "Claim Rewards"
-msgstr "Získat odměnu"
+msgstr "Vyzvednout odměnu"
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:114
 #: src/components/plot/queue/PlotQueueLogDialog.tsx:89
@@ -387,7 +383,7 @@ msgid "Confirm Disconnect"
 msgstr "Potvrdit odpojení"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:628
 msgid "Confirmation"
 msgstr "Potvrzení"
 
@@ -410,7 +406,7 @@ msgstr "Připojit k dalším peerům"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:116
 msgid "Connect to pool"
-msgstr "Připojit ke Poolu"
+msgstr "Připojit ke sdružení"
 
 #: src/components/core/components/FormatConnectionStatus/FormatConnectionStatus.tsx:51
 #: src/components/fullNode/card/FullNodeCardConnectionStatus.tsx:17
@@ -547,7 +543,7 @@ msgstr "Vytvořeno námi:"
 
 #: src/components/plotNFT/PlotNFTUnconfirmedCard.tsx:51
 msgid "Creating Plot NFT and Joining the Pool"
-msgstr "Vytváření vykreslování NFT a připojení k Poolu"
+msgstr "Vytváření vykreslování NFT a připojení ke sdružení"
 
 #: src/components/plotNFT/PlotNFTUnconfirmedCard.tsx:49
 msgid "Creating Plot NFT for Self Pooling"
@@ -600,7 +596,7 @@ msgstr "Zpoždění"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:630
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -610,7 +606,7 @@ msgid "Delete Plot"
 msgstr "Smazat pole"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:663
 msgid "Delete Unconfirmed Transactions"
 msgstr "Odstranit nepotvrzené transakce"
 
@@ -698,7 +694,7 @@ msgstr "Upravit"
 #: src/components/plotNFT/PlotNFTCard.tsx:301
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:76
 msgid "Edit Payout Instructions"
-msgstr "Upravit pokyny pro výplatu"
+msgstr ""
 
 #: src/components/wallet/WalletImport.tsx:147
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your GreenDoge wallet."
@@ -768,7 +764,7 @@ msgstr "Adresa pro odměny farmáře"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:137
 msgid "Farmer Reward Address is not properly formatted."
-msgstr "Farmářova adresa odměny není správně formátována."
+msgstr "Adresa odměny farmáře není správně formátována."
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:133
 #~ msgid "Farmer Reward Address is not properly formatted. Using 'paste' is recommended."
@@ -776,7 +772,7 @@ msgstr "Farmářova adresa odměny není správně formátována."
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:131
 msgid "Farmer Reward Address must not be empty."
-msgstr "Farmářova adresa pro odměnu nesmí být prázdná."
+msgstr "Adresa pro odměnu farmáře nesmí být prázdná."
 
 #: src/components/farm/card/FarmCardStatus.tsx:38
 #: src/components/plot/PlotStatus.tsx:28
@@ -790,7 +786,7 @@ msgstr "Farmář není spuštěn"
 
 #: src/middleware/middleware_api.jsx:275
 msgid "Farmer public key:"
-msgstr "Farmářuv veřejný klíč:"
+msgstr "Veřejný klíč farmáře:"
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:33
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
@@ -1021,25 +1017,25 @@ msgstr "Je to jednorázový přihlašovací odkaz, který může být použit k 
 #: src/components/plotNFT/PlotNFTCard.tsx:406
 #: src/components/pool/PoolOverview.tsx:113
 msgid "Join Pool"
-msgstr "Připojit se k Poolu"
+msgstr "Připojit se k poolu"
 
 #: src/components/plot/add/PlotAddNFT.tsx:59
 #: src/components/plot/add/PlotAddNFT.tsx:141
 #: src/components/pool/PoolHero.tsx:31
 msgid "Join a Pool"
-msgstr "Připojit se k Poolu"
+msgstr "Připojit se k poolu"
 
 #: src/components/plot/add/PlotAddNFT.tsx:44
 msgid "Join a pool and get consistent GDOG farming rewards. The average returns are the same, but it is much less volatile."
-msgstr "Připojte se k Poolu a získejte konzistentní odměnu GDOG. Průměrné výnosy jsou stejné, ale mnohem méně volatilní."
+msgstr "Připojte se k poolu a získejte konzistentní odměnu GDOG. Průměrné výnosy jsou stejné, ale mnohem méně volatilní."
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:59
 msgid "Join a pool and get consistent GDOG farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
-msgstr "Připojte se ke Poolu a získejte konzistentní odměnu GDOG. Průměrné výnosy jsou stejné, ale mnohem méně volatilní. Přiřaďte vykreslování k NFT. Můžete snadno přepínat Pooly, aniž byste museli znovu vykreslovat."
+msgstr "Připojte se ke sdružení a získejte konzistentní odměnu GDOG. Průměrné výnosy jsou stejné, ale mnohem méně volatilní. Přiřaďte vykreslování k NFT. Můžete snadno přepínat sdružení, aniž byste museli znovu vykreslovat."
 
 #: src/components/plot/add/PlotAddNFT.tsx:133
 msgid "Join a pool and get more consistent GDOG farming rewards. Create a plot NFT and assign your new plots to a group."
-msgstr "Připojte se k Poolu a získejte konzistentní farmářskou odměnu GDOG. Vytvořte NFT pole a přiřaďte svá nová pole do skupiny."
+msgstr "Připojte se k poolu a získejte konzistentní farmářskou odměnu GDOG. Vytvořte NFT pole a přiřaďte svá nová pole do skupiny."
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:63
 msgid "K-Size"
@@ -1078,7 +1074,7 @@ msgstr "Zjistit více"
 
 #: src/components/plotNFT/PlotNFTState.tsx:58
 msgid "Leaving Pool"
-msgstr "Opustit Pool"
+msgstr "Opustit pool"
 
 #: src/components/pool/PoolOverview.tsx:176
 msgid "List view"
@@ -1086,9 +1082,9 @@ msgstr "Zobrazení jako seznam"
 
 #: src/components/pool/Pool.tsx:21
 msgid "Loading Plot NFTs"
-msgstr "Načítání vykreslovani NFT polí"
+msgstr "Načítání NFT polí"
 
-#: src/components/wallet/Wallets.tsx:111
+#: src/components/wallet/Wallets.tsx:172
 msgid "Loading list of wallets"
 msgstr "Načítání seznamu peněženek"
 
@@ -1274,7 +1270,7 @@ msgstr "Pole nenalezena"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
 msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
-msgstr "Všimněte si, že toto nezmění vaše Pool adresy. To se týká pouze starého formátu polí a odměny 0,25GDOG pool polí."
+msgstr "Všimněte si, že toto nezmění vaše pool adresy. To se týká pouze starého formátu polí a odměny 0.25GDOG pool polí."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
@@ -1949,7 +1945,7 @@ msgstr "Stav"
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
 #: src/components/wallet/WalletStatusCard.tsx:22
-#: src/components/wallet/Wallets.tsx:52
+#: src/components/wallet/Wallets.tsx:118
 msgid "Status"
 msgstr "Stav"
 
@@ -2381,7 +2377,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr "Čekání na potvrzení transakce"
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:656
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Wallet Status:"
 msgstr "Stav peněženky:"
 
@@ -2414,7 +2410,7 @@ msgstr "Stav peněženky:"
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:112
+#: src/components/wallet/Wallets.tsx:173
 msgid "Wallets"
 msgstr "Peněženky"
 
@@ -2566,16 +2562,16 @@ msgid "[Error 22] File not found. Most likely one of the plot folders in your co
 msgstr "[Chyba 22] Soubor nenalezen. Jedna ze složek polí v konfiguraci má pravděpodobně potíže."
 
 #: src/components/wallet/WalletStatusCard.tsx:41
-#: src/components/wallet/Wallets.tsx:77
+#: src/components/wallet/Wallets.tsx:143
 msgid "connections:"
 msgstr "spojení:"
 
 #: src/components/wallet/WalletStatusCard.tsx:33
-#: src/components/wallet/Wallets.tsx:69
+#: src/components/wallet/Wallets.tsx:135
 msgid "height:"
 msgstr "výška:"
 
-#: src/components/wallet/Wallets.tsx:63
+#: src/components/wallet/Wallets.tsx:129
 msgid "not synced"
 msgstr "nesynchronizováno"
 
@@ -2584,17 +2580,17 @@ msgid "p2_singleton_puzzle_hash is not defined"
 msgstr "p2_singleton_puzzle_hash není definován"
 
 #: src/components/wallet/WalletStatusCard.tsx:27
-#: src/components/wallet/Wallets.tsx:57
+#: src/components/wallet/Wallets.tsx:123
 msgid "status:"
 msgstr "stav:"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:62
+#: src/components/wallet/Wallets.tsx:128
 msgid "synced"
 msgstr "synchronizováno"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:61
+#: src/components/wallet/Wallets.tsx:127
 msgid "syncing"
 msgstr "synchronizace"
 
@@ -2625,3 +2621,4 @@ msgstr "Poplatky za transakce {currencyCode}"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{dog, plural, one {dog} other {dogs}}"
 msgstr ""
+
