@@ -79,7 +79,7 @@ Telegram: <br>
 https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
 Trade: <br>
-https://www.forks.green/signup?refid=ID0C152B1351 <br>
+https://www.forks.green/trading/gdogxch <br>
 https://market.posat.io <br>
 https://chiaforktraders.com <br>
 Explorer: <br>
