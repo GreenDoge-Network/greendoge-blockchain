@@ -400,7 +400,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://discord.gg/3vwEfD2kws');
+              openExternal('https://discord.gg/HXbcfPGrgz');
             },
           },
           {
