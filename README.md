@@ -63,7 +63,7 @@ https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/co
 Website: <br>
 https://greendoge.dog <br>
 Discord: <br>
-https://discord.gg/xFNJN9srJP <br>
+https://discord.gg/HXbcfPGrgz <br>
 Twitter: <br>
 https://twitter.com/Green_Dogecoin <br>
 Reddit: <br>
