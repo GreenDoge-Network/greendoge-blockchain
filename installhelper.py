@@ -16,7 +16,6 @@ from pkg_resources import parse_version
 # Copyright (C) 2015-2018 CERN.
 #
 def make_semver(version_str):
-	version_str = "0.0.0"
     v = parse_version(version_str)
     major = v._version.release[0]
     try:
