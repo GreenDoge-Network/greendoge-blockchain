@@ -16,20 +16,16 @@ from pkg_resources import parse_version
 # Copyright (C) 2015-2018 CERN.
 #
 def make_semver(version_str):
+	version_str = "0.0.0"
     v = parse_version(version_str)
+    major = v._version.release[0]
     try:
-        major = v._version.release[0]
-        try:
-            minor = v._version.release[1]
-        except IndexError:
-            minor = 0
-        try:
-            patch = v._version.release[2]
-        except IndexError:
-            patch = 0
-    except AttributeError:
-        major = 0
+        minor = v._version.release[1]
+    except IndexError:
         minor = 0
+    try:
+        patch = v._version.release[2]
+    except IndexError:
         patch = 0
 
     prerelease = []
