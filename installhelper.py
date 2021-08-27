@@ -19,7 +19,7 @@ def make_semver(version_str):
     v = parse_version(version_str)
     try:
         major = v._version.release[0]
-    except IndexError:
+    except AttributeError:
         major = 0
     try:
         minor = v._version.release[1]
