@@ -6,6 +6,58 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project does not yet adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 for setuptools_scm/PEP 440 reasons.
 
+## 1.2.4 GreenDoge blockchain 2021-08-26
+
+### Added
+
+- Enable the rust condition checker unconditionally in testnet.
+- Added support for multiple wallets.
+- Added a change to config.yaml to tolerate fields that replace network constants in config.yaml that don't exist, but print warning.
+- Improvements to sync full nodes faster by improving the concurrency for downloading and validating blocks.
+- Added new call for logging peer_host: get_peer_logging that will use the peer_host value, typically an IP address, when the peername cannot be retrieved.
+- Added documentation for treehash params.
+- Added a py.typed file that allows other projects that pip install greendoge-blockchain to type check using our functions with mypy.
+- Added an RPC for coin records by multiple coin names.
+- Enabled querying AAAA records for DNS Introducer.
+- We now set the version for the GUI when doing a manual install using the install-gui.sh script. Uses a python helper to get the version of the greendoge install and then converts it into proper npm format and puts that into package.json.
+- Added some new class methods to the Program objects to improve ease of use.
+- Added an option to sign bytes as well as UTF-8 strings, which is particularly helpful if you're writing GreenDogelisp puzzles that require signatures and you want to test them without necessarily writing a whole python script for signing the relevant data.
+- Added a first version of .pre-commit-config.yaml and applied the changes required by the following initial hooks in separate commits. To use this you need to install pre-commit, see <https://pre-commit.com/#installation/>.
+- We have added many new translations in this release based on community
+submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
+@LUXDAD for English, Australia; @f00b4r for Finnish; @jimkoen, @ruvado for German; @Arielzikri for Hebrew; @A-Caccese for Italian; @Hodokami for Japanese; @LUXDAD for Latvian; @vaexperience for Lithuanian; @LUXDAD for Russian; @juands1644 for Spanish, Argentina; @MrDyngrak, @ordtrogen for Swedish; @richeyphu for Thai; @Ansugo, @baturman for Turkish.
+
+### Changed
+
+- Thanks @altendky for Correct * to ** kwargs unpacking in time_out_assert().
+- Thanks @altendky for changing the default to paginate to greendoge wallet get_transactions to address cases such as piping and output redirection to a file where the command previously just hung while waiting for the user to press c for the next page.
+- Removed commented-out debug breakpoints.
+- Enabled Rust condition checker to add the ability to parse the output conditions from a  generator program in Rust. It also validates some of the conditions in Rust.
+- Switched IP address lookup to first use GreenDoge's service ip.greendoge.dog.
+- Made changes so that when creating SSL certificate and private key files, we ensure that files are written with the proper file permissions.
+- Define a new encrypted keyring format to be used to store keys, and which is optionally encrypted to a user-supplied passphrase. GUI for the passphrase will come in an upcoming release.
+- Removed initial transaction freeze put in place at mainnet launch as it is no longer necessary.
+- Separate locking and non-locking cases for get_confirmed_balance_for_wallet, which will allow calling a few wallet_state_manager methods while already under the wallet_state_manager lock, for example during DID wallet creation.
+- Thanks to @Playwo for removing the index on coin_record spent column to speed up querying.
+- Made a change to the conditions parser to either ignore or fail when it encounters unknown conditions. It also removes the UNKNOWN enum value from ConditionOpcodes.
+- Renamed folder tests/core/types to tests/core/custom_types to address conflicts in debugger in PyCharm.
+- Disabled DID wallet tests while DID wallet is under construction.
+- Added pairing cache for faster aggregate signature verification.
+- Added block height assertions after block farming.
+- Added assertions for tx confirmation.
+
+### Fixed
+
+- Fix single coin generator.
+- Fixed an issue with duplicate plotnft names.
+- Fixed an issue during node shutdown in which some AttributeErrors could be thrown if the shutdown happens before the node fully started up.
+- Fixed mempool TX cache cost, where the cost of the mempool TX cache (for spend bundles that can't be included in a block yet) would not be reset when the cache was emptied.
+- Fixed a failure to create a keychain_proxy for local keychains.
+- Thanks to @mgraczyk for fixing type annotation in sync_store.
+- Thanks to @darkverbito for fixing an issue on initial creation of a coloured coin where code always falls into default else clause due to lack of type conversion.
+- Fixed NPM publish in clvm_rs.
+- Thanks to @skweee for his investigation work on fixing mempool TX cache cost, where the cost of the mempool TX cache (for spend bundles that can't be included in a block yet) would not be reset when the cache was emptied.
+
 ## 1.2.3 GreenDoge blockchain 2021-07-26
 
 ### Added
@@ -451,7 +503,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 
 ### Added
 
-- This is a hard fork/breaking change from RC6/7. TGDOG Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.greendoge.net/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
+- This is a hard fork/breaking change from RC6/7. TGDOG Coins will **not** be moved forward but your plots and keys and parts of your configuration do. When you install this version before 10AM PDST on 3/16/2021 it will load up, start finding peers, and otherwise wait for the flag drop at that time to start farming. This is likely to be the last dress rehearsal for mainnet launch. Our [3/15/2021 blog post](https://www.greendoge.dog/2021/03/15/mainnet-update.html) has more details on the current mainnet launch plan.
 - The GUI now has a tooltip that directs users to the explanation of the plot filter.
 - The GUI now has a tooltip to explain the "Disable bitfield plotting" option. Thanks @shaneo257 for the idea.
 - The GUI now has a tooltip to explain Hierarchical Deterministic keys next to Receive Address on the Wallet page.
@@ -515,7 +567,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - `greendoge keys add` takes secret words a prompt on the command line or stdin instead of command line arguments for security.
 - Version 1.0.1 of chiavdf was added. This brought MPIR on Windows to the most recent release. Additionally we removed inefficient ConvertIntegerToBytes() and ConvertBytesToInt() functions, use GMP library's mpz_export/mpz_import for big integers and simple helper functions for built-in integer types. The latter are taken from chiavdf. We now require compressed forms to be encoded canonically when deserializing. This should prevent potential grinding attacks where some non-canonical encodings of a compressed form could be used to change its hash and thus the next challenges derived from it. Canonically encoded compressed forms must be reduced and must produce the same string when deserialized and serialized again.
 - Version 1.0 of our BLS signature library is included. We brought Relic, gmp and MPIR up to their most recent releases. We again thank the Dash team for their fixes and improvements.
-- We now hand build Apple Silicon native binary wheels for all greendoge-blockchain dependencies and host them at [https://pypi.greendoge.net/simple](https://pypi.greendoge.net/simple). We are likely to hand build a MacOS ARM64 dmg available and certainly will for 1.0. You can install natively on M1 now with the `git clone` developer method today. Just make sure Python 3.9 is installed. `python3 --version` works.
+- We now hand build Apple Silicon native binary wheels for all greendoge-blockchain dependencies and host them at [https://pypi.greendoge.dog/simple](https://pypi.greendoge.dog/simple). We are likely to hand build a MacOS ARM64 dmg available and certainly will for 1.0. You can install natively on M1 now with the `git clone` developer method today. Just make sure Python 3.9 is installed. `python3 --version` works.
 - The GUI now shows you which network you are connected to on the Full Node page. It will also wait patiently for the green flag to drop on a network launch.
 - In the GUI you can only plot k=32 or larger with the single exception of k=25 for testing. You will have to confirm choosing k=25 however. Thanks to @jespino for help on this and limiting the cli as well.
 - The restore smart wallets from backup prompt has been improved to better get the intent across and that it can be skipped.
@@ -530,9 +582,9 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - When processing mempool transactions, Coin IDs are now calculated from parent coin ID and amount
 - We implemented rate limiting for full node. This can and will lead to short term bans of certain peers that didn't behave in expected ways. This is ok and normal, but strong defense against many DDOS attacks.
 - `requirements-dev.txt` has been removed in favor of the CI actions and test scripts.
-- We have moved to a new and much higher scalability download.greendoge.net to support the mainnet launch flag and additional download demand.
-- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.greendoge.net/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.greendoge.net/latest/Setup-MacOS.dmg).
-- GreenDoge wheels not on Pypi and some dependecies not found there also are now on pypi.greendoge.net.
+- We have moved to a new and much higher scalability download.greendoge.dog to support the mainnet launch flag and additional download demand.
+- To always get the latest testnet and then mainnet installers you can now use a latest URL: [Windows](https://download.greendoge.dog/latest/Setup-Win64.exe) and [MacOS x86_64](https://download.greendoge.dog/latest/Setup-MacOS.dmg).
+- GreenDoge wheels not on Pypi and some dependecies not found there also are now on pypi.greendoge.dog.
 - Additional typing has been added to the Python code with thanks to @jespino.
 - Cryptography and Keyring have been bumped to their current releases.
 - PRs and commits to the greendoge-blockchain-gui repository will automatically have their locales updated.
@@ -554,7 +606,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 ### Added
 
 - The RC5 release is a new breaking change/hard fork blockchain. Plots and keys from previous chains will work fine on RC5 but balances of TGDOG will not come forward.
-- We now support a "green flag" chain launch process. A new version of the software will poll download.greendoge.net/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
+- We now support a "green flag" chain launch process. A new version of the software will poll download.greendoge.dog/notify/ for a signed json file that will be the genesis block of the chain for that version. This will allow unattended start at mainnet.
 - Bluebox Timelords are back. These are Timelords most anyone can run. They search through the historical chain and find large proofs of times and compact them down to their smallest representation. This significantly speeds up syncing for newly started nodes. Currently this is only supported on Linux and MacOS x86_64 but we will expand that. Any desktop or server of any age will be fast enough to be a useful Bluebox Timelord.
 - Thanks to @jespino there is now `greendoge farm summary`. You can now get almost exactly the same farming information on the CLI as the GUI.
 - We have added Romanian to the GUI translations. Thank you to @bicilis on [Crowdin](https://crowdin.com/project/greendoge-blockchain). We also added a couple of additional target languages. Klingon anyone?
@@ -585,7 +637,7 @@ Batch process weight proof epochs in groups of 900 to fit below May 2020 sqlite 
 - Nodes that were interrupted by a network crash or standby on a laptop were not syncing upon reconnection in RC4.
 - Sync issues could stop syncing from restarting and could lead to a peer host that you could not remove.
 - Adding Click changed the behavior of `greendoge keys add -m`. The help now makes it clear that the 24 word mnemonic needs to be surrounded by a pair of quotes.
-- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.greendoge.net via https, for example.
+- Python root CA certificates have issues so we have added the Mozilla certificate store via curl.se and use that to connect to backup.greendoge.dog via https, for example.
 - The difficulty adjustment calculation was simplified.
 - All of the greendoge sub repositories that were attempting to build MacOS Universal wheels were only generating x86_64 wheels internally. We have moved back to only generating x86_64 MacOS wheels on CI.
 - However, we have updated and test compiled all GreenDoge dependencies on Apple Silicon and will be making available a test .dmg for MacOS ARM64 shortly.
@@ -877,7 +929,7 @@ all fields that referred to sub blocks are changed to blocks.
 
 - Welcome to the new consensus. This release is an all but a full re-write of the blockchain in under 30 days. There is now only one tip of the blockchain but we went from two chains to three. Block times are now a little under a minute but there are a couple of sub blocks between each transaction block. A block is also itself a special kind of sub block and each sub block rewards the farmer who won it 1 TGDOG. Sub blocks come, on average, about every 17 to 18 seconds.
 - Starting with this Beta, there are 4608 opportunities per day for a farmer to win 1 TGDOG compared to Beta 18 where there were 288 opportunities per day for a farmer to win 16 TGDOG.
-- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [greendoge.net](https://greendoge.net/). Among the improvements this gives the GreenDoge blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
+- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [greendoge.dog](https://greendoge.dog/). Among the improvements this gives the GreenDoge blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
 - New consensus means this is a very hard fork. All of your TGDOG from Beta 17/18 will be gone. Your plots and keys will work just fine however. You will have to sync to the new chain.
 - You now have to sync 16 times more "blocks" for every 5 minutes of historical time so syncing is slower than it was on the old chain. We're aware of this and will be speeding it up and addressing blockchain database growth in the nest couple of releases.
 - Prior to this Beta 19, we had block times that targeted 5 minutes and rewarded 16 TGDOG to one farmer. Moving forward we have epoch times that target 10 minutes and reward 32 TGDOG to 32 farmers about every 17-18 seconds over that period. This has subtle naming and UI impacts in various places.
@@ -1060,7 +1112,7 @@ all fields that referred to sub blocks are changed to blocks.
 ### Added
 
 - Rate limited wallets can now have unspent and un-spendable funds clawed back by the Admin wallet.
-- You can now backup your wallet related metadata in an encrypted and signed file to a free service from GreenDoge Network at backup.greendoge.net. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the GreenDoge backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.greendoge.net, your own installation, or a third party's version of it.
+- You can now backup your wallet related metadata in an encrypted and signed file to a free service from GreenDoge Network at backup.greendoge.dog. Simply having a backup of your private key will allow you to fully restore the state of your wallet including coloured coins, rate limited wallets, distributed identity wallets and many more. Your private key is used to automatically restore the last backup you saved to the GreenDoge backup cloud service. This service is open source and ultimately you will be able to configure your backups to go to backup.greendoge.dog, your own installation, or a third party's version of it.
 - Added a Code of Conduct in CODE_OF_CONDUCT.md.
 - Added a bug report template in `.github/ISSUE_TEMPLATE/bug_report.md`.
 
@@ -1393,7 +1445,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Added
 
-- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in GreenDogelisp. Offers are especially cool as they create a truly decentralized exchange capability. Read much more about them in Bram's [blog post on Coloured coins](https://greendoge.net/2020/04/29/coloured-coins-launch.en.html).
+- This release adds Coloured coin support with offers. Yes that is the correct spelling. Coloured coins allow you to issue a coin, token, or asset with nearly unlimited issuance plans and functionality. They support inner smart transactions so they can inherit any of the other functionality you can implement in GreenDogelisp. Offers are especially cool as they create a truly decentralized egdogange capability. Read much more about them in Bram's [blog post on Coloured coins](https://greendoge.dog/2020/04/29/coloured-coins-launch.en.html).
 - This release adds support for native Windows via a (mostly) automated installer and MacOS Mojave. Windows still requires some PowerShell command line use. You should expect ongoing improvements in ease of install and replication of the command line tools in the GUI. Again huge thanks to @dkackman for continued Windows installer development. Native Windows is currently slightly slower than the same version running in WSL 2 on the same machine for both block verification and plotting.
 - We made some speed improvements that positively affected all platforms while trying to increase plotting speed in Windows.
 - The graphical Full Node display now shows the expected finish times of each of the prospective chain tips.
@@ -1648,7 +1700,7 @@ relic. We will make a patch available for these systems shortly.
 ### Added
 
 - This is the first release of the GreenDoge testnet! Blockchain consensus, proof of time, and proof of space are included.
-- More details on the release at [https://www.greendoge.net/developer/](https://www.greendoge.net/developer/)
+- More details on the release at [https://www.greendoge.dog/developer/](https://www.greendoge.dog/developer/)
 
 [unreleased]: https://github.com/GreenDoge-Network/greendoge-blockchain/compare/1.0beta5...dev
 [1.0beta5]: https://github.com/GreenDoge-Network/greendoge-blockchain/compare/1.0beta4...1.0beta5

@@ -8,7 +8,7 @@ msgstr ""
 "Language: zh_TW\n"
 "Project-Id-Version: greendoge-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-17 00:01\n"
+"PO-Revision-Date: 2021-07-26 15:12\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -29,6 +29,10 @@ msgstr "＊想更進一步探索 GreenDoge 區塊鍵？看看開源開發者打�
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
 msgstr "+ 新增新的農場"
+
+#: src/components/wallet/Wallets.tsx:122
+msgid "+ Add Wallet"
+msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
@@ -144,7 +148,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "你確要刪除這個耕地嗎？此耕地將無法尋回。"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:632
+#: src/components/wallet/standard/WalletStandard.tsx:633
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr "你確認要刪除未確認的交易?"
 
@@ -317,7 +321,7 @@ msgstr "GreenDoge"
 msgid "GreenDoge Blockchain Wiki"
 msgstr "GreenDoge 區塊鏈維基"
 
-#: src/components/wallet/standard/WalletStandard.tsx:647
+#: src/components/wallet/standard/WalletStandard.tsx:649
 msgid "GreenDoge Wallet"
 msgstr "GreenDoge 錢包"
 
@@ -383,7 +387,7 @@ msgid "Confirm Disconnect"
 msgstr "確認斷線"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:628
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Confirmation"
 msgstr "確認"
 
@@ -565,7 +569,7 @@ msgstr "目前積分餘額"
 
 #: src/components/trading/TradingOverview.jsx:182
 msgid "Current trade status"
-msgstr "目前貿易狀態"
+msgstr "目前交易狀態"
 
 #: src/components/selectKey/SelectKey.tsx:185
 msgid "DANGER: permanently delete private key"
@@ -596,7 +600,7 @@ msgstr "延遲"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:630
 msgid "Delete"
 msgstr "刪除"
 
@@ -606,9 +610,9 @@ msgid "Delete Plot"
 msgstr "刪除耕地"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:663
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Delete Unconfirmed Transactions"
-msgstr "刪除與農會的合約"
+msgstr "刪除未確認的交易"
 
 #: src/components/selectKey/SelectKey.tsx:108
 #: src/components/selectKey/SelectKey.tsx:229
@@ -654,7 +658,7 @@ msgstr "禁用 bitfield 耕地"
 
 #: src/components/core/components/FormBackButton/FormBackButton.tsx:26
 msgid "Discard"
-msgstr "放棄變更"
+msgstr "放棄"
 
 #: src/components/fullNode/FullNodeCloseConnection.tsx:22
 msgid "Disconnect"
@@ -694,7 +698,7 @@ msgstr "編輯"
 #: src/components/plotNFT/PlotNFTCard.tsx:301
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:76
 msgid "Edit Payout Instructions"
-msgstr ""
+msgstr "編輯支付說明"
 
 #: src/components/wallet/WalletImport.tsx:147
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your GreenDoge wallet."
@@ -975,7 +979,7 @@ msgstr "轉入"
 
 #: src/components/core/components/Fee/Fee.tsx:36
 msgid "Incorrect value"
-msgstr "錯誤費用數值"
+msgstr "數值不正確"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:18
 msgid "Index"
@@ -1084,7 +1088,7 @@ msgstr "清單檢視"
 msgid "Loading Plot NFTs"
 msgstr "正在讀取農場"
 
-#: src/components/wallet/Wallets.tsx:172
+#: src/components/wallet/Wallets.tsx:111
 msgid "Loading list of wallets"
 msgstr "正在讀取錢包列表"
 
@@ -1945,7 +1949,7 @@ msgstr "狀態"
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
 #: src/components/wallet/WalletStatusCard.tsx:22
-#: src/components/wallet/Wallets.tsx:118
+#: src/components/wallet/Wallets.tsx:52
 msgid "Status"
 msgstr "狀態"
 
@@ -2377,7 +2381,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr "正在等待交易結算"
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:656
 msgid "Wallet Status:"
 msgstr "錢包狀態："
 
@@ -2410,7 +2414,7 @@ msgstr "錢包狀態："
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:173
+#: src/components/wallet/Wallets.tsx:112
 msgid "Wallets"
 msgstr "錢包"
 
@@ -2562,16 +2566,16 @@ msgid "[Error 22] File not found. Most likely one of the plot folders in your co
 msgstr "［錯誤 22］找不到檔案。很有可能你 config.yaml 裡其中一個耕地資料夾有問題。"
 
 #: src/components/wallet/WalletStatusCard.tsx:41
-#: src/components/wallet/Wallets.tsx:143
+#: src/components/wallet/Wallets.tsx:77
 msgid "connections:"
 msgstr "連線："
 
 #: src/components/wallet/WalletStatusCard.tsx:33
-#: src/components/wallet/Wallets.tsx:135
+#: src/components/wallet/Wallets.tsx:69
 msgid "height:"
 msgstr "高度："
 
-#: src/components/wallet/Wallets.tsx:129
+#: src/components/wallet/Wallets.tsx:63
 msgid "not synced"
 msgstr "未同步"
 
@@ -2580,17 +2584,17 @@ msgid "p2_singleton_puzzle_hash is not defined"
 msgstr "\"p2_singleton_puzzle_hash\"參數未定義"
 
 #: src/components/wallet/WalletStatusCard.tsx:27
-#: src/components/wallet/Wallets.tsx:123
+#: src/components/wallet/Wallets.tsx:57
 msgid "status:"
 msgstr "狀態："
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:128
+#: src/components/wallet/Wallets.tsx:62
 msgid "synced"
 msgstr "已同步"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:127
+#: src/components/wallet/Wallets.tsx:61
 msgid "syncing"
 msgstr "同步中"
 
@@ -2621,4 +2625,3 @@ msgstr "{currencyCode} 使用者交易費用"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{dog, plural, one {dog} other {dogs}}"
 msgstr "{dog, plural, other {dogs}}"
-

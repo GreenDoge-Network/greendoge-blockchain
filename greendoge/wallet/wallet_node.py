@@ -5,13 +5,21 @@ import socket
 import time
 import traceback
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Set, Tuple, Union, Any
+from typing import Callable, Dict, List, Optional, Set, Tuple, Union
 
 from blspy import PrivateKey
-
 from greendoge.consensus.block_record import BlockRecord
+from greendoge.consensus.blockchain_interface import BlockchainInterface
 from greendoge.consensus.constants import ConsensusConstants
 from greendoge.consensus.multiprocess_validation import PreValidationResult
+from greendoge.daemon.keychain_proxy import (
+    KeychainProxy,
+    KeychainProxyConnectionFailure,
+    KeyringIsEmpty,
+    KeyringIsLocked,
+    connect_to_keychain_and_validate,
+    wrap_local_keychain,
+)
 from greendoge.pools.pool_puzzles import SINGLETON_LAUNCHER_HASH
 from greendoge.protocols import wallet_protocol
 from greendoge.protocols.full_node_protocol import RequestProofOfWeight, RespondProofOfWeight
@@ -37,6 +45,7 @@ from greendoge.types.header_block import HeaderBlock
 from greendoge.types.mempool_inclusion_status import MempoolInclusionStatus
 from greendoge.types.peer_info import PeerInfo
 from greendoge.util.byte_types import hexstr_to_bytes
+from greendoge.util.check_fork_next_block import check_fork_next_block
 from greendoge.util.errors import Err, ValidationError
 from greendoge.util.ints import uint32, uint128
 from greendoge.util.keychain import Keychain
@@ -59,6 +68,8 @@ class WalletNode:
     key_config: Dict
     config: Dict
     constants: ConsensusConstants
+    keychain_proxy: Optional[KeychainProxy]
+    local_keychain: Optional[Keychain]  # For testing only. KeychainProxy is used in normal cases
     server: Optional[GreenDogeServer]
     log: logging.Logger
     wallet_peers: WalletPeers
@@ -80,19 +91,20 @@ class WalletNode:
     def __init__(
         self,
         config: Dict,
-        keychain: Keychain,
         root_path: Path,
         consensus_constants: ConsensusConstants,
         name: str = None,
+        local_keychain: Optional[Keychain] = None,
     ):
         self.config = config
         self.constants = consensus_constants
+        self.keychain_proxy = None
+        self.local_keychain = local_keychain
         self.root_path = root_path
         self.log = logging.getLogger(name if name else __name__)
         # Normal operation data
         self.cached_blocks: Dict = {}
         self.future_block_hashes: Dict = {}
-        self.keychain = keychain
 
         # Sync data
         self._shut_down = False
@@ -114,21 +126,32 @@ class WalletNode:
         self.wallet_peers_initialized = False
         self.last_new_peak_messages = LRUCache(5)
 
-    def get_key_for_fingerprint(self, fingerprint: Optional[int]) -> Optional[PrivateKey]:
-        private_keys = self.keychain.get_all_private_keys()
-        if len(private_keys) == 0:
+    async def ensure_keychain_proxy(self) -> KeychainProxy:
+        if not self.keychain_proxy:
+            if self.local_keychain:
+                self.keychain_proxy = wrap_local_keychain(self.local_keychain, log=self.log)
+            else:
+                self.keychain_proxy = await connect_to_keychain_and_validate(self.root_path, self.log)
+                if not self.keychain_proxy:
+                    raise KeychainProxyConnectionFailure("Failed to connect to keychain service")
+        return self.keychain_proxy
+
+    async def get_key_for_fingerprint(self, fingerprint: Optional[int]) -> Optional[PrivateKey]:
+        key: PrivateKey = None
+        try:
+            keychain_proxy = await self.ensure_keychain_proxy()
+            key = await keychain_proxy.get_key_for_fingerprint(fingerprint)
+        except KeyringIsEmpty:
             self.log.warning("No keys present. Create keys with the UI, or with the 'greendoge keys' program.")
             return None
-
-        private_key: Optional[PrivateKey] = None
-        if fingerprint is not None:
-            for sk, _ in private_keys:
-                if sk.get_g1().get_fingerprint() == fingerprint:
-                    private_key = sk
-                    break
-        else:
-            private_key = private_keys[0][0]  # If no fingerprint, take the first private key
-        return private_key
+        except KeyringIsLocked:
+            self.log.warning("Keyring is locked")
+            return None
+        except KeychainProxyConnectionFailure as e:
+            tb = traceback.format_exc()
+            self.log.error(f"Missing keychain_proxy: {e} {tb}")
+            raise e  # Re-raise so that the caller can decide whether to continue or abort
+        return key
 
     async def _start(
         self,
@@ -137,7 +160,12 @@ class WalletNode:
         backup_file: Optional[Path] = None,
         skip_backup_import: bool = False,
     ) -> bool:
-        private_key = self.get_key_for_fingerprint(fingerprint)
+        try:
+            private_key = await self.get_key_for_fingerprint(fingerprint)
+        except KeychainProxyConnectionFailure:
+            self.log.error("Failed to connect to keychain service")
+            return False
+
         if private_key is None:
             self.logged_in = False
             return False
@@ -375,7 +403,7 @@ class WalletNode:
                         connection.get_peer_info() != full_node_peer
                         and connection.get_peer_info() != full_node_resolved
                     ):
-                        self.log.info(f"Closing unnecessary connection to {connection.get_peer_info()}.")
+                        self.log.info(f"Closing unnecessary connection to {connection.get_peer_logging()}.")
                         asyncio.create_task(connection.close())
                 return True
         return False
@@ -424,7 +452,7 @@ class WalletNode:
                     self.wallet_state_manager.state_changed("sync_changed")
                     await self.wallet_state_manager.new_peak()
                 elif result == ReceiveBlockResult.INVALID_BLOCK:
-                    self.log.info(f"Invalid block from peer: {peer.get_peer_info()} {error}")
+                    self.log.info(f"Invalid block from peer: {peer.get_peer_logging()} {error}")
                     await peer.close()
                     return
                 else:
@@ -627,33 +655,13 @@ class WalletNode:
             fork_height = None
             if peak is not None:
                 fork_height = self.wallet_state_manager.sync_store.get_potential_fork_point(peak.header_hash)
-                our_peak_height = self.wallet_state_manager.blockchain.get_peak_height()
-                ses_heigths = self.wallet_state_manager.blockchain.get_ses_heights()
-                if len(ses_heigths) > 2 and our_peak_height is not None:
-                    ses_heigths.sort()
-                    max_fork_ses_height = ses_heigths[-3]
-                    # This is the fork point in SES in the case where no fork was detected
-                    if (
-                        self.wallet_state_manager.blockchain.get_peak_height() is not None
-                        and fork_height == max_fork_ses_height
-                    ):
-                        peers = self.server.get_full_node_connections()
-                        for peer in peers:
-                            # Grab a block at peak + 1 and check if fork point is actually our current height
-                            potential_height = uint32(our_peak_height + 1)
-                            block_response: Optional[Any] = await peer.request_header_blocks(
-                                wallet_protocol.RequestHeaderBlocks(potential_height, potential_height)
-                            )
-                            if block_response is not None and isinstance(
-                                block_response, wallet_protocol.RespondHeaderBlocks
-                            ):
-                                our_peak = self.wallet_state_manager.blockchain.get_peak()
-                                if (
-                                    our_peak is not None
-                                    and block_response.header_blocks[0].prev_header_hash == our_peak.header_hash
-                                ):
-                                    fork_height = our_peak_height
-                                break
+                assert fork_height is not None
+                # This is the fork point in SES in the case where no fork was detected
+                peers = self.server.get_full_node_connections()
+                fork_height = await check_fork_next_block(
+                    self.wallet_state_manager.blockchain, fork_height, peers, wallet_next_block_check
+                )
+
             if fork_height is None:
                 fork_height = uint32(0)
             await self.wallet_state_manager.blockchain.warmup(fork_height)
@@ -996,3 +1004,16 @@ class WalletNode:
 
         else:
             return []
+
+
+async def wallet_next_block_check(
+    peer: WSGreenDogeConnection, potential_peek: uint32, blockchain: BlockchainInterface
+) -> bool:
+    block_response = await peer.request_header_blocks(
+        wallet_protocol.RequestHeaderBlocks(potential_peek, potential_peek)
+    )
+    if block_response is not None and isinstance(block_response, wallet_protocol.RespondHeaderBlocks):
+        our_peak = blockchain.get_peak()
+        if our_peak is not None and block_response.header_blocks[0].prev_header_hash == our_peak.header_hash:
+            return True
+    return False

@@ -8,7 +8,7 @@ msgstr ""
 "Language: en_AU\n"
 "Project-Id-Version: greendoge-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-17 00:01\n"
+"PO-Revision-Date: 2021-08-03 21:33\n"
 "Last-Translator: \n"
 "Language-Team: English, Australia\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -29,6 +29,10 @@ msgstr "*Want to explore GreenDoge’s blocks further? Check out <0>GreenDoge Ex
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
 msgstr "+ Add New Plot NFT"
+
+#: src/components/wallet/Wallets.tsx:122
+msgid "+ Add Wallet"
+msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
@@ -144,7 +148,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Are you sure you want to delete the plot? The plot cannot be recovered, then your stuffed."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:632
+#: src/components/wallet/standard/WalletStandard.tsx:633
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -317,7 +321,7 @@ msgstr "GreenDoge"
 msgid "GreenDoge Blockchain Wiki"
 msgstr "GreenDoge Blockchain Wiki"
 
-#: src/components/wallet/standard/WalletStandard.tsx:647
+#: src/components/wallet/standard/WalletStandard.tsx:649
 msgid "GreenDoge Wallet"
 msgstr "GreenDoge Wallet with my future beer money"
 
@@ -383,9 +387,9 @@ msgid "Confirm Disconnect"
 msgstr "You ripper"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:628
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Confirmation"
-msgstr ""
+msgstr "Confirmation"
 
 #: src/components/trading/TradingOverview.jsx:201
 msgid "Confirmed at block:"
@@ -596,7 +600,7 @@ msgstr "Delay"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:630
 msgid "Delete"
 msgstr "Delete"
 
@@ -606,7 +610,7 @@ msgid "Delete Plot"
 msgstr "Delete Plot"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:663
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Delete Unconfirmed Transactions"
 msgstr "Delete Unconfirmed Transactions"
 
@@ -694,7 +698,7 @@ msgstr "Edit"
 #: src/components/plotNFT/PlotNFTCard.tsx:301
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:76
 msgid "Edit Payout Instructions"
-msgstr ""
+msgstr "Edit Payout Instructions"
 
 #: src/components/wallet/WalletImport.tsx:147
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your GreenDoge wallet."
@@ -908,7 +912,7 @@ msgstr "HD or Hierarchical Deterministic keys are a type of public key/private k
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:132
 msgid "Harvester Plots"
-msgstr ""
+msgstr "Local Harvester Plots"
 
 #: src/components/fullNode/FullNode.jsx:61
 msgid "Header Hash"
@@ -1012,7 +1016,7 @@ msgstr "Invalid state"
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:90
 msgid "It is a one-time login link that can be used to log in to a pool's website. It contains a signature using the farmer's key from the plot NFT. Not all pools support this feature."
-msgstr ""
+msgstr "It is a one-time login link that can be used to log in to a pool's website. It contains a signature using the farmer's key from the plot NFT. Not all pools support this feature."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:406
 #: src/components/pool/PoolOverview.tsx:113
@@ -1070,7 +1074,7 @@ msgstr "Launcher Id"
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:100
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:114
 msgid "Learn More"
-msgstr ""
+msgstr "Learn More"
 
 #: src/components/plotNFT/PlotNFTState.tsx:58
 msgid "Leaving Pool"
@@ -1084,7 +1088,7 @@ msgstr "List view"
 msgid "Loading Plot NFTs"
 msgstr "Loading Plot NFTs"
 
-#: src/components/wallet/Wallets.tsx:172
+#: src/components/wallet/Wallets.tsx:111
 msgid "Loading list of wallets"
 msgstr "Loading list of wallets"
 
@@ -1308,7 +1312,7 @@ msgstr "Beer money out of your wallet"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:361
 msgid "Payout Address"
-msgstr ""
+msgstr "Payout Address"
 
 #: src/components/fullNode/card/FullNodeCardPeakHeight.tsx:20
 msgid "Peak Height"
@@ -1480,7 +1484,7 @@ msgstr "Plot is duplicate of {0}"
 
 #: src/components/plotNFT/PlotNFTState.tsx:46
 msgid "PlotNFT is transitioning to (target state). This can take a while. Please do not close the application until this is finalized."
-msgstr ""
+msgstr "PlotNFT is transitioning to (target state). This can take a while. Please do not close the application until this is finalized."
 
 #: src/components/dashboard/DashboardSideBar.tsx:50
 msgid "Plots"
@@ -1523,7 +1527,7 @@ msgstr "Points Found in Last 24 Hours"
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:194
 #: src/components/plotNFT/PlotNFTCard.tsx:236
 msgid "Points Successful in Last 24 Hours"
-msgstr ""
+msgstr "Points Found in Last 24 Hours"
 
 #: src/components/dashboard/DashboardSideBar.tsx:60
 #: src/components/pool/Pool.tsx:25
@@ -1540,11 +1544,11 @@ msgstr "Pool Key"
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:77
 msgid "Pool Login Link"
-msgstr ""
+msgstr "Pool Login Link"
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:87
 msgid "Pool Payout Instructions"
-msgstr ""
+msgstr "Edit Payout Instructions"
 
 #: src/components/block/Block.jsx:263
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:222
@@ -1898,7 +1902,7 @@ msgstr "Smooth out your GDOG farming rewards by joining a pool."
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:60
 msgid "Something went wrong"
-msgstr ""
+msgstr "Something went wrong"
 
 #: src/electron/main.tsx:470
 msgid "Speech"
@@ -1945,7 +1949,7 @@ msgstr "State"
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
 #: src/components/wallet/WalletStatusCard.tsx:22
-#: src/components/wallet/Wallets.tsx:118
+#: src/components/wallet/Wallets.tsx:52
 msgid "Status"
 msgstr "Status"
 
@@ -2064,11 +2068,11 @@ msgstr "The pool URL \"{normalizedUrl}\" is not working. Is it pool? Error: {0}"
 
 #: src/hooks/usePoolInfo.ts:43
 msgid "The pool URL is not valid. {normalizedUrl}"
-msgstr ""
+msgstr "The pool URL is not valid. {normalizedUrl}"
 
 #: src/hooks/usePoolInfo.ts:39
 msgid "The pool URL needs to use protocol https. {normalizedUrl}"
-msgstr ""
+msgstr "The pool URL needs to use protocol https. {normalizedUrl}"
 
 #: src/hooks/usePoolInfo.ts:44
 #~ msgid "The pool URL speciefied is not valid. {normalizedUrl}"
@@ -2100,7 +2104,7 @@ msgstr "The total transactions fees in this block. Rewarded to the farmer."
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:102
 msgid "These are the instructions for how the farmer wants to get paid. By default this will be an GDOG address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
-msgstr ""
+msgstr "These are the instructions for how the farmer wants to get paid. By default this will be an GDOG address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
 
 #: src/components/plot/PlotsFailed.tsx:40
 msgid "These plots are invalid, you might want to delete them."
@@ -2169,7 +2173,7 @@ msgstr "This plot NFT is assigned to a different key. You can still create plots
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:52
 msgid "This plot NFT is not connected to pool"
-msgstr ""
+msgstr "This plot NFT is not connected to pool"
 
 #: src/components/farm/FarmLastAttemptedProof.tsx:39
 #~ msgid "This table shows you the last time your farm attempted to win a block challenge."
@@ -2347,7 +2351,7 @@ msgstr "View Offer"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:286
 msgid "View Pool Login Link"
-msgstr ""
+msgstr "Pool Login Link"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:562
 msgid "View pending balances"
@@ -2377,7 +2381,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr "Waiting for the transaction to be confirmed"
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:656
 msgid "Wallet Status:"
 msgstr "Wallet Status:"
 
@@ -2410,7 +2414,7 @@ msgstr "Wallet Status:"
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:173
+#: src/components/wallet/Wallets.tsx:112
 msgid "Wallets"
 msgstr "Wallets"
 
@@ -2432,15 +2436,15 @@ msgstr "Want to have a delay before the next plot starts?"
 
 #: src/components/selectKey/SelectKey.tsx:86
 msgid "Warning: This key is used for a wallet that may have a non-zero balance. By deleting this key you may lose access to this wallet"
-msgstr ""
+msgstr "Warning: This key is used for a wallet that may have a non-zero balance. By deleting this key you may lose access to this wallet"
 
 #: src/components/selectKey/SelectKey.tsx:72
 msgid "Warning: This key is used for your farming rewards address. By deleting this key you may lose access to any future farming rewards"
-msgstr ""
+msgstr "Warning: This key is used for your farming rewards address. By deleting this key you may lose access to any future farming rewards"
 
 #: src/components/selectKey/SelectKey.tsx:79
 msgid "Warning: This key is used for your pool rewards address. By deleting this key you may lose access to any future pool rewards"
-msgstr ""
+msgstr "Warning: This key is used for your farming rewards address. By deleting this key you may lose access to any future farming rewards"
 
 #: src/components/block/Block.jsx:205
 msgid "Weight"
@@ -2527,7 +2531,7 @@ msgstr "You need to claim your rewards first"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
-msgstr ""
+msgstr "You need {currencyCode} to join a pool."
 
 #: src/components/plotNFT/PlotNFTAbsorbRewards.tsx:137
 msgid "You will recieve <0/> to {0}"
@@ -2562,16 +2566,16 @@ msgid "[Error 22] File not found. Most likely one of the plot folders in your co
 msgstr "[Error 22] File not found. Most likely one of the plot folders in your config.yaml has an issue."
 
 #: src/components/wallet/WalletStatusCard.tsx:41
-#: src/components/wallet/Wallets.tsx:143
+#: src/components/wallet/Wallets.tsx:77
 msgid "connections:"
 msgstr "connections:"
 
 #: src/components/wallet/WalletStatusCard.tsx:33
-#: src/components/wallet/Wallets.tsx:135
+#: src/components/wallet/Wallets.tsx:69
 msgid "height:"
 msgstr "height:"
 
-#: src/components/wallet/Wallets.tsx:129
+#: src/components/wallet/Wallets.tsx:63
 msgid "not synced"
 msgstr "not synced, no beer money for you"
 
@@ -2580,17 +2584,17 @@ msgid "p2_singleton_puzzle_hash is not defined"
 msgstr "p2_singleton_puzzle_hash is not defined"
 
 #: src/components/wallet/WalletStatusCard.tsx:27
-#: src/components/wallet/Wallets.tsx:123
+#: src/components/wallet/Wallets.tsx:57
 msgid "status:"
 msgstr "status:"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:128
+#: src/components/wallet/Wallets.tsx:62
 msgid "synced"
 msgstr "synced, earning beer money"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:127
+#: src/components/wallet/Wallets.tsx:61
 msgid "syncing"
 msgstr "syncing, not yet getting beer money"
 
@@ -2621,4 +2625,3 @@ msgstr "{currencyCode} User Transaction Fees, extra beer money"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{dog, plural, one {dog} other {dogs}}"
 msgstr "{dog, plural, one {dog} other {dogs}}"
-

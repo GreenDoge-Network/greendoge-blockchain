@@ -221,7 +221,7 @@ class CCWallet:
         removal_amount = 0
 
         for record in unconfirmed_tx:
-            if record.type is TransactionType.INCOMING_TX:
+            if TransactionType(record.type) is TransactionType.INCOMING_TX:
                 addition_amount += record.amount
             else:
                 removal_amount += record.amount
@@ -250,6 +250,7 @@ class CCWallet:
                 self.wallet_state_manager.constants.MAX_BLOCK_COST_CLVM,
                 cost_per_byte=self.wallet_state_manager.constants.COST_PER_BYTE,
                 safe_mode=True,
+                rust_checker=True,
             )
             cost_result: uint64 = calculate_cost_of_program(
                 program.program, result, self.wallet_state_manager.constants.COST_PER_BYTE

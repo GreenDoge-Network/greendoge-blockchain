@@ -5,9 +5,10 @@ import logging
 import time
 from concurrent.futures.process import ProcessPoolExecutor
 from typing import Dict, List, Optional, Set, Tuple
-from blspy import AugSchemeMPL, G1Element
+from blspy import G1Element
 from chiabip158 import PyBIP158
 
+from greendoge.util import cached_bls
 from greendoge.consensus.block_record import BlockRecord
 from greendoge.consensus.constants import ConsensusConstants
 from greendoge.consensus.cost_calculator import NPCResult, calculate_cost_of_program
@@ -15,6 +16,7 @@ from greendoge.full_node.bundle_tools import simple_solution_generator
 from greendoge.full_node.coin_store import CoinStore
 from greendoge.full_node.mempool import Mempool
 from greendoge.full_node.mempool_check_conditions import mempool_check_conditions_dict, get_name_puzzle_conditions
+from greendoge.full_node.pending_tx_cache import PendingTxCache
 from greendoge.types.blockchain_format.coin import Coin
 from greendoge.types.blockchain_format.program import SerializedProgram
 from greendoge.types.blockchain_format.sized_bytes import bytes32
@@ -41,7 +43,9 @@ log = logging.getLogger(__name__)
 def get_npc_multiprocess(spend_bundle_bytes: bytes, max_cost: int, cost_per_byte: int) -> bytes:
     program = simple_solution_generator(SpendBundle.from_bytes(spend_bundle_bytes))
     # npc contains names of the coins removed, puzzle_hashes and their spend conditions
-    return bytes(get_name_puzzle_conditions(program, max_cost, cost_per_byte=cost_per_byte, safe_mode=True))
+    return bytes(
+        get_name_puzzle_conditions(program, max_cost, cost_per_byte=cost_per_byte, safe_mode=True, rust_checker=True)
+    )
 
 
 class MempoolManager:
@@ -49,8 +53,6 @@ class MempoolManager:
         self.constants: ConsensusConstants = consensus_constants
         self.constants_json = recurse_jsonify(dataclasses.asdict(self.constants))
 
-        # Transactions that were unable to enter mempool, used for retry. (they were invalid)
-        self.potential_txs: Dict[bytes32, MempoolItem] = {}
         # Keep track of seen spend_bundles
         self.seen_bundle_hashes: Dict[bytes32, bytes32] = {}
 
@@ -63,8 +65,9 @@ class MempoolManager:
 
         self.limit_factor = 0.5
         self.mempool_max_total_cost = int(self.constants.MAX_BLOCK_COST_CLVM * self.constants.MEMPOOL_BLOCK_BUFFER)
-        self.potential_cache_max_total_cost = int(self.constants.MAX_BLOCK_COST_CLVM * 5)
-        self.potential_cache_cost: int = 0
+
+        # Transactions that were unable to enter mempool, used for retry. (they were invalid)
+        self.potential_cache = PendingTxCache(self.constants.MAX_BLOCK_COST_CLVM * 5)
         self.seen_cache_size = 10000
         self.pool = ProcessPoolExecutor(max_workers=1)
 
@@ -83,11 +86,7 @@ class MempoolManager:
         Returns aggregated spendbundle that can be used for creating new block,
         additions and removals in that spend_bundle
         """
-        if (
-            self.peak is None
-            or self.peak.header_hash != last_tb_header_hash
-            or int(time.time()) <= self.constants.INITIAL_FREEZE_END_TIMESTAMP
-        ):
+        if self.peak is None or self.peak.header_hash != last_tb_header_hash:
             return None
 
         cost_sum = 0  # Checks that total cost does not exceed block maximum
@@ -367,7 +366,7 @@ class MempoolManager:
                 potential = MempoolItem(
                     new_spend, uint64(fees), npc_result, cost, spend_name, additions, removals, program
                 )
-                self.add_to_potential_tx_set(potential)
+                self.potential_cache.add(potential)
                 return (
                     uint64(cost),
                     MempoolInclusionStatus.PENDING,
@@ -412,7 +411,7 @@ class MempoolManager:
                     potential = MempoolItem(
                         new_spend, uint64(fees), npc_result, cost, spend_name, additions, removals, program
                     )
-                    self.add_to_potential_tx_set(potential)
+                    self.potential_cache.add(potential)
                     return uint64(cost), MempoolInclusionStatus.PENDING, error
                 break
 
@@ -427,7 +426,7 @@ class MempoolManager:
 
         if validate_signature:
             # Verify aggregated signature
-            if not AugSchemeMPL.aggregate_verify(pks, msgs, new_spend.aggregated_signature):
+            if not cached_bls.aggregate_verify(pks, msgs, new_spend.aggregated_signature, True):
                 log.warning(f"Aggsig validation error {pks} {msgs} {new_spend}")
                 return None, MempoolInclusionStatus.FAILED, Err.BAD_AGGREGATE_SIGNATURE
         # Remove all conflicting Coins and SpendBundles
@@ -468,22 +467,6 @@ class MempoolManager:
         # 5. If coins can be spent return list of unspents as we see them in local storage
         return None, []
 
-    def add_to_potential_tx_set(self, item: MempoolItem):
-        """
-        Adds SpendBundles that have failed to be added to the pool in potential tx set.
-        This is later used to retry to add them.
-        """
-        if item.spend_bundle_name in self.potential_txs:
-            return None
-
-        self.potential_txs[item.spend_bundle_name] = item
-        self.potential_cache_cost += item.cost
-
-        while self.potential_cache_cost > self.potential_cache_max_total_cost:
-            first_in = list(self.potential_txs.keys())[0]
-            self.potential_cache_max_total_cost -= self.potential_txs[first_in].cost
-            self.potential_txs.pop(first_in)
-
     def get_spendbundle(self, bundle_hash: bytes32) -> Optional[SpendBundle]:
         """Returns a full SpendBundle if it's inside one the mempools"""
         if bundle_hash in self.mempool.spends:
@@ -507,8 +490,6 @@ class MempoolManager:
         if self.peak == new_peak:
             return []
         assert new_peak.timestamp is not None
-        if new_peak.timestamp <= self.constants.INITIAL_FREEZE_END_TIMESTAMP:
-            return []
 
         self.peak = new_peak
 
@@ -526,10 +507,9 @@ class MempoolManager:
                 if result != MempoolInclusionStatus.SUCCESS:
                     self.remove_seen(item.spend_bundle_name)
 
-            potential_txs_copy = self.potential_txs.copy()
-            self.potential_txs = {}
+            potential_txs = self.potential_cache.drain()
             txs_added = []
-            for item in potential_txs_copy.values():
+            for item in potential_txs.values():
                 cost, status, error = await self.add_spendbundle(
                     item.spend_bundle, item.npc_result, item.spend_bundle_name, program=item.program
                 )
