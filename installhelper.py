@@ -19,18 +19,18 @@ def make_semver(version_str):
     v = parse_version(version_str)
     try:
         major = v._version.release[0]
-    	try:
-        	minor = v._version.release[1]
-    	except IndexError:
-        	minor = 0
-    	try:
-        	patch = v._version.release[2]
-    	except IndexError:
-        	patch = 0
+        try:
+            minor = v._version.release[1]
+        except IndexError:
+            minor = 0
+        try:
+            patch = v._version.release[2]
+        except IndexError:
+            patch = 0
     except AttributeError:
         major = 0
-		minor = 0
-		patch = 0
+        minor = 0
+        patch = 0
 
     prerelease = []
     if v._version.pre:
