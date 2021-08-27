@@ -17,7 +17,10 @@ from pkg_resources import parse_version
 #
 def make_semver(version_str):
     v = parse_version(version_str)
-    major = v._version.release[0]
+    try:
+        major = v._version.release[0]
+    except IndexError:
+        major = 0
     try:
         minor = v._version.release[1]
     except IndexError:
