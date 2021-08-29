@@ -17,7 +17,7 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
-- If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge. The other 7/8 rewards must be taken out through tools.
+- If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) tool.
 - The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
 - GreenDoge has been listed on [forks.green](https://www.forks.green/) and [market.posat.io](https://market.posat.io/).
 - The 500 GDOG rewards for registered early community participants have been sent.
