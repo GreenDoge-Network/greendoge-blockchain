@@ -17,7 +17,7 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Mining full rewards on new portable NFT plots 
-If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli tool](https://github.com/GreenDoge-Network/fd-cli).
+If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli tool](https://github.com/GreenDoge-Network/fd-cli) after 7 days.
 
 ## Latest News
 - The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
