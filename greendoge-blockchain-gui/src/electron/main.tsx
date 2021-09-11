@@ -366,7 +366,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/GreenDoge-Network/greendoge-blockchain/wiki/FAQ',
+                'https://github.com/Chia-Network/chia-blockchain/wiki/FAQ',
               );
             },
           },
