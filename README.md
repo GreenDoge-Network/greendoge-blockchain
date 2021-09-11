@@ -20,7 +20,7 @@ For more information, see our website and downloads at https://greendoge.dog.
 If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli tool](https://github.com/GreenDoge-Network/fd-cli) after 7 days.
 
 ## Latest News
-- The whitepaper version 1.0.0 was officially released, downloads at https://greendoge.dog/whitepaper.
+- The whitepaper version 1.0.0 was officially released and the emission schedule was confirmed., downloads at https://greendoge.dog/whitepaper.
 - The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
 - GreenDoge has been listed on [forks.green](https://www.forks.green/) and [market.posat.io](https://market.posat.io/).
 - The 500 GDOG rewards for registered early community participants have been sent.
