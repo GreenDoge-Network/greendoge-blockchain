@@ -44,8 +44,16 @@ is available from the repository
 ## Syncing
 If you need a quick synchronization, you can [download the database](https://chiadb.org/) and overwrite ".greendoge\mainnet\db\blockchain_v1_mainnet.sqlite".
 
-## Block Rewards
-https://github.com/GreenDoge-Network/greendoge-blockchain/blob/main/greendoge/consensus/block_rewards.py
+## Emission Schedule
+Farming rewards will create new GreenDoge once GreenDoge Network’s blockchain is launched. Our farming rewards schedule was directly patterned after the Chia rewards schedule. We present these rewards in an ideal case but the reality is usually far from ideal. Due to the fluctuations of space joining the network and Timelord speeds increasing or decreasing, the actual issuance schedule will vary slightly just as Bitcoin’s issuance schedule has historically. We may add a time adjustment factor based on what we have observed in Bitcoin to attempt to have farming rewards end up closer to this ideal than Bitcoin did. The idealized schedule is as follows: 
+- 100 GDOG will be created every ten minutes for the first 1 month after launch.
+- 20 GDOG will be created every ten minutes for the month 2 through 6.
+- 10 GDOG will be created every ten minutes for the month 7 through 12.
+- 5 GDOG will be created every ten minutes in year 2.
+- 2.5 GDOG will be created every ten minutes in years 3 through 4.
+- 1.25 GDOG will be created every ten minutes in years 5 through 6.
+- 0.625 GDOG will be created every ten minutes in years 7 through 8.
+- 0.3125 GDOG will be created every ten minutes every year after year 9.
 
 ## Compare with Chia
 - [1.1.7](https://github.com/GreenDoge-Network/greendoge-blockchain/commit/ebc135046acf159d625bcb854bee613dc9f81182)
