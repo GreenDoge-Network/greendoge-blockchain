@@ -13,7 +13,7 @@ def calculate_pool_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
 
-    For the post-launch GreenDoge emission schedule, please refer to the whitepaper.
+    For the emission schedule, please refer to the whitepaper version 1.0.0.
     """
 
     if height == 0:
@@ -45,7 +45,7 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     (3 years, etc), due to fluctuations in difficulty. They will likely come early, if the network space and VDF
     rates increase continuously.
 
-    For the post-launch GreenDoge emission schedule, please refer to the whitepaper.
+    For the emission schedule, please refer to the whitepaper version 1.0.0.
     """
     if height == 0:
         return uint64(int((1 / 8) * 21000000 * _dog_per_greendoge))
