@@ -16,9 +16,6 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 
 For more information, see our website and downloads at https://greendoge.dog.
 
-## Mining full rewards on new portable NFT plots 
-If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
-
 ## Latest News
 - The whitepaper version 1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
 - The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
@@ -49,33 +46,31 @@ If you need a quick synchronization, you can [download the database](https://chi
 - introducer.greendoge.dog:6545
 - 54.212.15.89 - US West (Oregon)
 
-## History
-- The ChiaDoge(CDOG) testnet launched on July 3, different from ChiaDogecoin(XCD) that launched on July 10.
-- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
-- The mainnet launched on July 9.
+## Mining full rewards on new portable NFT plots 
+If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
 
 ## Links
-Website: https://greendoge.dog/ <br>
-Discord: https://discord.gg/HXbcfPGrgz <br>
-Twitter: https://twitter.com/Green_Dogecoin <br>
-Reddit: https://www.reddit.com/r/GreenDogecoin <br>
-Facebook: <br>
+- Website: https://greendoge.dog/ <br>
+- Discord: https://discord.gg/HXbcfPGrgz <br>
+- Twitter: https://twitter.com/Green_Dogecoin <br>
+- Reddit: https://www.reddit.com/r/GreenDogecoin <br>
+- Facebook: <br>
 https://www.facebook.com/GreenDoge-102281638814048 (Page) <br>
 https://www.facebook.com/groups/1152820041873426 (Group) <br>
-GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain <br>
-Calculator: https://chiaforkscalculator.com/greendoge <br>
-Telegram: <br>
+- GitHub: https://github.com/GreenDoge-Network/greendoge-blockchain <br>
+- Calculator: https://chiaforkscalculator.com/greendoge <br>
+- Telegram: <br>
 https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
-Exchange: <br>
+- Exchange: <br>
 https://market.posat.io/ <br>
 https://www.forks.green/trading/gdogxch <br>
 https://chiaforktraders.co/ <br>
-Explorer: <br>
+- Explorer: <br>
 https://greendoge.posat.io/ <br>
 https://alltheblocks.net/greendoge <br>
 https://greendoge.chivescoin.org/ <br>
-Database: <br>
+- Database: <br>
 https://chiadb.org/
 
 ## Sponsor 
@@ -86,3 +81,8 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
 - XCH: xch1wz5u3hj3wq6lzpsf5qxrhae6w2ff08mxekum03htpsgw3t98zfws2r24pu
 - GDOG: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
+
+## History
+- The ChiaDoge(CDOG) testnet launched on July 3, different from ChiaDogecoin(XCD) that launched on July 10.
+- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
+- The mainnet launched on July 9.
