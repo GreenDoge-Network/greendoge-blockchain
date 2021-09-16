@@ -1,6 +1,6 @@
 # GreenDoge Blockchain
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
-[Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases/tag/1.2.3)
+[Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
 
 GreenDoge: A new blockchain and smart transaction platform that is easier to use, more efficient, secure, and lower energy consumption. It is a community-supported fork of Chia blockchain, safely use your Chia mnemonics and plots to mine Green Dogecoin without plotting. Here are some of the features and benefits:
 * Support Chia OG and new portable NFT plots without new hardware and plotting
