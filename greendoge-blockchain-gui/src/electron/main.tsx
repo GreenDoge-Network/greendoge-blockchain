@@ -363,6 +363,14 @@ if (!handleSquirrelEvent()) {
             },
           },
           {
+            label: i18n._(/* i18n */ { id: 'GreenDoge Blockchain Wiki' }),
+            click: () => {
+              openExternal(
+                'https://github.com/Chia-Network/chia-blockchain/wiki',
+              );
+            },
+          },
+          {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
