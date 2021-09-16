@@ -17,6 +17,7 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
+- You can also trade and vote GreenDoge on [Chianow](https://chianow.net/markets) now.
 - The whitepaper version 1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
 - The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards for one month.
 - GreenDoge has been listed on [forks.green](https://www.forks.green/) and [market.posat.io](https://market.posat.io/).
@@ -63,6 +64,7 @@ https://www.facebook.com/groups/1152820041873426 (Group) <br>
 https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
 - Exchange: <br>
+https://chianow.net/markets <br>
 https://market.posat.io/ <br>
 https://www.forks.green/trading/gdogxch <br>
 https://chiaforktraders.co/ <br>
