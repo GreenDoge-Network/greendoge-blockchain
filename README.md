@@ -47,6 +47,17 @@ If you need a quick synchronization, you can [download the database](https://chi
 - introducer.greendoge.dog:6545
 - 54.212.15.89 - US West (Oregon)
 
+## Mining Rewards
+According to the emission schedule of the whitepaper version 1.0.0, the block rewards are as follows:
+- 100 GDOG for the first 1 month after launch.
+- 20 GDOG in months 2 through 6.
+- 10 GDOG in months 7 through 12.
+- 5 GDOG in year 2.
+- 2.5 GDOG in years 3 through 4.
+- 1.25 GDOG in years 5 through 6.
+- 0.6125 GDOG in years 7 through 8.
+- 0.30625 GDOG for every year after year 9.
+
 ## Mining full rewards on new portable NFT plots 
 If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
 
