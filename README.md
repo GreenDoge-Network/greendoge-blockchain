@@ -93,6 +93,7 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - GDOG: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
 
 ## History
-- The ChiaDoge(CDOG) testnet launched on July 3, different from ChiaDogecoin(XCD) that launched on July 10.
-- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
-- The mainnet launched on July 9.
+- The ChiaDoge(CDOG) testnet was launched on July 3, different from ChiaDogecoin(XCD) that was launched on July 10.
+- The name was changed from ChiaDoge to GreenDoge(GDOG) on July 7.
+- The mainnet was launched on July 9.
+- The whitepaper version 1.0.0 was released on August 31.
