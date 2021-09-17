@@ -48,7 +48,7 @@ If you need a quick synchronization, you can [download the database](https://chi
 - 54.212.15.89 - US West (Oregon)
 
 ## Mining Rewards
-According to the emission schedule of the whitepaper version 1.0.0, the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
+According to the emission schedule of [the whitepaper version 1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
 - 100 GDOG for the first 1 month after launch.
 - 20 GDOG in months 2 through 6.
 - 10 GDOG in months 7 through 12.
@@ -96,4 +96,4 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - The ChiaDoge(CDOG) testnet was launched on July 3, different from ChiaDogecoin(XCD) that was launched on July 10.
 - The name was changed from ChiaDoge to GreenDoge(GDOG) on July 7.
 - The mainnet was launched on July 9.
-- The whitepaper version 1.0.0 was released on August 31.
+- [The whitepaper version 1.0.0](https://greendoge.dog/whitepaper) was released on August 31.
