@@ -47,8 +47,16 @@ If you need a quick synchronization, you can [download the database](https://chi
 - introducer.greendoge.dog:6545
 - 54.212.15.89 - US West (Oregon)
 
-## Mining full rewards on new portable NFT plots 
-If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
+## Mining Rewards
+According to the emission schedule of [the whitepaper version 1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
+- 100 GDOG for the first 1 month after launch.
+- 20 GDOG in months 2 through 6.
+- 10 GDOG in months 7 through 12.
+- 5 GDOG in year 2.
+- 2.5 GDOG in years 3 through 4.
+- 1.25 GDOG in years 5 through 6.
+- 0.6125 GDOG in years 7 through 8.
+- 0.30625 GDOG for every year after year 9.
 
 ## Links
 - Website: https://greendoge.dog/ <br>
@@ -85,6 +93,7 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - GDOG: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
 
 ## History
-- The ChiaDoge(CDOG) testnet launched on July 3, different from ChiaDogecoin(XCD) that launched on July 10.
-- The name changed from ChiaDoge to GreenDoge(GDOG) on July 7.
-- The mainnet launched on July 9.
+- The ChiaDoge(CDOG) testnet was launched on July 3, different from ChiaDogecoin(XCD) that was launched on July 10.
+- The name was changed from ChiaDoge to GreenDoge(GDOG) on July 7.
+- The mainnet was launched on July 9.
+- [The whitepaper version 1.0.0](https://greendoge.dog/whitepaper) was released on August 31.
