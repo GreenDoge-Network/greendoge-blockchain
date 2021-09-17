@@ -6,9 +6,7 @@ import {
   ButtonProps as BaseButtonProps,
 } from '@material-ui/core';
 
-const StyledBaseButton = styled(({ nowrap: boolean, ...rest }) => (
-  <BaseButton {...rest} />
-))`
+const StyledBaseButton = styled(BaseButton)`
   white-space: ${({ nowrap }) => (nowrap ? 'nowrap' : 'normal')};
 `;
 
@@ -40,7 +38,6 @@ const DangerButton = styled(StyledBaseButton)`
 export type ButtonProps = Omit<BaseButtonProps, 'color'> & {
   color?: BaseButtonProps['color'] | 'danger';
   to?: string | Object;
-  nowrap?: boolean;
 };
 
 export default function Button(props: ButtonProps) {

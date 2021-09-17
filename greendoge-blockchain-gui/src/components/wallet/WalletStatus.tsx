@@ -22,7 +22,7 @@ export default function WalletStatus(props: Props) {
   const syncingStatus = getWalletSyncingStatus(walletState);
 
   return (
-    <Typography component='div' variant={variant}>
+    <Typography variant={variant}>
       {syncingStatus === SyncingStatus.NOT_SYNCED && (
         <StateIndicator state={State.WARNING} indicator={indicator}>
           <Trans>Not Synced</Trans> {height && <WalletStatusHeight />}

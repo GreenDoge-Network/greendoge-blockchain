@@ -13,7 +13,6 @@ import { Trans } from '@lingui/macro';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
-  Back,
   Card,
   FormatLargeNumber,
   Link,
@@ -333,11 +332,11 @@ export default function Block() {
     <LayoutMain title={<Trans>Block</Trans>}>
       <Card
         title={
-          <Back variant="h5">
+          <BlockTitle>
             <Trans>
               Block at height {blockRecord.height} in the GreenDoge blockchain
             </Trans>
-          </Back>
+          </BlockTitle>
         }
         action={
           <Flex gap={1}>

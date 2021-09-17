@@ -87,7 +87,7 @@ export default function Dashboard() {
           <Route path={`${path}/block/:headerHash`} exact>
             <Block />
           </Route>
-          <Route path={`${path}/wallets/:walletId?`}>
+          <Route path={`${path}/wallets`}>
             <Wallets />
           </Route>
           <Route path={`${path}/plot`}>

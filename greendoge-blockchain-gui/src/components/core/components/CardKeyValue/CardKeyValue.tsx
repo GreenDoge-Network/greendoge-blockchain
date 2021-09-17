@@ -9,9 +9,7 @@ import {
 } from '@material-ui/core';
 import styled from 'styled-components';
 
-const StyledTableCell= styled(({ hideDivider, ...rest }) => (
-  <TableCell {...rest}/>
-))`
+const StyledTableCell = styled(TableCell)`
   ${({ hideDivider }) =>
     hideDivider
       ? `
@@ -20,7 +18,6 @@ const StyledTableCell= styled(({ hideDivider, ...rest }) => (
       padding-right: 0 !important;
     `
       : ''}
-
 `;
 
 type Props = {
@@ -43,13 +40,13 @@ export default function CardKeyValue(props: Props) {
         {rows.map((row) => (
           <TableRow key={row.key}>
             <StyledTableCell hideDivider={hideDivider}>
-              <Typography component='div' variant="body1" color="textSecondary" noWrap>
+              <Typography variant="body1" color="textSecondary" noWrap>
                 {row.label}
               </Typography>
             </StyledTableCell>
             <StyledTableCell align="right" hideDivider={hideDivider}>
               <Box maxWidth="100%">
-                <Typography component='div' variant="body2" noWrap>
+                <Typography variant="body2" noWrap>
                   {row.value}
                 </Typography>
               </Box>

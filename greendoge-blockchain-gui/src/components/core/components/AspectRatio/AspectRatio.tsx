@@ -5,28 +5,17 @@ import { Box } from '@material-ui/core';
 const OuterWrapper = styled(({ ration, ...rest }) => <Box {...rest} />)`
   position: relative;
   width: 100%;
-  display: flex;
-
-  &:before {
-    padding-bottom: ${(props) => (1 / props.ratio) * 100}%;
-    content: '';
-    float: left;
-  }
-
-  &:after {
-    display: table;
-    content: '';
-    clear: both;
-  }
+  height: 0;
+  padding-bottom: ${(props) => (1 / props.ratio) * 100}%;
+  overflow: hidden;
 `;
 
 export const InnerWrapper = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-self: stretch;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `;
 
 type Props = {
@@ -39,9 +28,7 @@ export default function AspectRatio(props: Props) {
 
   return (
     <OuterWrapper ratio={ratio}>
-      <InnerWrapper>
-        {children}
-      </InnerWrapper>
+      <InnerWrapper>{children}</InnerWrapper>
     </OuterWrapper>
   );
 }

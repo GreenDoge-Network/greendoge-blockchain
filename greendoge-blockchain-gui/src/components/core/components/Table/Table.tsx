@@ -218,8 +218,8 @@ export default function Table(props: Props) {
           count={rows.length ?? 0}
           rowsPerPage={rowsPerPage}
           page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       )}
     </TableContainer>

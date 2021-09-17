@@ -53,6 +53,7 @@ function MnemonicField(props: TextFieldProps & MnemonicFieldProps) {
             label={label}
             error={error}
             autoFocus={autoFocus}
+            defaultValue={props.value}
             onChange={(e) => onChangeValue(e.target.value)}
             {...params}
           />

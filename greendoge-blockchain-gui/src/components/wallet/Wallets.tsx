@@ -1,32 +1,34 @@
-import React, { useEffect } from 'react';
-import { Trans } from '@lingui/macro';
+import React, { useState } from 'react';
+import { t, Trans } from '@lingui/macro';
 import {
   Box,
   Typography,
   Tabs,
   Tab,
-  Container,
 } from '@material-ui/core';
 import styled from 'styled-components';
 // import { useRouteMatch, useHistory } from 'react-router';
 import { /*useDispatch, */ useSelector } from 'react-redux';
-import { FormatLargeNumber } from '@greendoge/core';
+import { Button, Flex, FormatLargeNumber } from '@greendoge/core';
 import StandardWallet from './standard/WalletStandard';
 import { CreateWalletView } from './create/WalletCreate';
 import ColouredWallet from './coloured/WalletColoured';
 import RateLimitedWallet from './rateLimited/WalletRateLimited';
-import DistributedWallet from './did/WalletDID';
+import DistributedWallet from './did/DIDWallet';
 import type { RootState } from '../../modules/rootReducer';
 import WalletType from '../../constants/WalletType';
 import LayoutMain from '../layout/LayoutMain';
 import config from '../../config/config';
-import { Switch, Route, useHistory, useRouteMatch, useParams } from 'react-router-dom';
 
 const { multipleWallets } = config;
 
+const RightButton = styled(Button)`
+  margin-left: auto;
+`;
+
 const StyledTabs = styled(Tabs)`
   flex-grow: 1;
-  box-shadow: inset 0 -1px 0 ${({ theme }) => theme.palette.type === 'dark' ? '#222222' : '#DBDBDB'};
+  margin-top: -0.5rem;
 `;
 
 export function StatusCard() {
@@ -94,71 +96,57 @@ function TabPanel(props) {
 }
 
 export default function Wallets() {
-  const history = useHistory();
-  const { walletId } = useParams();
-  const { path } = useRouteMatch();
   const wallets = useSelector((state: RootState) => state.wallet_state.wallets);
+  const id = useSelector((state: RootState) => state.wallet_menu.id);
+  const [selected, setSelected] = useState<string | number>(id);
   const loading = !wallets;
 
-  function handleChange(_, newValue) {
-    history.push(`/dashboard/wallets/${newValue}`);
+  function handleChange(event, newValue) {
+    setSelected(newValue);
   }
-
-  // redirect to default "standard wallet" when no wallet was selected
-  useEffect(() => {
-    if (!walletId && wallets) {
-      history.push('/dashboard/wallets/1');
-    }
-  }, [wallets, walletId]);
 
   return (
     <LayoutMain
       loading={loading}
       loadingTitle={<Trans>Loading list of wallets</Trans>}
       title={<Trans>Wallets</Trans>}
-      bodyHeader={multipleWallets ? (
-        <Container maxWidth="lg">
-          <StyledTabs
-            value={walletId || '1'}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            scrollButtons="auto"
-            variant="scrollable"
-          >
-            {wallets?.map((wallet) => (
-              <Tab label={wallet.name} value={String(wallet.id)} key={wallet.id} />
-            ))}
-            <Tab value="create" label={<Trans>+ Add Wallet</Trans>} />
-          </StyledTabs>
-        </Container>
-      ) : undefined}
     >
       {multipleWallets ? (
-        <Switch>
+        <Box>
+          <Flex alignItems="center" gap={1} >
+            <Flex flexGrow={1}>
+              <StyledTabs value={selected} onChange={handleChange} indicatorColor="primary" textColor="primary">
+                {wallets?.map((wallet) => (
+                  <Tab label={wallet.name} value={wallet.id} key={wallet.id} />
+                ))}
+                <Tab value="add" label={<Trans>+ Add Wallet</Trans>} />
+              </StyledTabs>
+            </Flex>
+          </Flex>
+
           {wallets?.map((wallet) => (
-            <Route path={`${path}/${wallet.id}`} key={wallet.id}>
+            <TabPanel selected={selected} value={wallet.id}>
               {wallet.type === WalletType.STANDARD_WALLET && (
-                <StandardWallet wallet_id={wallet.id} />
+                <StandardWallet wallet_id={id} />
               )}
 
               {wallet.type === WalletType.COLOURED_COIN && (
-                <ColouredWallet wallet_id={wallet.id} />
+                <ColouredWallet wallet_id={id} />
               )}
 
               {wallet.type === WalletType.RATE_LIMITED && (
-                <RateLimitedWallet wallet_id={wallet.id} />
+                <RateLimitedWallet wallet_id={id} />
               )}
 
               {wallet.type === WalletType.DISTRIBUTED_ID && (
-                <DistributedWallet walletId={wallet.id} />
+                <DistributedWallet wallet_id={id} />
               )}
-            </Route>
+            </TabPanel>
           ))}
-          <Route path={`/dashboard/wallets/create`}>
+          <TabPanel selected={selected} value="add">
             <CreateWalletView />
-          </Route>
-        </Switch>
+          </TabPanel>
+        </Box>
       ) : (
         <StandardWallet wallet_id={1} showTitle />
       )}

@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  DialogContentText,
 } from '@material-ui/core';
 
 type Props = {
@@ -38,8 +39,10 @@ export default function AlertDialog(props: Props) {
     >
       {title && <DialogTitle id="alert-dialog-title">{title}</DialogTitle>}
       {children && (
-        <DialogContent id="alert-dialog-description">
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
             {children}
+          </DialogContentText>
         </DialogContent>
       )}
 

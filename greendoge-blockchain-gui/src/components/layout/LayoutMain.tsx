@@ -21,18 +21,16 @@ type Props = {
   title?: ReactNode;
   loading?: boolean;
   loadingTitle?: ReactNode;
-  bodyHeader?: ReactNode;
 };
 
 export default function LayoutMain(props: Props) {
-  const { children, title, loading, loadingTitle, bodyHeader } = props;
+  const { children, title, loading, loadingTitle } = props;
 
   return (
     <>
       <DashboardTitle>{title}</DashboardTitle>
 
-      <StyledInnerContainer flexDirection="column">
-        {bodyHeader}
+      <StyledInnerContainer>
         <StyledContainer maxWidth="lg">
           <Flex flexDirection="column" gap={2} flexGrow="1">
             {loading ? (
@@ -56,5 +54,4 @@ export default function LayoutMain(props: Props) {
 
 LayoutMain.defaultProps = {
   children: undefined,
-  bodyHeader: undefined,
 };

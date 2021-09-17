@@ -237,8 +237,7 @@ export default function incomingReducer(
           public_key_fingerprints: [],
           logged_in_received: true,
         };
-      } 
-      if (command === 'get_public_keys' && success) {
+      } else if (command === 'get_public_keys' && success) {
         const { public_key_fingerprints } = data;
 
         return {
@@ -246,22 +245,19 @@ export default function incomingReducer(
           public_key_fingerprints,
           logged_in_received: true,
         };
-      } 
-      if (command === 'ping') {
+      } else if (command === 'ping') {
         return {
           ...state,
           server_started: success,
         };
-      } 
-      if (command === 'get_wallets' && success) {
+      } else if (command === 'get_wallets' && success) {
         const { wallets } = data;
 
         return {
           ...state,
           wallets: mergeArrays(state.wallets, (wallet) => wallet.id, wallets),
         };
-      } 
-      if (command === 'get_wallet_balance' && success) {
+      } else if (command === 'get_wallet_balance' && success) {
         const { wallets, ...rest } = state;
 
         const {
@@ -273,7 +269,7 @@ export default function incomingReducer(
           },
         } = data;
 
-        const balance_pending =
+        const pending_balance =
           unconfirmed_wallet_balance - confirmed_wallet_balance;
 
         return {
@@ -284,13 +280,12 @@ export default function incomingReducer(
             {
               wallet_balance: {
                 ...wallet_balance,
-                balance_pending,
+                pending_balance,
               },
             },
           ),
         };
-      } 
-      if (command === 'get_transactions' && success) {
+      } else if (command === 'get_transactions' && success) {
         const { wallet_id, transactions } = data;
         const { wallets, ...rest } = state;
 
@@ -304,8 +299,7 @@ export default function incomingReducer(
             },
           ),
         };
-      } 
-      if (command === 'get_next_address' && success) {
+      } else if (command === 'get_next_address' && success) {
         const { wallet_id, address } = data;
         const { wallets, ...rest } = state;
 
@@ -319,8 +313,7 @@ export default function incomingReducer(
             },
           ),
         };
-      } 
-      if (command === 'get_connections' && success) {
+      } else if (command === 'get_connections' && success) {
         if (data.connections) {
           return {
             ...state,
@@ -385,7 +378,7 @@ export default function incomingReducer(
           ),
         };
       } else if (command === 'did_get_did') {
-        const { wallet_id, my_did: mydid, coin_id: didcoin  } = data;
+        const { wallet_id, my_did: mydid, coin_id: didcoin } = data;
         const { wallets, ...rest } = state;
 
         return {
@@ -400,7 +393,11 @@ export default function incomingReducer(
           ),
         };
       } else if (command === 'did_get_recovery_list') {
-        const { wallet_id, recover_list: backup_dids, num_required: dids_num_req  } = data;
+        const {
+          wallet_id,
+          recover_list: backup_dids,
+          num_required: dids_num_req,
+        } = data;
         const { wallets, ...rest } = state;
 
         return {
@@ -414,15 +411,8 @@ export default function incomingReducer(
             },
           ),
         };
-      } else if (command === 'did_get_information_needed_for_recovery') {
-        const { 
-          wallet_id, 
-          my_did: mydid, 
-          coin_name: didcoin,
-          newpuzhash: did_rec_puzhash,
-          pubkey: did_rec_pubkey,
-          backup_dids,
-        } = data;
+      } else if (command === 'did_create_attest') {
+        const { wallet_id, message_spend_bundle: did_attest } = data;
         const { wallets, ...rest } = state;
 
         return {
@@ -431,16 +421,10 @@ export default function incomingReducer(
             wallets,
             (wallet: Wallet) => wallet.id === wallet_id,
             {
-              mydid,
-              didcoin,
-              did_rec_puzhash,
-              did_rec_pubkey,
-              backup_dids,
+              did_attest,
             },
           ),
         };
-      } else if (command === 'did_recovery_spend') {
-        // success = data.success;
       }
 
       if (command === 'state_changed' && data.state === 'tx_update') {

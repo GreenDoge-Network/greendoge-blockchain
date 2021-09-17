@@ -43,7 +43,7 @@ export default function CopyToClipboard(props: Props) {
 }
 
 CopyToClipboard.defaultProps = {
-  fontSize: 'medium',
+  fontSize: 'default',
   clearCopiedDelay: 1000,
   size: 'small',
 };

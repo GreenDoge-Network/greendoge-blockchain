@@ -14,14 +14,6 @@ const StyledCardTitle = styled(Box)`
   padding: ${({ theme }) => `${theme.spacing(2)}px ${theme.spacing(2)}px`};
 `;
 
-const StyledCardMaterial = styled(({ cursor, opacity, clickable, ...rest }) => (
-  <CardMaterial {...rest}/>
-))`
-  cursor: ${({ clickable }) => clickable ? 'pointer' : 'default'};
-  opacity: ${({ disabled }) => disabled ? '0.5': '1'};
-
-`;
-
 type Props = {
   children?: ReactNode;
   title?: ReactNode;
@@ -30,12 +22,10 @@ type Props = {
   gap?: number;
   interactive?: boolean;
   action?: ReactNode;
-  onSelect?: () => void;
-  disabled?: boolean;
 };
 
 export default function Card(props: Props) {
-  const { children, title, tooltip, actions, gap, interactive, action, onSelect, disabled } = props;
+  const { children, title, tooltip, actions, gap, interactive, action } = props;
 
   const headerTitle = tooltip ? (
     <Flex alignItems="center" gap={1}>
@@ -46,14 +36,8 @@ export default function Card(props: Props) {
     title
   );
 
-  function handleClick() {
-    if (onSelect) {
-      onSelect();
-    }
-  }
-
   return (
-    <StyledCardMaterial onClick={handleClick} clickable={!!onSelect} disabled={disabled}>
+    <CardMaterial>
       {title && (
         <StyledCardTitle>
           <Flex gap={2} alignItems="center" flexWrap="wrap">
@@ -76,7 +60,7 @@ export default function Card(props: Props) {
           )}
         </Flex>
       </CardContent>
-    </StyledCardMaterial>
+    </CardMaterial>
   );
 }
 
@@ -87,5 +71,4 @@ Card.defaultProps = {
   tooltip: undefined,
   actions: undefined,
   interactive: false,
-  onSelect: undefined,
 };
