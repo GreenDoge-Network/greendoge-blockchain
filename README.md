@@ -35,7 +35,7 @@ is available from the repository
 [wiki](https://github.com/Chia-Network/chia-blockchain/wiki).
 
 ## Syncing
-If you need a quick synchronization, you can [download the database](https://chiadb.org/) and overwrite ".greendoge\mainnet\db\blockchain_v1_mainnet.sqlite".
+If you need a quick synchronization, you can [download the database](https://chiadb.org/) and overwrite hidden directory ".greendoge\mainnet\db\blockchain_v1_mainnet.sqlite".
 
 ## Node Information
 - dns-introducer.greendoge.dog
