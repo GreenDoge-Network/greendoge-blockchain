@@ -67,6 +67,7 @@ https://www.facebook.com/groups/1152820041873426 (Group) <br>
 https://t.me/green_doge (English) <br>
 https://t.me/green_dogecoin (Chinese) <br>
 - Exchange: <br>
+https://forkschiaexchange.com/ <br>
 https://chianow.net/markets <br>
 https://market.posat.io/ <br>
 https://www.forks.green/trading/gdogxch <br>
