@@ -17,6 +17,7 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
+- We specifically compared [the GreenDoge Issuance Schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vRRxSd9cvJlPSspm63RYWPzLk82jB4lPZZT9pg8pGLLHiwLZJvq2R26TncCBzQPWuK1GX0SaOUffzSL/pubhtml) with Chia. Help miners and users who support us understand how valuable GDOG coins are in your hands.
 - You can also trade and vote GreenDoge on [Chianow](https://chianow.net/markets) now.
 - The GreenDoge whitepaper v1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
 
@@ -55,6 +56,8 @@ According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://
 
 ## Links
 - Website: https://greendoge.dog/ <br>
+- Whitepaper: https://greendoge.dog/whitepaper <br>
+- Issuance Schedule: http://issuance-schedule.greendoge.dog/ <br>
 - Discord: https://discord.gg/HXbcfPGrgz <br>
 - Twitter: https://twitter.com/Green_Dogecoin <br>
 - Reddit: https://www.reddit.com/r/GreenDogecoin <br>
