@@ -41,8 +41,8 @@ If you need a quick synchronization, you can [download the database](https://chi
 ## Node Information
 - dns-introducer.greendoge.dog
 - introducer.greendoge.dog:6545
-- 35.166.23.132:6544 - US West (Oregon)
-- 2600:1f13:f7d:bd01:4a23:a3b4:a240:c435 - US West (Oregon)
+- 35.85.223.224:6544 - US West (Oregon)
+- 2600:1f13:f7d:bd01:c009:621b:232f:fa5 - US West (Oregon)
 
 ## Mining Rewards
 According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
