@@ -2,7 +2,7 @@
 ![image](https://github.com/GreenDoge-Network/greendoge-blockchain/blob/96981368b3949a91b836e8c01dca3b3ba0207d50/greendoge.jpg)
 [Download GreenDoge blockchain](https://github.com/GreenDoge-Network/greendoge-blockchain/releases)
 
-GreenDoge: A new blockchain and smart transaction platform that is easier to use, more efficient, secure, and lower energy consumption. It is a community-supported fork of Chia blockchain. Safely use your Chia mnemonics and plots to mine Green Dogecoin without plotting. Here are some of the features and benefits:
+GreenDoge is an environmentally-friendly blockchain that is easier to use, more efficient, secure, and lower energy consumption. Safely use your Chia mnemonics and plots to mine Green Dogecoin without plotting. Here are some of the features and benefits:
 * Support Chia OG and new portable NFT plots without new hardware and plotting
 * Lower energy consumption when mining with Chia
 * Reduce the pre-mine value by increasing the block rewards
@@ -17,8 +17,9 @@ GreenDoge: A new blockchain and smart transaction platform that is easier to use
 For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
+- We specifically compared [the GreenDoge Issuance Schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vRRxSd9cvJlPSspm63RYWPzLk82jB4lPZZT9pg8pGLLHiwLZJvq2R26TncCBzQPWuK1GX0SaOUffzSL/pubhtml) with Chia. Help miners and users who support us understand how valuable GDOG coins are in your hands.
 - You can also trade and vote GreenDoge on [Chianow](https://chianow.net/markets) now.
-- The whitepaper version 1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
+- The GreenDoge whitepaper v1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
 
 ## Installing
 
@@ -40,10 +41,11 @@ If you need a quick synchronization, you can [download the database](https://chi
 ## Node Information
 - dns-introducer.greendoge.dog
 - introducer.greendoge.dog:6545
-- 54.212.15.89:6544 - US West (Oregon)
+- 35.85.223.224:6544 - US West (Oregon)
+- 2600:1f13:f7d:bd01:c009:621b:232f:fa5 - US West (Oregon)
 
 ## Mining Rewards
-According to the emission schedule of [the whitepaper version 1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
+According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
 - 100 GDOG for the first 1 month after launch.
 - 20 GDOG in months 2 through 6.
 - 10 GDOG in months 7 through 12.
@@ -55,6 +57,8 @@ According to the emission schedule of [the whitepaper version 1.0.0](https://gre
 
 ## Links
 - Website: https://greendoge.dog/ <br>
+- Whitepaper: https://greendoge.dog/whitepaper <br>
+- Issuance Schedule: http://issuance-schedule.greendoge.dog/ <br>
 - Discord: https://discord.gg/HXbcfPGrgz <br>
 - Twitter: https://twitter.com/Green_Dogecoin <br>
 - Reddit: https://www.reddit.com/r/GreenDogecoin <br>
@@ -92,4 +96,4 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - The ChiaDoge(CDOG) testnet was launched on July 3, different from ChiaDogecoin(XCD) that was launched on July 10.
 - The name was changed from ChiaDoge to GreenDoge(GDOG) on July 7.
 - The mainnet was launched on July 9.
-- [The whitepaper version 1.0.0](https://greendoge.dog/whitepaper) was released on August 31.
+- [The GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper) was released on August 31.
