@@ -75,6 +75,7 @@ https://forkschiaexchange.com/ <br>
 https://chianow.net/markets <br>
 https://market.posat.io/ <br>
 https://www.forks.green/trading/gdogxch <br>
+https://chivescoin.net/ <br>
 - Explorer: <br>
 https://greendoge.posat.io/ <br>
 https://alltheblocks.net/greendoge <br>
