@@ -48,16 +48,6 @@ jobs:
         echo "::set-output name=GREENDOGE_INSTALLER_VERSION::$(python3 ./build_scripts/installer-version.py)"
         deactivate
 
-    - name: Test for secrets access
-      id: check_secrets
-      shell: bash
-      run: |
-        unset HAS_SECRET
-        if [ -n "$SECRET" ]; then HAS_SECRET='true' ; fi
-        echo ::set-output name=HAS_SECRET::${HAS_SECRET}
-      env:
-        SECRET: "${{ secrets.INSTALLER_UPLOAD_SECRET }}"
-
     - name: Build ARM64 Installer
       run: |
         podman run --rm=true \
@@ -82,8 +72,8 @@ jobs:
             echo "Emulating install.sh" && \
             pip install --upgrade pip && \
             pip install wheel && \
-            pip install --extra-index-url https://pypi.greendoge.net/simple/ miniupnpc==2.2.2 && \
-            pip install . --extra-index-url https://pypi.greendoge.net/simple/ && \
+            pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc==2.2.2 && \
+            pip install . --extra-index-url https://pypi.chia.net/simple/ && \
             ldd --version && \
             cd build_scripts && \
             sh build_linux_deb.sh arm64 \
@@ -95,26 +85,6 @@ jobs:
         name: Linux-ARM-64-Installer
         path: ${{ github.workspace }}/build_scripts/final_installer/
 
-    - name: Install AWS CLI
-      if: steps.check_secrets.outputs.HAS_SECRET
-      run: |
-          sudo apt-get install -y awscli
-
-    - name: Configure AWS Credentials
-      if: steps.check_secrets.outputs.HAS_SECRET
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.INSTALLER_UPLOAD_KEY }}
-        aws-secret-access-key: ${{ secrets.INSTALLER_UPLOAD_SECRET }}
-        aws-region: us-west-2
-
-    - name: Upload to s3
-      env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
-      if: steps.check_secrets.outputs.HAS_SECRET
-      run: |
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb s3://download-greendoge-net/builds/
-
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
       env:
@@ -123,37 +93,6 @@ jobs:
         ls ${{ github.workspace }}/build_scripts/final_installer/
         sha256sum ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb > ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb.sha256
         ls ${{ github.workspace }}/build_scripts/final_installer/
-
-    - name: Install py3createtorrent
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        pip3 install py3createtorrent
-
-    - name: Create torrent
-      if: startsWith(github.ref, 'refs/tags/')
-      env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
-      run: |
-        py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb -o ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb.torrent --webseed https://download-greendoge-net.s3.us-west-2.amazonaws.com/install/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb
-        ls ${{ github.workspace }}/build_scripts/final_installer/
-
-    - name: Upload Beta Installer
-      if: steps.check_secrets.outputs.HAS_SECRET && github.ref == 'refs/heads/main'
-      env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
-      run: |
-        aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb s3://download-greendoge-net/beta/greendoge-blockchain_arm64_latest_beta.deb
-        aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb.sha256 s3://download-greendoge-net/beta/greendoge-blockchain_arm64_latest_beta.deb.sha256
-
-    - name: Upload Release Files
-      if: steps.check_secrets.outputs.HAS_SECRET && startsWith(github.ref, 'refs/tags/')
-      env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
-      run: |
-          ls ${{ github.workspace }}/build_scripts/final_installer/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb s3://download-greendoge-net/install/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb.sha256 s3://download-greendoge-net/install/
-          aws s3 cp ${{ github.workspace }}/build_scripts/final_installer/greendoge-blockchain_${GREENDOGE_INSTALLER_VERSION}_arm64.deb.torrent s3://download-greendoge-net/torrents/
 
     - name: Get tag name
       if: startsWith(github.ref, 'refs/tags/')
