@@ -49,10 +49,19 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
+# sets the version for greendoge-blockchain in package.json
+brew install jq
+cp package.json package.json.orig
+jq --arg VER "$GREENDOGE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+
 electron-packager . GreenDoge --asar.unpack="**/daemon/**" --platform=darwin \
 --icon=src/assets/img/GreenDoge.icns --overwrite --app-bundle-id=net.greendoge.blockchain \
 --appVersion=$GREENDOGE_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
+
+# reset the package.json to the original
+mv package.json.orig package.json
+
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-packager failed!"
 	exit $LAST_EXIT_CODE

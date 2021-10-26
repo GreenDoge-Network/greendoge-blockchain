@@ -4,6 +4,7 @@ import logging
 import os
 import random
 import shutil
+import ssl
 import sys
 import tempfile
 import time
@@ -31,12 +32,12 @@ from greendoge.consensus.block_record import BlockRecord
 from greendoge.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from greendoge.consensus.blockchain_interface import BlockchainInterface
 from greendoge.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
+from greendoge.consensus.condition_costs import ConditionCost
 from greendoge.consensus.constants import ConsensusConstants
 from greendoge.consensus.default_constants import DEFAULT_CONSTANTS
 from greendoge.consensus.deficit import calculate_deficit
 from greendoge.consensus.full_block_to_block_record import block_to_block_record
 from greendoge.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from greendoge.consensus.cost_calculator import NPCResult, calculate_cost_of_program
 from greendoge.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
@@ -46,12 +47,14 @@ from greendoge.consensus.pot_iterations import (
 )
 from greendoge.consensus.vdf_info_computation import get_signage_point_vdf_info
 from greendoge.full_node.signage_point import SignagePoint
-from greendoge.plotting.util import PlotInfo, PlotsRefreshParameter, PlotRefreshResult, parse_plot_info
+from greendoge.plotting.util import PlotsRefreshParameter, PlotRefreshResult, PlotRefreshEvents, parse_plot_info
 from greendoge.plotting.manager import PlotManager
+from greendoge.server.server import ssl_context_for_server
 from greendoge.types.blockchain_format.classgroup import ClassgroupElement
 from greendoge.types.blockchain_format.coin import Coin, hash_coin_list
 from greendoge.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
 from greendoge.types.blockchain_format.pool_target import PoolTarget
+from greendoge.types.blockchain_format.program import INFINITE_COST
 from greendoge.types.blockchain_format.proof_of_space import ProofOfSpace
 from greendoge.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
 from greendoge.types.blockchain_format.sized_bytes import bytes32
@@ -63,16 +66,14 @@ from greendoge.types.blockchain_format.slots import (
 )
 from greendoge.types.blockchain_format.sub_epoch_summary import SubEpochSummary
 from greendoge.types.blockchain_format.vdf import VDFInfo, VDFProof
-from greendoge.types.condition_with_args import ConditionWithArgs
 from greendoge.types.end_of_slot_bundle import EndOfSubSlotBundle
 from greendoge.types.full_block import FullBlock
 from greendoge.types.generator_types import BlockGenerator, CompressorArg
 from greendoge.types.spend_bundle import SpendBundle
 from greendoge.types.unfinished_block import UnfinishedBlock
-from greendoge.types.name_puzzle_condition import NPC
 from greendoge.util.bech32m import encode_puzzle_hash
 from greendoge.util.block_cache import BlockCache
-from greendoge.util.condition_tools import ConditionOpcode, conditions_by_opcode
+from greendoge.util.condition_tools import ConditionOpcode
 from greendoge.util.config import load_config, save_config
 from greendoge.util.hash import std_hash
 from greendoge.util.ints import uint8, uint16, uint32, uint64, uint128
@@ -81,6 +82,7 @@ from greendoge.util.merkle_set import MerkleSet
 from greendoge.util.prev_transaction_block import get_prev_transaction_block
 from greendoge.util.path import mkdir
 from greendoge.util.vdf_prover import get_vdf_info_and_proof
+from tests.time_out_assert import time_out_assert
 from tests.wallet_tools import WalletTool
 from greendoge.wallet.derive_keys import (
     master_sk_to_farmer_sk,
@@ -91,7 +93,6 @@ from greendoge.wallet.derive_keys import (
 
 test_constants = DEFAULT_CONSTANTS.replace(
     **{
-        "RUST_CONDITION_CHECKER": 0,
         "MIN_PLOT_SIZE": 18,
         "MIN_BLOCKS_PER_CHALLENGE_BLOCK": 12,
         "DIFFICULTY_STARTING": 2 ** 12,
@@ -156,12 +157,45 @@ class BlockTools:
             updated_constants = updated_constants.replace(**const_dict)
         self.constants = updated_constants
 
+        self.refresh_parameter: PlotsRefreshParameter = PlotsRefreshParameter(batch_size=2)
+        self.plot_dir: Path = get_plot_dir()
+        self.temp_dir: Path = get_plot_tmp_dir()
+        mkdir(self.plot_dir)
+        mkdir(self.temp_dir)
+        self.expected_plots: Dict[bytes32, Path] = {}
+        self.total_result = PlotRefreshResult()
+
+        def test_callback(event: PlotRefreshEvents, update_result: PlotRefreshResult):
+            assert update_result.duration < 5
+            if event == PlotRefreshEvents.started:
+                self.total_result = PlotRefreshResult()
+
+            if event == PlotRefreshEvents.batch_processed:
+                self.total_result.loaded += update_result.loaded
+                self.total_result.removed += update_result.removed
+                self.total_result.processed += update_result.processed
+                self.total_result.duration += update_result.duration
+                assert update_result.remaining == len(self.expected_plots) - self.total_result.processed
+                assert update_result.loaded <= self.refresh_parameter.batch_size
+
+            if event == PlotRefreshEvents.done:
+                assert self.total_result.loaded == update_result.loaded
+                assert self.total_result.removed == update_result.removed
+                assert self.total_result.processed == update_result.processed
+                assert self.total_result.duration == update_result.duration
+                assert update_result.remaining == 0
+                assert len(self.plot_manager.plots) == len(self.expected_plots)
+
+        self.plot_manager: PlotManager = PlotManager(
+            self.root_path, refresh_parameter=self.refresh_parameter, refresh_callback=test_callback
+        )
+
     async def setup_keys(self):
         if self.local_keychain:
             self.keychain_proxy = wrap_local_keychain(self.local_keychain, log=log)
         else:
             self.keychain_proxy = await connect_to_keychain_and_validate(
-                self.root_path, log, user="testing-1.8.0", testing=True
+                self.root_path, log, user="testing-1.8.0", service="greendoge-testing-1.8.0"
             )
 
         await self.keychain_proxy.delete_all_keys()
@@ -188,6 +222,8 @@ class BlockTools:
         if len(self.pool_pubkeys) == 0 or len(self.farmer_pubkeys) == 0:
             raise RuntimeError("Keys not generated. Run `greendoge generate keys`")
 
+        self.plot_manager.set_public_keys(self.farmer_pubkeys, self.pool_pubkeys)
+
     def change_config(self, new_config: Dict):
         self._config = new_config
         overrides = self._config["network_overrides"]["constants"][self._config["selected_network"]]
@@ -196,21 +232,31 @@ class BlockTools:
         save_config(self.root_path, "config.yaml", self._config)
 
     async def setup_plots(self):
-        plot_dir = get_plot_dir()
-        mkdir(plot_dir)
-        temp_dir = get_plot_tmp_dir()
-        mkdir(temp_dir)
-        num_pool_public_key_plots = 15
-        num_pool_address_plots = 5
+        assert len(self.expected_plots) == 0
+        # OG Plots
+        for i in range(15):
+            await self.new_plot()
+        # Pool Plots
+        for i in range(5):
+            await self.new_plot(self.pool_ph)
+        await self.refresh_plots()
+
+    async def new_plot(
+        self, pool_contract_puzzle_hash: Optional[bytes32] = None, path: Path = None
+    ) -> Optional[bytes32]:
+        final_dir = self.plot_dir
+        if path is not None:
+            final_dir = path
+            mkdir(final_dir)
         args = Namespace()
         # Can't go much lower than 20, since plots start having no solutions and more buggy
         args.size = 22
         # Uses many plots for testing, in order to guarantee proofs of space at every height
-        args.num = num_pool_public_key_plots  # Some plots created to a pool public key, and some to a pool puzzle hash
+        args.num = 1
         args.buffer = 100
-        args.tmp_dir = temp_dir
-        args.tmp2_dir = plot_dir
-        args.final_dir = plot_dir
+        args.tmp_dir = self.temp_dir
+        args.tmp2_dir = final_dir
+        args.final_dir = final_dir
         args.plotid = None
         args.memo = None
         args.buckets = 0
@@ -219,77 +265,82 @@ class BlockTools:
         args.nobitfield = False
         args.exclude_final_dir = False
         args.list_duplicates = False
-        test_private_keys = [
-            AugSchemeMPL.key_gen(std_hash(i.to_bytes(2, "big")))
-            for i in range(num_pool_public_key_plots + num_pool_address_plots)
-        ]
         try:
-            plot_keys_1 = PlotKeys(self.farmer_pk, self.pool_pk, None)
+            pool_pk: Optional[G1Element] = None
+            pool_address: Optional[str] = None
+            if pool_contract_puzzle_hash is None:
+                pool_pk = self.pool_pk
+            else:
+                pool_address = encode_puzzle_hash(pool_contract_puzzle_hash, "gdog")
 
+            keys = PlotKeys(self.farmer_pk, pool_pk, pool_address)
             # No datetime in the filename, to get deterministic filenames and not re-plot
-            await create_plots(
+            created, existed = await create_plots(
                 args,
-                plot_keys_1,
+                keys,
                 self.root_path,
                 use_datetime=False,
-                test_private_keys=test_private_keys[:num_pool_public_key_plots],
+                test_private_keys=[AugSchemeMPL.key_gen(std_hash(len(self.expected_plots).to_bytes(2, "big")))],
             )
-            # Create more plots, but to a pool address instead of public key
-            plot_keys_2 = PlotKeys(self.farmer_pk, None, encode_puzzle_hash(self.pool_ph, "gdog"))
-            args.num = num_pool_address_plots
-            await create_plots(
-                args,
-                plot_keys_2,
-                self.root_path,
-                use_datetime=False,
-                test_private_keys=test_private_keys[num_pool_public_key_plots:],
-            )
+
+            plot_id_new: Optional[bytes32] = None
+            path_new: Path = Path()
+
+            if len(created):
+                assert len(existed) == 0
+                plot_id_new, path_new = list(created.items())[0]
+
+            if len(existed):
+                assert len(created) == 0
+                plot_id_new, path_new = list(existed.items())[0]
+
+            self.expected_plots[plot_id_new] = path_new
+
+            # create_plots() updates plot_directories. Ensure we refresh our config to reflect the updated value
+            self._config["harvester"]["plot_directories"] = load_config(self.root_path, "config.yaml", "harvester")[
+                "plot_directories"
+            ]
+
+            return plot_id_new
+
         except KeyboardInterrupt:
-            shutil.rmtree(plot_dir, ignore_errors=True)
+            shutil.rmtree(self.plot_dir, ignore_errors=True)
             sys.exit(1)
 
-        refresh_done = False
-        refresh_parameter: PlotsRefreshParameter = PlotsRefreshParameter(120, 2, 10)
+    async def refresh_plots(self):
+        self.plot_manager.refresh_parameter.batch_size = (
+            4 if len(self.expected_plots) % 3 == 0 else 3
+        )  # Make sure we have at least some batches + a remainder
+        self.plot_manager.trigger_refresh()
+        assert self.plot_manager.needs_refresh()
+        self.plot_manager.start_refreshing()
+        await time_out_assert(10, self.plot_manager.needs_refresh, value=False)
+        self.plot_manager.stop_refreshing()
+        assert not self.plot_manager.needs_refresh()
 
-        def test_callback(update_result: PlotRefreshResult):
-            if update_result.remaining_files == 0:
-                nonlocal refresh_done
-                refresh_done = True
-            else:
-                assert 0 < update_result.loaded_plots <= refresh_parameter.batch_size
-                assert update_result.loaded_plots == update_result.processed_files
-                assert update_result.remaining_files > 0
-                assert update_result.loaded_size > 0
-                assert 0 < update_result.duration < 5
-
-        plot_manager: PlotManager = PlotManager(
-            self.root_path, refresh_parameter=refresh_parameter, refresh_callback=test_callback
-        )
-        plot_manager.set_public_keys(self.farmer_pubkeys, self.pool_pubkeys)
-        plot_manager.start_refreshing()
-
-        retry = 5
-        while not refresh_done and retry > 0:
-            time.sleep(1)
-            retry -= 1
-        assert refresh_done
-        plot_manager.stop_refreshing()
-        self.plots: Dict[Path, PlotInfo] = plot_manager.plots
-        # create_plots() updates plot_directories. Ensure we refresh our config to reflect the updated value
-        self._config["harvester"]["plot_directories"] = load_config(self.root_path, "config.yaml", "harvester")[
-            "plot_directories"
-        ]
+    async def delete_plot(self, plot_id: bytes32):
+        assert plot_id in self.expected_plots
+        self.expected_plots[plot_id].unlink()
+        del self.expected_plots[plot_id]
+        await self.refresh_plots()
 
     @property
     def config(self) -> Dict:
         return copy.deepcopy(self._config)
+
+    def get_daemon_ssl_context(self) -> Optional[ssl.SSLContext]:
+        crt_path = self.root_path / self.config["daemon_ssl"]["private_crt"]
+        key_path = self.root_path / self.config["daemon_ssl"]["private_key"]
+        ca_cert_path = self.root_path / self.config["private_ssl_ca"]["crt"]
+        ca_key_path = self.root_path / self.config["private_ssl_ca"]["key"]
+        return ssl_context_for_server(ca_cert_path, ca_key_path, crt_path, key_path)
 
     def get_plot_signature(self, m: bytes32, plot_pk: G1Element) -> G2Element:
         """
         Returns the plot signature of the header data.
         """
         farmer_sk = master_sk_to_farmer_sk(self.all_sks[0])
-        for _, plot_info in self.plots.items():
+        for plot_info in self.plot_manager.plots.values():
             if plot_pk == plot_info.plot_public_key:
                 # Look up local_sk from plot to save locked memory
                 if plot_info.prover.get_id() in self.local_sk_cache:
@@ -1036,11 +1087,8 @@ class BlockTools:
         force_plot_id: Optional[bytes32] = None,
     ) -> List[Tuple[uint64, ProofOfSpace]]:
         found_proofs: List[Tuple[uint64, ProofOfSpace]] = []
-        plots: List[PlotInfo] = [
-            plot_info for _, plot_info in sorted(list(self.plots.items()), key=lambda x: str(x[0]))
-        ]
         random.seed(seed)
-        for plot_info in plots:
+        for plot_info in self.plot_manager.plots.values():
             plot_id: bytes32 = plot_info.prover.get_id()
             if force_plot_id is not None and plot_id != force_plot_id:
                 continue
@@ -1462,43 +1510,26 @@ def get_full_block_and_block_record(
     return full_block, block_record
 
 
-def get_name_puzzle_conditions_test(generator: BlockGenerator, max_cost: int) -> NPCResult:
-    """
-    This is similar to get_name_puzzle_conditions(), but it doesn't validate
-    the conditions. We rely on this in tests to create invalid blocks.
-    safe_mode is implicitly True in this call
-    """
+def compute_cost_test(generator: BlockGenerator, cost_per_byte: int) -> Tuple[Optional[uint16], uint64]:
     try:
         block_program, block_program_args = setup_generator_args(generator)
-        clvm_cost, result = GENERATOR_MOD.run_safe_with_cost(max_cost, block_program, block_program_args)
-
-        npc_list: List[NPC] = []
+        clvm_cost, result = GENERATOR_MOD.run_safe_with_cost(INFINITE_COST, block_program, block_program_args)
+        size_cost = len(bytes(generator.program)) * cost_per_byte
+        condition_cost = 0
 
         for res in result.first().as_iter():
-            conditions_list: List[ConditionWithArgs] = []
-
-            spent_coin_parent_id: bytes32 = res.first().as_atom()
-            res = res.rest()
-            spent_coin_puzzle_hash: bytes32 = res.first().as_atom()
-            res = res.rest()
-            spent_coin_amount: uint64 = uint64(res.first().as_int())
-            res = res.rest()
-            spent_coin: Coin = Coin(spent_coin_parent_id, spent_coin_puzzle_hash, spent_coin_amount)
-
+            res = res.rest()  # skip parent coind id
+            res = res.rest()  # skip puzzle hash
+            res = res.rest()  # skip amount
             for cond in res.first().as_iter():
                 condition = cond.first().as_atom()
-                cvl = ConditionWithArgs(ConditionOpcode(condition), cond.rest().as_atom_list())
-                conditions_list.append(cvl)
-
-            conditions_dict = conditions_by_opcode(conditions_list)
-            if conditions_dict is None:
-                conditions_dict = {}
-            npc_list.append(
-                NPC(spent_coin.name(), spent_coin.puzzle_hash, [(a, b) for a, b in conditions_dict.items()])
-            )
-        return NPCResult(None, npc_list, uint64(clvm_cost))
+                if condition in [ConditionOpcode.AGG_SIG_UNSAFE, ConditionOpcode.AGG_SIG_ME]:
+                    condition_cost += ConditionCost.AGG_SIG.value
+                elif condition == ConditionOpcode.CREATE_COIN:
+                    condition_cost += ConditionCost.CREATE_COIN.value
+        return None, uint64(clvm_cost + size_cost + condition_cost)
     except Exception:
-        return NPCResult(uint16(Err.GENERATOR_RUNTIME_ERROR.value), [], uint64(0))
+        return uint16(Err.GENERATOR_RUNTIME_ERROR.value), uint64(0)
 
 
 def create_test_foliage(
@@ -1592,8 +1623,8 @@ def create_test_foliage(
         # Calculate the cost of transactions
         if block_generator is not None:
             generator_block_heights_list = block_generator.block_height_list()
-            result: NPCResult = get_name_puzzle_conditions_test(block_generator, constants.MAX_BLOCK_COST_CLVM)
-            cost = calculate_cost_of_program(block_generator.program, result, constants.COST_PER_BYTE)
+            err, cost = compute_cost_test(block_generator, constants.COST_PER_BYTE)
+            assert err is None
 
             removal_amount = 0
             addition_amount = 0

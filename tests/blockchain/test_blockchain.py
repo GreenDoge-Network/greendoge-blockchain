@@ -36,13 +36,8 @@ from greendoge.util.ints import uint8, uint64, uint32
 from greendoge.util.merkle_set import MerkleSet
 from greendoge.util.recursive_replace import recursive_replace
 from tests.wallet_tools import WalletTool
-from tests.core.fixtures import default_400_blocks  # noqa: F401; noqa: F401
-from tests.core.fixtures import default_1000_blocks  # noqa: F401
-from tests.core.fixtures import default_10000_blocks  # noqa: F401
-from tests.core.fixtures import default_10000_blocks_compact  # noqa: F401
-from tests.core.fixtures import empty_blockchain  # noqa: F401
-from tests.core.fixtures import create_blockchain
 from tests.setup_nodes import bt, test_constants
+from tests.util.blockchain import create_blockchain
 from tests.util.keyring import TempKeyring
 from greendoge.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
@@ -88,7 +83,7 @@ class TestGenesisBlock:
     async def test_non_overflow_genesis(self, empty_blockchain):
         assert empty_blockchain.get_peak() is None
         genesis = bt.get_consecutive_blocks(1, force_overflow=False)[0]
-        result, err, _ = await empty_blockchain.receive_block(genesis)
+        result, err, _, _ = await empty_blockchain.receive_block(genesis)
         assert err is None
         assert result == ReceiveBlockResult.NEW_PEAK
         assert empty_blockchain.get_peak().height == 0
@@ -96,21 +91,21 @@ class TestGenesisBlock:
     @pytest.mark.asyncio
     async def test_overflow_genesis(self, empty_blockchain):
         genesis = bt.get_consecutive_blocks(1, force_overflow=True)[0]
-        result, err, _ = await empty_blockchain.receive_block(genesis)
+        result, err, _, _ = await empty_blockchain.receive_block(genesis)
         assert err is None
         assert result == ReceiveBlockResult.NEW_PEAK
 
     @pytest.mark.asyncio
     async def test_genesis_empty_slots(self, empty_blockchain):
         genesis = bt.get_consecutive_blocks(1, force_overflow=False, skip_slots=30)[0]
-        result, err, _ = await empty_blockchain.receive_block(genesis)
+        result, err, _, _ = await empty_blockchain.receive_block(genesis)
         assert err is None
         assert result == ReceiveBlockResult.NEW_PEAK
 
     @pytest.mark.asyncio
     async def test_overflow_genesis_empty_slots(self, empty_blockchain):
         genesis = bt.get_consecutive_blocks(1, force_overflow=True, skip_slots=3)[0]
-        result, err, _ = await empty_blockchain.receive_block(genesis)
+        result, err, _, _ = await empty_blockchain.receive_block(genesis)
         assert err is None
         assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -119,7 +114,7 @@ class TestGenesisBlock:
         genesis = bt.get_consecutive_blocks(1, force_overflow=False)[0]
         bad_prev = bytes([1] * 32)
         genesis = recursive_replace(genesis, "foliage.prev_block_hash", bad_prev)
-        result, err, _ = await empty_blockchain.receive_block(genesis)
+        result, err, _, _ = await empty_blockchain.receive_block(genesis)
         assert err == Err.INVALID_PREV_BLOCK_HASH
 
 
@@ -141,7 +136,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", [new_finished_ss] + block.finished_sub_slots[1:]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_NEW_SUB_SLOT_ITERS
                 new_finished_ss_2 = recursive_replace(
                     block.finished_sub_slots[0],
@@ -151,7 +146,7 @@ class TestBlockHeaderValidation:
                 block_bad_2 = recursive_replace(
                     block, "finished_sub_slots", [new_finished_ss_2] + block.finished_sub_slots[1:]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_2)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_2)
                 assert err == Err.INVALID_NEW_DIFFICULTY
 
                 # 3c
@@ -168,7 +163,7 @@ class TestBlockHeaderValidation:
                 block_bad_3 = recursive_replace(
                     block, "finished_sub_slots", [new_finished_ss_3] + block.finished_sub_slots[1:]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_3)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_3)
                 assert err == Err.INVALID_SUB_EPOCH_SUMMARY
 
                 # 3d
@@ -185,10 +180,10 @@ class TestBlockHeaderValidation:
                 block_bad_4 = recursive_replace(
                     block, "finished_sub_slots", [new_finished_ss_4] + block.finished_sub_slots[1:]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_4)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_4)
                 assert err == Err.INVALID_SUB_EPOCH_SUMMARY or err == Err.INVALID_NEW_SUB_SLOT_ITERS
 
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
             log.info(
@@ -202,7 +197,7 @@ class TestBlockHeaderValidation:
         blockchain = empty_blockchain
         blocks = bt.get_consecutive_blocks(3)
         for block in blocks[:-1]:
-            result, err, _ = await blockchain.receive_block(block)
+            result, err, _, _ = await blockchain.receive_block(block)
             assert result == ReceiveBlockResult.NEW_PEAK
         block = blocks[-1]
         unf = UnfinishedBlock(
@@ -219,7 +214,7 @@ class TestBlockHeaderValidation:
         validate_res = await blockchain.validate_unfinished_block(unf, False)
         err = validate_res.error
         assert err is None
-        result, err, _ = await blockchain.receive_block(block)
+        result, err, _, _ = await blockchain.receive_block(block)
         blocks = bt.get_consecutive_blocks(1, block_list_input=blocks, force_overflow=True)
         block = blocks[-1]
         unf = UnfinishedBlock(
@@ -240,7 +235,7 @@ class TestBlockHeaderValidation:
     async def test_empty_genesis(self, empty_blockchain):
         blockchain = empty_blockchain
         for block in bt.get_consecutive_blocks(2, skip_slots=3):
-            result, err, _ = await blockchain.receive_block(block)
+            result, err, _, _ = await blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -249,13 +244,13 @@ class TestBlockHeaderValidation:
         blockchain = empty_blockchain
         blocks = bt.get_consecutive_blocks(10)
         for block in blocks:
-            result, err, _ = await blockchain.receive_block(block)
+            result, err, _, _ = await blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
         blocks = bt.get_consecutive_blocks(10, skip_slots=2, block_list_input=blocks)
         for block in blocks[10:]:
-            result, err, _ = await blockchain.receive_block(block)
+            result, err, _, _ = await blockchain.receive_block(block)
             assert err is None
         assert blockchain.get_peak().height == 19
 
@@ -266,7 +261,7 @@ class TestBlockHeaderValidation:
         blocks = []
         for i in range(num_blocks):
             blocks = bt.get_consecutive_blocks(1, block_list_input=blocks, skip_slots=1)
-            result, err, _ = await blockchain.receive_block(blocks[-1])
+            result, err, _, _ = await blockchain.receive_block(blocks[-1])
             assert result == ReceiveBlockResult.NEW_PEAK
         assert blockchain.get_peak().height == num_blocks - 1
 
@@ -280,7 +275,7 @@ class TestBlockHeaderValidation:
             num_blocks += i
             blocks = bt.get_consecutive_blocks(i, block_list_input=blocks, skip_slots=1, force_overflow=True)
             for block in blocks[-i:]:
-                result, err, _ = await blockchain.receive_block(block)
+                result, err, _, _ = await blockchain.receive_block(block)
                 assert result == ReceiveBlockResult.NEW_PEAK
                 assert err is None
         assert blockchain.get_peak().height == num_blocks - 1
@@ -329,7 +324,7 @@ class TestBlockHeaderValidation:
         blocks = []
         for i in range(num_blocks):  # Same thing, but 2 sub-slots per block
             blocks = bt.get_consecutive_blocks(1, block_list_input=blocks, skip_slots=2)
-            result, err, _ = await blockchain.receive_block(blocks[-1])
+            result, err, _, _ = await blockchain.receive_block(blocks[-1])
             assert result == ReceiveBlockResult.NEW_PEAK
         assert blockchain.get_peak().height == num_blocks - 1
 
@@ -340,7 +335,7 @@ class TestBlockHeaderValidation:
         blocks = []
         for i in range(num_blocks):  # Same thing, but 5 sub-slots per block
             blocks = bt.get_consecutive_blocks(1, block_list_input=blocks, skip_slots=5)
-            result, err, _ = await blockchain.receive_block(blocks[-1])
+            result, err, _, _ = await blockchain.receive_block(blocks[-1])
             assert result == ReceiveBlockResult.NEW_PEAK
         assert blockchain.get_peak().height == num_blocks - 1
 
@@ -348,7 +343,7 @@ class TestBlockHeaderValidation:
     async def test_basic_chain_overflow(self, empty_blockchain):
         blocks = bt.get_consecutive_blocks(5, force_overflow=True)
         for block in blocks:
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
         assert empty_blockchain.get_peak().height == len(blocks) - 1
@@ -360,7 +355,7 @@ class TestBlockHeaderValidation:
         blocks = []
         for i in range(num_blocks):
             blocks = bt.get_consecutive_blocks(1, block_list_input=blocks, skip_slots=2, force_overflow=True)
-            result, err, _ = await blockchain.receive_block(blocks[-1])
+            result, err, _, _ = await blockchain.receive_block(blocks[-1])
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
         assert blockchain.get_peak().height == num_blocks - 1
@@ -372,7 +367,7 @@ class TestBlockHeaderValidation:
         assert (await empty_blockchain.receive_block(blocks[0]))[0] == ReceiveBlockResult.NEW_PEAK
         block_1_bad = recursive_replace(blocks[-1], "foliage.prev_block_hash", bytes([0] * 32))
 
-        result, err, _ = await empty_blockchain.receive_block(block_1_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_1_bad)
         assert result == ReceiveBlockResult.DISCONNECTED_BLOCK
 
     @pytest.mark.asyncio
@@ -382,7 +377,7 @@ class TestBlockHeaderValidation:
         assert (await empty_blockchain.receive_block(blocks[0]))[0] == ReceiveBlockResult.NEW_PEAK
         block_1_bad = recursive_replace(blocks[-1], "reward_chain_block.proof_of_space.proof", bytes([0] * 32))
 
-        result, err, _ = await empty_blockchain.receive_block(block_1_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_1_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.INVALID_POSPACE
 
@@ -399,7 +394,7 @@ class TestBlockHeaderValidation:
             blocks[0], "finished_sub_slots", [new_finished_ss] + blocks[0].finished_sub_slots[1:]
         )
 
-        result, err, _ = await empty_blockchain.receive_block(block_0_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_0_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.INVALID_PREV_CHALLENGE_SLOT_HASH
 
@@ -417,8 +412,8 @@ class TestBlockHeaderValidation:
             blocks[1], "finished_sub_slots", [new_finished_ss] + blocks[1].finished_sub_slots[1:]
         )
 
-        _, _, _ = await empty_blockchain.receive_block(blocks[0])
-        result, err, _ = await empty_blockchain.receive_block(block_1_bad)
+        _, _, _, _ = await empty_blockchain.receive_block(blocks[0])
+        result, err, _, _ = await empty_blockchain.receive_block(block_1_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.INVALID_PREV_CHALLENGE_SLOT_HASH
 
@@ -436,8 +431,8 @@ class TestBlockHeaderValidation:
             blocks[1], "finished_sub_slots", blocks[1].finished_sub_slots[:-1] + [new_finished_ss]
         )
 
-        _, _, _ = await empty_blockchain.receive_block(blocks[0])
-        result, err, _ = await empty_blockchain.receive_block(block_1_bad)
+        _, _, _, _ = await empty_blockchain.receive_block(blocks[0])
+        result, err, _, _ = await empty_blockchain.receive_block(block_1_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.INVALID_PREV_CHALLENGE_SLOT_HASH
 
@@ -460,7 +455,7 @@ class TestBlockHeaderValidation:
             blocks[0], "finished_sub_slots", [new_finished_ss] + blocks[0].finished_sub_slots[1:]
         )
 
-        result, err, _ = await empty_blockchain.receive_block(block_0_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_0_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.SHOULD_NOT_HAVE_ICC
 
@@ -489,7 +484,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss]
                 )
-                result, err, _ = await bc1.receive_block(block_bad)
+                result, err, _, _ = await bc1.receive_block(block_bad)
                 assert err == Err.INVALID_ICC_EOS_VDF
 
                 # Bad output
@@ -509,7 +504,7 @@ class TestBlockHeaderValidation:
                 block_bad_2 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_2]
                 )
-                result, err, _ = await bc1.receive_block(block_bad_2)
+                result, err, _, _ = await bc1.receive_block(block_bad_2)
                 assert err == Err.INVALID_ICC_EOS_VDF
 
                 # Bad challenge hash
@@ -528,7 +523,7 @@ class TestBlockHeaderValidation:
                 block_bad_3 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_3]
                 )
-                result, err, _ = await bc1.receive_block(block_bad_3)
+                result, err, _, _ = await bc1.receive_block(block_bad_3)
                 assert err == Err.INVALID_ICC_EOS_VDF
 
                 # Bad proof
@@ -540,10 +535,10 @@ class TestBlockHeaderValidation:
                 block_bad_5 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_5]
                 )
-                result, err, _ = await bc1.receive_block(block_bad_5)
+                result, err, _, _ = await bc1.receive_block(block_bad_5)
                 assert err == Err.INVALID_ICC_EOS_VDF
 
-            result, err, _ = await bc1.receive_block(block)
+            result, err, _, _ = await bc1.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -593,7 +588,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss]
                 )
-                result, err, _ = await blockchain.receive_block(block_bad)
+                result, err, _, _ = await blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_ICC_HASH_CC
 
                 # 2i
@@ -605,7 +600,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_bad_rc]
                 )
-                result, err, _ = await blockchain.receive_block(block_bad)
+                result, err, _, _ = await blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_ICC_HASH_RC
             elif len(block.finished_sub_slots) > 0 and block.finished_sub_slots[-1].infused_challenge_chain is None:
                 # 2j
@@ -620,7 +615,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_bad_cc]
                 )
-                result, err, _ = await blockchain.receive_block(block_bad)
+                result, err, _, _ = await blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_ICC_HASH_CC
 
                 # 2k
@@ -634,11 +629,11 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_bad_rc]
                 )
-                result, err, _ = await blockchain.receive_block(block_bad)
+                result, err, _, _ = await blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_ICC_HASH_RC
 
             # Finally, add the block properly
-            result, err, _ = await blockchain.receive_block(block)
+            result, err, _, _ = await blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -658,7 +653,7 @@ class TestBlockHeaderValidation:
         block_bad = recursive_replace(
             blocks[-1], "finished_sub_slots", blocks[-1].finished_sub_slots[:-1] + [new_finished_ss]
         )
-        result, err, _ = await blockchain.receive_block(block_bad)
+        result, err, _, _ = await blockchain.receive_block(block_bad)
         assert err == Err.INVALID_SUB_EPOCH_SUMMARY_HASH
 
     @pytest.mark.asyncio
@@ -672,11 +667,11 @@ class TestBlockHeaderValidation:
         blocks_3 = bt.get_consecutive_blocks(1, skip_slots=2, block_list_input=blocks_base, force_overflow=True)
         blocks_4 = bt.get_consecutive_blocks(1, block_list_input=blocks_base)
         for block in blocks_base:
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
         for block in [blocks_1[-1], blocks_2[-1], blocks_3[-1], blocks_4[-1]]:
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
 
     @pytest.mark.asyncio
@@ -696,7 +691,7 @@ class TestBlockHeaderValidation:
             blocks[-1], "finished_sub_slots", blocks[-1].finished_sub_slots[:-1] + [new_finished_ss]
         )
 
-        result, err, _ = await blockchain.receive_block(block_1_bad)
+        result, err, _, _ = await blockchain.receive_block(block_1_bad)
         assert result == ReceiveBlockResult.INVALID_BLOCK
         assert err == Err.INVALID_CHALLENGE_SLOT_HASH_RC
 
@@ -725,7 +720,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_CC_EOS_VDF
 
                 # Bad output
@@ -747,7 +742,7 @@ class TestBlockHeaderValidation:
                 block_bad_2 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_2]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_2)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_2)
                 assert err == Err.INVALID_CC_EOS_VDF
 
                 # Bad challenge hash
@@ -769,7 +764,7 @@ class TestBlockHeaderValidation:
                 block_bad_3 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_3]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_3)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_3)
                 assert err == Err.INVALID_CC_EOS_VDF or err == Err.INVALID_PREV_CHALLENGE_SLOT_HASH
 
                 # Bad proof
@@ -781,10 +776,10 @@ class TestBlockHeaderValidation:
                 block_bad_5 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_5]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_5)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_5)
                 assert err == Err.INVALID_CC_EOS_VDF
 
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -807,7 +802,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_RC_EOS_VDF
 
                 # Bad output
@@ -823,7 +818,7 @@ class TestBlockHeaderValidation:
                 block_bad_2 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_2]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_2)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_2)
                 assert err == Err.INVALID_RC_EOS_VDF
 
                 # Bad challenge hash
@@ -839,7 +834,7 @@ class TestBlockHeaderValidation:
                 block_bad_3 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_3]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_3)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_3)
                 assert err == Err.INVALID_RC_EOS_VDF
 
                 # Bad proof
@@ -851,10 +846,10 @@ class TestBlockHeaderValidation:
                 block_bad_5 = recursive_replace(
                     block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss_5]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad_5)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad_5)
                 assert err == Err.INVALID_RC_EOS_VDF
 
-            result, err, _ = await empty_blockchain.receive_block(block)
+            result, err, _, _ = await empty_blockchain.receive_block(block)
             assert err is None
             assert result == ReceiveBlockResult.NEW_PEAK
 
@@ -872,7 +867,7 @@ class TestBlockHeaderValidation:
             ),
         )
         block_bad = recursive_replace(block, "finished_sub_slots", block.finished_sub_slots[:-1] + [new_finished_ss])
-        result, err, _ = await empty_blockchain.receive_block(block_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_bad)
         assert err == Err.INVALID_DEFICIT
 
     @pytest.mark.asyncio
@@ -903,10 +898,10 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     blocks[-1], "finished_sub_slots", blocks[-1].finished_sub_slots[:-1] + [new_finished_ss]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_DEFICIT or err == Err.INVALID_ICC_HASH_CC
 
-            result, err, _ = await empty_blockchain.receive_block(blocks[-1])
+            result, err, _, _ = await empty_blockchain.receive_block(blocks[-1])
             assert result == ReceiveBlockResult.NEW_PEAK
 
     @pytest.mark.asyncio
@@ -931,7 +926,7 @@ class TestBlockHeaderValidation:
             ),
         )
         block_bad = recursive_replace(block, "finished_sub_slots", [new_finished_ss] + block.finished_sub_slots[1:])
-        result, err, _ = await empty_blockchain.receive_block(block_bad)
+        result, err, _, _ = await empty_blockchain.receive_block(block_bad)
         assert err == Err.INVALID_SUB_EPOCH_SUMMARY_HASH
 
     @pytest.mark.asyncio
@@ -964,7 +959,7 @@ class TestBlockHeaderValidation:
                 block_bad = recursive_replace(
                     blocks[-1], "finished_sub_slots", [new_finished_ss] + blocks[-1].finished_sub_slots[1:]
                 )
-                result, err, _ = await empty_blockchain.receive_block(block_bad)
+                result, err, _, _ = await empty_blockchain.receive_block(block_bad)
                 assert err == Err.INVALID_SUB_EPOCH_SUMMARY_HASH
                 return None
             await empty_blockchain.receive_block(blocks[-1])
@@ -1592,7 +1587,7 @@ class TestPreValidation:
                 assert res[n].error is None
                 block = blocks_to_validate[n]
                 start_rb = time.time()
-                result, err, _ = await empty_blockchain.receive_block(block, res[n])
+                result, err, _, _ = await empty_blockchain.receive_block(block, res[n])
                 end_rb = time.time()
                 times_rb.append(end_rb - start_rb)
                 assert err is None
@@ -1658,7 +1653,7 @@ class TestBodyValidation:
             transaction_data=bundles,
             time_per_block=10,
         )
-        assert (await b.receive_block(blocks[-1])) == expected
+        assert (await b.receive_block(blocks[-1]))[0:-1] == expected
 
     @pytest.mark.asyncio
     @pytest.mark.parametrize(
@@ -2437,7 +2432,7 @@ class TestBodyValidation:
             farmer_reward_puzzle_hash=rewards_ph,
         )
         for block in blocks_reorg[-10:]:
-            r, e, _ = await b.receive_block(block)
+            r, e, _, _ = await b.receive_block(block)
             assert e is None
 
         # ephemeral coin is spent
@@ -2556,7 +2551,7 @@ class TestReorgs:
 
         blocks_reorg_chain = bt.get_consecutive_blocks(7, blocks[:10], seed=b"2")
         for reorg_block in blocks_reorg_chain:
-            result, error_code, fork_height = await b.receive_block(reorg_block)
+            result, error_code, fork_height, _ = await b.receive_block(reorg_block)
             if reorg_block.height < 10:
                 assert result == ReceiveBlockResult.ALREADY_HAVE_BLOCK
             elif reorg_block.height < 14:
@@ -2594,7 +2589,7 @@ class TestReorgs:
         )
         found_orphan = False
         for reorg_block in blocks_reorg_chain:
-            result, error_code, fork_height = await b.receive_block(reorg_block)
+            result, error_code, fork_height, _ = await b.receive_block(reorg_block)
             if reorg_block.height < num_blocks_chain_2_start:
                 assert result == ReceiveBlockResult.ALREADY_HAVE_BLOCK
             if reorg_block.weight <= chain_1_weight:
@@ -2634,7 +2629,7 @@ class TestReorgs:
         found_orphan = False
         blocks_reorg_chain = bt.get_consecutive_blocks(16, [], seed=b"2")
         for reorg_block in blocks_reorg_chain:
-            result, error_code, fork_height = await b.receive_block(reorg_block)
+            result, error_code, fork_height, _ = await b.receive_block(reorg_block)
             if reorg_block.height < 14:
                 if result == ReceiveBlockResult.ADDED_AS_ORPHAN:
                     found_orphan = True
@@ -2646,13 +2641,13 @@ class TestReorgs:
         # Back to original chain
         blocks_reorg_chain_2 = bt.get_consecutive_blocks(3, blocks, seed=b"3")
 
-        result, error_code, fork_height = await b.receive_block(blocks_reorg_chain_2[-3])
+        result, error_code, fork_height, _ = await b.receive_block(blocks_reorg_chain_2[-3])
         assert result == ReceiveBlockResult.ADDED_AS_ORPHAN
 
-        result, error_code, fork_height = await b.receive_block(blocks_reorg_chain_2[-2])
+        result, error_code, fork_height, _ = await b.receive_block(blocks_reorg_chain_2[-2])
         assert result == ReceiveBlockResult.NEW_PEAK
 
-        result, error_code, fork_height = await b.receive_block(blocks_reorg_chain_2[-1])
+        result, error_code, fork_height, _ = await b.receive_block(blocks_reorg_chain_2[-1])
         assert result == ReceiveBlockResult.NEW_PEAK
         assert found_orphan
         assert b.get_peak().height == 17
@@ -2697,11 +2692,11 @@ class TestReorgs:
             seed=b"1245",
         )
         for block in blocks:
-            result, error_code, _ = await b.receive_block(block)
+            result, error_code, _, _ = await b.receive_block(block)
             assert error_code is None and result == ReceiveBlockResult.NEW_PEAK
 
         for block in blocks_fork:
-            result, error_code, _ = await b.receive_block(block)
+            result, error_code, _, _ = await b.receive_block(block)
             assert error_code is None
 
     @pytest.mark.asyncio
@@ -2744,7 +2739,7 @@ class TestReorgs:
         heights = []
         for block in default_1000_blocks[:200]:
             heights.append(block.height)
-            result, error_code, _ = await b.receive_block(block)
+            result, error_code, _, _ = await b.receive_block(block)
             assert error_code is None and result == ReceiveBlockResult.NEW_PEAK
 
         blocks = await b.get_block_records_at(heights, batch_size=2)

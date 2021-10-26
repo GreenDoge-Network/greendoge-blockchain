@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 
 from greendoge.types.blockchain_format.sized_bytes import bytes32
 from greendoge.types.condition_with_args import ConditionWithArgs
-from greendoge.util.condition_tools import ConditionOpcode
+from greendoge.types.condition_opcodes import ConditionOpcode
 from greendoge.util.streamable import Streamable, streamable
 
 
@@ -18,5 +18,6 @@ class NPC(Streamable):
     def condition_dict(self):
         d: Dict[ConditionOpcode, List[ConditionWithArgs]] = {}
         for opcode, l in self.conditions:
+            assert opcode not in d
             d[opcode] = l
         return d

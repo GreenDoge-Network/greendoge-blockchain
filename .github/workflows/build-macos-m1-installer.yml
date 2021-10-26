@@ -41,16 +41,11 @@ jobs:
         shell: bash
         run: |
           unset HAS_APPLE_SECRET
-          unset HAS_AWS_SECRET
 
           if [ -n "$APPLE_SECRET" ]; then HAS_APPLE_SECRET='true' ; fi
           echo ::set-output name=HAS_APPLE_SECRET::${HAS_APPLE_SECRET}
-
-          if [ -n "$AWS_SECRET" ]; then HAS_AWS_SECRET='true' ; fi
-          echo ::set-output name=HAS_AWS_SECRET::${HAS_AWS_SECRET}
         env:
           APPLE_SECRET: "${{ secrets.APPLE_DEV_ID_APP }}"
-          AWS_SECRET: "${{ secrets.INSTALLER_UPLOAD_KEY }}"
 
       - name: Create installer version number
         id: version_number

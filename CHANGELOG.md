@@ -6,13 +6,108 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project does not yet adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 for setuptools_scm/PEP 440 reasons.
 
-## 1.2.7 GreenDoge blockchain 2021-09-16
+## 1.2.10 Chia blockchain 2021-10-25
+
+We have some great improvements in this release: We launched our migration of keys to a common encrypted keyring.yaml file, and we secure this with an optional passphrase in both GUI and CLI. We've added a passphrase hint in case you forget your passphrase. More info on our [wiki](https://github.com/Chia-Network/chia-blockchain/wiki/Passphrase-Protected-Chia-Keys-and-Key-Storage-Migration). We also launched a new Chialisp compiler in clvm_tools_rs which substantially improves compile time for Chialisp developers. We also addressed a widely reported issue in which a system failure, such as a power outage, would require some farmers to sync their full node from zero. This release also includes several other improvements and fixes.
+
+### Added
+
+- Added support for keyring migration from keychain, and the addition of passphrase support. Learn more at our [wiki](https://github.com/Chia-Network/chia-blockchain/wiki/Passphrase-Protected-Chia-Keys-and-Key-Storage-Migration).
+- Enabled experimental use of a new Chialisp compiler in clvm_tools_rs in chia-blockchain, which is off by default, and substantially improves compile time.
+- Added Windows PowerShell scripts to support installation from source.
+- Added a test to check that we don't reorg subslots unless there is a new peak.
+- Added harvester info to farmer logging.
+- Add 'points found 24h' to CLI reporting.
+- Added an alternative to pkm_pairs_for_conditions_dict() which is a bit more straightforward and returns the public keys and messages in the forms we need them to validate them.
+- Added ability to see unopenable plots at the end of plots check.
+- Added Program.at utility function.
+
+### Changed
+
+- Truncate points_[found,acknowledged]_24h to 24 hours at each signage point.
+- Improved reliability of test_farmer_harvester_rpc.py, by increasing the interval between harvester checks, which should avoid spamming logs with excessive plot refreshing and cache updates.
+- Thanks @cross for change that allows using IPv6 address in config.yaml for remote harvesters and other chia services.
+- Change to stop creating unused indexes in block_records and full_blocks tables.
+- Removed unnecessary index in CoinStore & add additional benchmarks.
+- Changed db_sync setting to default to FULL. In a prior release, this setting caused some users to have to resync their full node from zero if the node went offline, such as in a power outage. Users can change this to OFF in config.yaml.
+- Updated the coin_store benchmark to enable synchronous mode when talking to the DB, since that's the default now, and improves the output a bit.
+- Updated the old comment on chia/util/streamable.py with newer developer documentation.
+- Minor GUI changes based on community feedback.
+- Thanks @jack60612 for your help in improving our GUI code, including upgrading to electron 13, migration to electron remote, updating the latest dependencies, and more.  
+
+### Fixed
+
+- Corrected a super-linter name typo to GitHub
+- Thanks @sharjeelaziz for correcting our typo in your name. Our apologies for the error!
+- In macOS builds, changed the export value of NOTARIZE to fix some build failures.
+- Fix log output for duplicated plots.
+- Removed a flaky mtime check for plots that resolved an issue where file_path.stat() shows multiple copies of plots and slows performance of the farmer. Thanks @timporter for the assist on this one.
+- Thanks @jcteng for fixing a bug on the Chia DID wallet that showed 'mojo:'' instead of 'mojo'.
+
+## 1.2.9 Chia blockchain 2021-10-01
+
+### Changed
+
+- Changed "About" section in client to indicate correct release version.
+
+## 1.2.8 Chia blockchain 2021-09-30
+
+### Added
+
+- Added RPC updates to support keyring migration and to support adding a passphrase for wallets in an upcoming release.
+- Added plot memo caching in PlotManager, speeding initial loading and cached loading, by enabling harvester to save the parsed plot memo on disk on shutdown, then load it back into memory on startup so that it can skip key parsing calculations for all already known plots.
+- Added a debug option to log all SQL commands.
+- Added support for DID, our decentralized identity solution, as a building block toward Chia's broader set of DID capabilities.
+- Thanks @olivernyc for the addition of a query in CoinStore to special case height 0 to avoid querying all unspent coins.
+- Starting logging the timing of applying additions and removals to the coin store.
+- Made max message size configurable in config.yaml, as a possible workaround for very large farms where reporting plot information exceeds the maximum message size.
+- Added a config option for peer_connect_timeout.
+- Added support for unhardened key derivations.
+- Various CoinStore benchmark and performance improvements.
+- Beta builds are built on every merge to main, and are now available from <https://chia.net/download/>.
+- Thanks @Radexito for adding support for Raspberry Pi 4 64Bit to the GUI installation script.
+- Added macOS keyring.yaml support, migrating keys from macOS Keychain to keyring.yaml to support an upcoming release in which we'll add an optional passphrase to wallets.
+- We have made many full node changes to support our upcoming Chia Asset Token (CAT) standard and our upcoming standalone light wallet, which will use Chia's new electrum-style protocol to enable faster wallet syncing.
+- We have many new translations added in this release. Thanks to the following community members for their contributions: Albanian @ATSHOOTER; Arabic @younes.huawei.test; Belarusian @LUXDAD; Catalan @Poliwhirl; Chinese Traditional @MongWu-NeiTherHwoGer-Long, @danielrangel6; Chinese, Simplified @SupperDog; Croatian @vjukopila5 @marko.anti12; Czech @HansCZ; Danish @loppefaaret; Dutch @netlob;English @sharjeelaziz @darkflare; English, Australia @nzjake; English, New Zealand @nzjake @sharjeelaziz; Finnish @f00b4r; French @burnt; Hungarian @SirGeoff; Hebrew @Arielzikri; Indonesian @lespau;Lithuanian @Mariusxz; Polish @bartlomiej.tokarzewski; Portuguese @darkflare; Portuguese, Brazilian @fsavaget; Sinhala @HelaBasa;Slovak @atomsymbol; Spanish @needNRG; Spanish, Argentina @juands1644 @gdestribats; Spanish, Mexico @danielrangel6; Swedish @MrDyngrak; Thai @3bb.pintakam.7m1 @taweesak0803650558 @taweesak.25may1993 @3bb.pintakam.7m1; Turkish @baturman @ExtremeSTRAUSSER.
+
+### Changed
+
+- Bluebox proofs are now randomized instead of looking at the oldest part of the blockchain first to find uncompacted proofs.
+- Bumped sortedcontainers to version 2.4.0.
+- Dropped some redundant code in plotting/manager.py
+- Updated some hooks: Update `flake8` to 3.9.2, `pre-commit-hooks` to 4.0.1, `black` to 21.8b0
+- Bump clvm_rs to 0.1.14.
+- Added tests for invalid list terminators in conditions.
+- Updated blspy to 1.0.6.
+- Made a change to allow the host to be configurable for the timelord launcher.
+- Thanks @dkackman for adding the ability to collect the IDs of plots as they are queued and return them with the response.
+- Made the SpendBundle.debug use the default genesis challenge by default.
+- Changes in full node to execute sqlite pragmas only once, at the level where the database is opened, and changed pragma synchronous=FULL to OFF to improve disk I/O performance. Also removed redundant database pragmas in wallet.
+- Made a change to remove CoinStore's dependency on FullBlock to just pass in the parts of the block necessary to add the block.
+- Improved log formatting.
+- A change to logging to only log warnings when more than 10 seconds has passed, to reduce the number of warning logs.
+- Improved and fixed some outdated messages in CLI. Thanks @jack60612 for the assist!
+- We previously added a Rust condition checker, to replace our existing Python-based condition checker. In this release, we're removing the old Python code.
+- Several clvm_rs updates to support our upcoming Chia Asset Token (CAT) standard.
+
+### Fixed
+
+- Thanks @mgraczyk for the fix to keyring_path.
+- Fixed an issue blocking the Ubuntu installer that required manual installation of Python 3.9 as a workaround.
+- Fixed an issue where the config.yaml and keyring.yaml are only partially written out to, if another process is attempting to read the config while it's being written.
+- Fixed rmtree call in create_pool_plot.
+- Thanks @Knight1 for fixing an issue in which fix-ssl-permissions shows the current 'mode' not the 'updated mode'.
+- Fixed Mypy issues on Python 3.9.7 that generated many errors when running mypy.
+- Thanks @olivernyc for fixing an edge case with negative inputs to 'truncate_to_significant_bits'.
+- Added a fix for Windows installs that were seeing exceptions when writing to the keyring.
+
+## 1.2.7 Chia blockchain 2021-09-16
 
 ### Fixed
 
 - Thanks to @jack60612 for fixing a bug that displayed 25 words instead of 24 words in some instances in the GUI.
 
-## 1.2.6 GreenDoge blockchain 2021-09-09
+## 1.2.6 Chia blockchain 2021-09-09
 
 Today we’re releasing version 1.2.6 to address a resource bug with nodes, and we want to stress the importance of updating to it at the earliest convenience. The fix prevents a node from consuming excessive memory when many Bluebox Timelords are active on the chain.
 
@@ -27,13 +122,13 @@ Today we’re releasing version 1.2.6 to address a resource bug with nodes, and 
 - Fixed memory utilization issue related to how the node handles compact VDFs generated from blueboxes. We recommend everyone update to this version to avoid memory issues that can impact farming and harvesting.
 - Fixed issues with reloading plot files detected as bad (this can happen during plot copying).
 
-## 1.2.5 GreenDoge blockchain 2021-08-27
+## 1.2.5 Chia blockchain 2021-08-27
 
 ### Fixed
 
-- Fixed errors in the Linux GUI install script, which impacted only Linux users.  
+- Fixed errors in the Linux GUI install script, which impacted only Linux users.
 
-## 1.2.4 GreenDoge blockchain 2021-08-26
+## 1.2.4 Chia blockchain 2021-08-26
 
 ### Added
 
@@ -85,7 +180,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - Fixed NPM publish in clvm_rs.
 - Thanks to @skweee for his investigation work on fixing mempool TX cache cost, where the cost of the mempool TX cache (for spend bundles that can't be included in a block yet) would not be reset when the cache was emptied.
 
-## 1.2.3 GreenDoge blockchain 2021-07-26
+## 1.2.3 Chia blockchain 2021-07-26
 
 ### Added
 
@@ -98,7 +193,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - Thanks @aarcro for adding timing metrics to plot check.
 - Thanks @chadwick2143 for adding the ability to set the port to use for the harvester.
 - Added more friendly error reporting for peername errors.
-- We have added many new translations in this release. Thanks to @L3Sota,  @hodokami and @L3Sota for Japanese; @danielrangel6, @memph1x and @dvd101x for Spanish (Mexico); @fsavaget, @semnosao and @ygalvao for Portuguese (Brazilian); @juands1644 for Spanish (Argentina); @darkflare for Portuguese; @wong8888, @RuiZhe, @LM_MA, @ezio20121225, @GRIP123, @11221206 and @nicko1122 for Chinese Traditional; @atomsymbol for Slovak; @SirGeoff and @rolandfarkasCOM for Hungarian; @ordtrogen for Swedish; @HansCZ and @kafkic for Czech; @SupperDog for Chinese Simplified; @baturman and @Ansugo for Turkish; @thebacktrack for Russian; @itservicelukaswinter for German; @saeed508, @Amirr_ezA and @themehran for Persian; @hgthtung for Vietnamese; @f00b4r for Finnish; @IMIMIM for Latvian; @Rothnita and @vanntha85 for Khmer; @Rothnita and @Gammaubl for Thai; @marcin1990 for Polish; @mydienst for Bosnian; @dvd101x and @darkflare for Spanish; @ATSHOOTER for Albanian; @Munyuk81 for Indonesian; @loppefaaret for Danish; @sharjeelazizn and @nzjake for English; @nzjake for English (New Zealand). We apologize if we missed anyone and welcome corrections.
+- We have added many new translations in this release. Thanks to @L3Sota,  @hodokami and @L3Sota for Japanese; @danielrangel6, @memph1x and @dvd101x for Spanish (Mexico); @fsavaget, @semnosao and @ygalvao for Portuguese (Brazilian); @juands1644 for Spanish (Argentina); @darkflare for Portuguese; @wong8888, @RuiZhe, @LM_MA, @ezio20121225, @GRIP123, @11221206 and @nicko1122 for Chinese Traditional; @atomsymbol for Slovak; @SirGeoff and @rolandfarkasCOM for Hungarian; @ordtrogen for Swedish; @HansCZ and @kafkic for Czech; @SupperDog for Chinese Simplified; @baturman and @Ansugo for Turkish; @thebacktrack for Russian; @itservicelukaswinter for German; @saeed508, @Amirr_ezA and @themehran for Persian; @hgthtung for Vietnamese; @f00b4r for Finnish; @IMIMIM for Latvian; @Rothnita and @vanntha85 for Khmer; @Rothnita and @Gammaubl for Thai; @marcin1990 for Polish; @mydienst for Bosnian; @dvd101x and @darkflare for Spanish; @ATSHOOTER for Albanian; @Munyuk81 for Indonesian; @loppefaaret for Danish; @sharjeelaziz and @nzjake for English; @nzjake for English (New Zealand). We apologize if we missed anyone and welcome corrections.
 
 ### Changed
 
@@ -124,14 +219,14 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - The wallet ignores coins sent by accident to the pool contract address and allows self pooling rewards to be claimed in this case.
 - Thanks @mgraczyk for fixing the use of print_exc in farmer.
 
-## 1.2.2 GreenDoge blockchain 2021-07-13
+## 1.2.2 Chia blockchain 2021-07-13
 
 ### Fixed
 
 - Converted test_rom.py to use pytest and fixed test_singleton.
 - Thanks to @yshklarov for help fixing [#7273](https://github.com/Chia-Network/chia-blockchain/issues/7273), which bundled CA store to support pools for some farming systems, including M1 Apple computers. This enables those machines to properly connect to pools, and fixes the issue.
 
-## 1.2.1 GreenDoge blockchain 2021-07-12
+## 1.2.1 Chia blockchain 2021-07-12
 
 ### Added
 
@@ -144,7 +239,7 @@ submissions. Thanks to @RuiZhe for Chinese, Traditional; @HansCZ for Czech;
 - Thanks to @x-Rune for helping find and test a lot of 1.2.0 bugs with the harvester.
 - Fixed issue for Debian users where the wallet crashes on start for them since last release
 
-## 1.2.0 GreenDoge blockchain 2021-07-07
+## 1.2.0 Chia blockchain 2021-07-07
 
 ### Added
 
@@ -956,7 +1051,7 @@ all fields that referred to sub blocks are changed to blocks.
 
 - Welcome to the new consensus. This release is an all but a full re-write of the blockchain in under 30 days. There is now only one tip of the blockchain but we went from two chains to three. Block times are now a little under a minute but there are a couple of sub blocks between each transaction block. A block is also itself a special kind of sub block and each sub block rewards the farmer who won it 1 TXCH. Sub blocks come, on average, about every 17 to 18 seconds.
 - Starting with this Beta, there are 4608 opportunities per day for a farmer to win 1 TXCH compared to Beta 18 where there were 288 opportunities per day for a farmer to win 16 TXCH.
-- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [chia.net](https://chia.net/). Among the improvements this gives the GreenDoge blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
+- There is a lot more information and explanation of the new consensus algorithm in the New Consensus Working Document linked from [chia.net](https://chia.net/). Among the improvements this gives the Chia blockchain are a much higher security level against all attacks, more frequent transaction blocks that have less time variation between them and are then buried under confirmations (sub blocks also count towards re-org security) much more quickly.
 - New consensus means this is a very hard fork. All of your TXCH from Beta 17/18 will be gone. Your plots and keys will work just fine however. You will have to sync to the new chain.
 - You now have to sync 16 times more "blocks" for every 5 minutes of historical time so syncing is slower than it was on the old chain. We're aware of this and will be speeding it up and addressing blockchain database growth in the nest couple of releases.
 - Prior to this Beta 19, we had block times that targeted 5 minutes and rewarded 16 TXCH to one farmer. Moving forward we have epoch times that target 10 minutes and reward 32 TXCH to 32 farmers about every 17-18 seconds over that period. This has subtle naming and UI impacts in various places.
@@ -1551,7 +1646,7 @@ relic. We will make a patch available for these systems shortly.
 
 ### Added
 
-- There is now full transaction support on the GreenDoge blockchain. In this initial Beta 1.0 release, all transaction types are supported though the wallets and UIs currently only directly support basic transactions like coinbase rewards and sending coins while paying fees. UI support for our [smart transactions](https://github.com/Chia-Network/wallets/blob/main/README.md) will be available in the UIs shortly.
+- There is now full transaction support on the Chia blockchain. In this initial Beta 1.0 release, all transaction types are supported though the wallets and UIs currently only directly support basic transactions like coinbase rewards and sending coins while paying fees. UI support for our [smart transactions](https://github.com/Chia-Network/wallets/blob/main/README.md) will be available in the UIs shortly.
 - Wallet and Node GUI’s are available on Windows, Mac, and desktop Linux platforms. We now use an Electron UI that is a full light client wallet that can also serve as a node UI. Our Windows Electron Wallet can run standalone by connecting to other nodes on the network or another node you run. WSL 2 on Windows can run everything except the Wallet but you can run the Wallet on the native Windows side of the same machine. Also the WSL 2 install process is 3 times faster and _much_ easier. Windows native node/farmer/plotting functionality are coming soon.
 - Install is significantly easier with less dependencies on all supported platforms.
 - If you’re a farmer you can use the Wallet to keep track of your earnings. Either use the same keys.yaml on the same machine or copy the keys.yaml to another machine where you want to track of and spend your coins.
@@ -1645,7 +1740,7 @@ relic. We will make a patch available for these systems shortly.
 ### Added
 
 - FullNode performance improvements - Syncing up to the blockchain by importing all blocks is faster due to improvements in VDF verification speed and multithreading block verification.
-- VDF improvements - VDF verification and generation speed has increased and dependence on flint2 has been removed. We wish to thank Dr. William Hart (@wbhart) for dual licensing parts of his contributions in FLINT and Antic for inclusion in the GreenDoge blockchain.
+- VDF improvements - VDF verification and generation speed has increased and dependence on flint2 has been removed. We wish to thank Dr. William Hart (@wbhart) for dual licensing parts of his contributions in FLINT and Antic for inclusion in the Chia blockchain.
 - Implemented an RPC interface with JSON serialization for streamables - currently on port 8555.
 - Added details on how to contribute in CONTRIBUTING.md. Thanks @RichardLitt.
 - Added color logging

@@ -16,7 +16,7 @@ from greendoge.cmds.wallet import wallet_cmd
 from greendoge.cmds.plotnft import plotnft_cmd
 from greendoge.util.default_root import DEFAULT_KEYS_ROOT_PATH, DEFAULT_ROOT_PATH
 from greendoge.util.keychain import set_keys_root_path, supports_keyring_passphrase
-from greendoge.util.ssl import check_ssl
+from greendoge.util.ssl_check import check_ssl
 from typing import Optional
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
@@ -47,7 +47,7 @@ def monkey_patch_click() -> None:
 @click.option(
     "--keys-root-path", default=DEFAULT_KEYS_ROOT_PATH, help="Keyring file root", type=click.Path(), show_default=True
 )
-@click.option("--passphrase-file", type=click.File("r"), help="File or descriptor to read the keyring passphase from")
+@click.option("--passphrase-file", type=click.File("r"), help="File or descriptor to read the keyring passphrase from")
 @click.pass_context
 def cli(
     ctx: click.Context,

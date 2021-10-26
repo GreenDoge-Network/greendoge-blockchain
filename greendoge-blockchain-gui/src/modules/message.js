@@ -18,7 +18,7 @@ import {
   presentBackupInfo,
   selectFilePath,
 } from './backup';
-import { exitDaemon } from './daemon_messages';
+import { daemonMessage, exitDaemon, keyringStatus } from './daemon_messages';
 import { wsDisconnect } from './websocket';
 import config from '../config/config';
 
@@ -62,6 +62,11 @@ export const showCreateBackup = (show) => ({
   show,
 });
 
+export const skipKeyringMigration = (skip) => ({
+  type: 'SKIP_KEYRING_MIGRATION',
+  skip,
+});
+
 export const async_api = (dispatch, action, openSpinner, usePromiseReject) => {
   if (openSpinner) {
     dispatch(openProgress());
@@ -71,7 +76,9 @@ export const async_api = (dispatch, action, openSpinner, usePromiseReject) => {
     action.resolve = resolve;
     action.reject = reject;
   }).finally(() => {
-    dispatch(closeProgress());
+    if (openSpinner) {
+      dispatch(closeProgress());
+    }
   });
 
   action.usePromiseReject = usePromiseReject;
@@ -757,26 +764,32 @@ export const create_did_wallet = (
   backup_dids,
   num_of_backup_ids_needed,
 ) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'create_new_wallet';
   action.message.data = {
     wallet_type: 'did_wallet',
     did_type: 'new',
-    amount,
-    backup_dids,
-    num_of_backup_ids_needed,
+    amount: amount,
+    backup_dids: backup_dids,
+    num_of_backup_ids_needed: num_of_backup_ids_needed,
     host: backup_host,
   };
+  console.log(action.message.data);
   return action;
 };
 
-export const create_did_action =
-  (amount, backup_dids, num_of_backup_ids_needed) => (dispatch) =>
-    async_api(
+export const create_did_action = (
+  amount,
+  backup_dids,
+  num_of_backup_ids_needed,
+) => {
+  return (dispatch) => {
+    return async_api(
       dispatch,
       create_did_wallet(amount, backup_dids, num_of_backup_ids_needed),
       true,
     ).then((response) => {
+      dispatch(closeProgress());
       dispatch(createState(true, false));
       if (response.data.success) {
         // Go to wallet
@@ -785,122 +798,285 @@ export const create_did_action =
         dispatch(createState(true, false));
         dispatch(changeCreateWallet(ALL_OPTIONS));
       } else {
-        const { error } = response.data;
+        const error = response.data.error;
         dispatch(openErrorDialog(error));
       }
+      return response;
     });
+  };
+};
 
 export const recover_did_wallet = (filename) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'create_new_wallet';
   action.message.data = {
     wallet_type: 'did_wallet',
     did_type: 'recovery',
-    filename,
+    filename: filename,
     host: backup_host,
   };
   return action;
 };
 
-export const recover_did_action = (filename) => (dispatch) =>
-  async_api(dispatch, recover_did_wallet(filename), true).then((response) => {
-    dispatch(createState(true, false));
-    if (response.data.success) {
-      // Go to wallet
-      dispatch(format_message('get_wallets', {}));
-      dispatch(showCreateBackup(false));
-      dispatch(createState(true, false));
-      dispatch(changeCreateWallet(ALL_OPTIONS));
-    } else {
-      const { error } = response.data;
-      dispatch(openErrorDialog(error));
-    }
-  });
+export const recover_did_action = (filename) => {
+  return (dispatch) => {
+    return async_api(dispatch, recover_did_wallet(filename), true).then(
+      (response) => {
+        dispatch(closeProgress());
+        dispatch(createState(true, false));
+        if (response.data.success) {
+          // Go to wallet
+          dispatch(format_message('get_wallets', {}));
+          const id = response.data.wallet_id;
+          dispatch(
+            format_message('did_get_information_needed_for_recovery', {
+              wallet_id: id,
+            }),
+          );
+          dispatch(showCreateBackup(false));
+          dispatch(createState(true, false));
+          dispatch(changeCreateWallet(ALL_OPTIONS));
+        } else {
+          const error = response.data.error;
+          dispatch(openErrorDialog(error));
+        }
+        return response;
+      },
+    );
+  };
+};
 
 export const did_update_recovery_ids = (
   wallet_id,
   new_list,
   num_verifications_required,
 ) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'did_update_recovery_ids';
   action.message.data = {
-    wallet_id,
-    new_list,
-    num_verifications_required,
+    wallet_id: wallet_id,
+    new_list: new_list,
+    num_verifications_required: num_verifications_required,
   };
   return action;
 };
 
-export const did_update_recovery_ids_action =
-  (wallet_id, new_list, num_verifications_required) => (dispatch) =>
-    async_api(
+export const did_update_recovery_ids_action = (
+  wallet_id,
+  new_list,
+  num_verifications_required,
+) => {
+  return (dispatch) => {
+    return async_api(
       dispatch,
       did_update_recovery_ids(wallet_id, new_list, num_verifications_required),
       true,
     ).then((response) => {
+      dispatch(closeProgress());
       dispatch(format_message('get_wallets', {}));
       dispatch(createState(true, false));
     });
+  };
+};
 
 export const did_spend = (wallet_id, puzzlehash) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'did_spend';
-  action.message.data = { wallet_id, puzzlehash };
+  action.message.data = { wallet_id: wallet_id, puzzlehash: puzzlehash };
   return action;
 };
 
 export const did_get_did = (wallet_id) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'did_get_did';
-  action.message.data = { wallet_id };
+  action.message.data = { wallet_id: wallet_id };
   return action;
 };
 
 export const did_get_recovery_list = (wallet_id) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'did_get_recovery_list';
-  action.message.data = { wallet_id };
+  action.message.data = { wallet_id: wallet_id };
   return action;
 };
 
-export const did_recovery_spend = (
-  wallet_id,
-  spend_bundles,
-  info_dict,
-  coin_name,
-  puzhash,
-) => {
-  const action = walletMessage();
+export const did_recovery_spend = (wallet_id, attest_filenames) => {
+  var action = walletMessage();
   action.message.command = 'did_recovery_spend';
   action.message.data = {
-    wallet_id,
-    spend_bundles,
-    info_dict,
-    coin_name,
-    puzhash,
+    wallet_id: wallet_id,
+    attest_filenames: attest_filenames,
   };
   return action;
 };
 
-export const did_create_attest = (wallet_id, coin_name, pubkey, puzhash) => {
-  const action = walletMessage();
+export const did_recovery_spend_action = (wallet_id, attest_filenames) => {
+  return (dispatch) => {
+    return async_api(
+      dispatch,
+      did_recovery_spend(wallet_id, attest_filenames),
+      true,
+    ).then((response) => {
+      dispatch(closeProgress());
+      dispatch(createState(true, false));
+      if (response.data.success) {
+        // Go to wallet
+        dispatch(format_message('get_wallets', {}));
+        var id = response.data.wallet_id;
+        dispatch(showCreateBackup(false));
+        dispatch(createState(true, false));
+        dispatch(changeCreateWallet(ALL_OPTIONS));
+      } else {
+        const error = response.data.error;
+        dispatch(openErrorDialog(error));
+      }
+    });
+  };
+};
+
+export const did_create_attest = (
+  wallet_id,
+  filename,
+  coin_name,
+  pubkey,
+  puzhash,
+) => {
+  var action = walletMessage();
   action.message.command = 'did_create_attest';
   action.message.data = {
-    wallet_id,
-    coin_name,
-    pubkey,
-    puzhash,
+    wallet_id: wallet_id,
+    filename: filename,
+    coin_name: coin_name,
+    pubkey: pubkey,
+    puzhash: puzhash,
   };
   return action;
 };
 
 export const did_generate_backup_file = (wallet_id, filename) => {
-  const action = walletMessage();
+  var action = walletMessage();
   action.message.command = 'did_create_backup_file';
   action.message.data = {
-    wallet_id,
-    filename,
+    wallet_id: wallet_id,
+    filename: filename,
   };
   return action;
 };
+
+export const did_get_recovery_info = (wallet_id) => {
+  var action = walletMessage();
+  action.message.command = 'did_get_information_needed_for_recovery';
+  action.message.data = { wallet_id: wallet_id };
+  return action;
+};
+
+export const unlock_keyring = (key) => {
+  const action = daemonMessage();
+  action.message.command = 'unlock_keyring';
+  action.message.data = { key: key };
+  return action;
+}
+
+export const unlock_keyring_action = (key, onFailure) => (dispatch) => {
+  return async_api(dispatch, unlock_keyring(key), false, true).then(
+    (response) => {
+      if (response.data.success) {
+        dispatch(refreshAllState());
+      } else if (onFailure) {
+        const { error } = response.data;
+        onFailure(error);
+      }
+    }
+  );
+};
+
+export const migrate_keyring = (passphrase, passphrase_hint, save_passphrase, cleanup_legacy_keyring) => {
+  const action = daemonMessage();
+  action.message.command = 'migrate_keyring';
+  action.message.data = { passphrase: passphrase, passphrase_hint: passphrase_hint, save_passphrase: save_passphrase, cleanup_legacy_keyring: cleanup_legacy_keyring };
+  return action;
+}
+
+export const migrate_keyring_action = (passphrase, passphraseHint, savePassphrase, cleanup_legacy_keyring, onFailure) => (dispatch) => {
+  return async_api(dispatch, migrate_keyring(passphrase, passphraseHint, savePassphrase, cleanup_legacy_keyring), false, true).then(
+    (response) => {
+      if (response.data.success) {
+        dispatch(keyringStatus());
+      } else if (onFailure) {
+        const { error } = response.data;
+        onFailure(error);
+      }
+    }
+  );
+}
+
+export const change_keyring_passphrase = (current_passphrase, new_passphrase, passphrase_hint, save_passphrase) => {
+  const action = daemonMessage();
+  action.message.command = 'set_keyring_passphrase';
+  action.message.data = { current_passphrase: current_passphrase, new_passphrase: new_passphrase, passphrase_hint: passphrase_hint, save_passphrase: save_passphrase };
+  return action;
+}
+
+export const change_keyring_passphrase_action = (current_passphrase, new_passphrase, passphraseHint, savePassphrase, onSuccess, onFailure) => (dispatch) => {
+  return async_api(dispatch, change_keyring_passphrase(current_passphrase, new_passphrase, passphraseHint, savePassphrase), false, true).then(
+    (response) => {
+      if (response.data.success) {
+        dispatch(keyringStatus());
+        if (onSuccess) {
+          onSuccess();
+        }
+      }
+      else if (onFailure) {
+        const { error } = response.data;
+        onFailure(error);
+      }
+    }
+  );
+}
+
+export const remove_keyring_passphrase = (current_passphrase) => {
+  const action = daemonMessage();
+  action.message.command = 'remove_keyring_passphrase';
+  action.message.data = { current_passphrase: current_passphrase };
+  return action;
+}
+
+export const remove_keyring_passphrase_action = (current_passphrase, onSuccess, onFailure) => (dispatch) => {
+  return async_api(dispatch, remove_keyring_passphrase(current_passphrase), false, true).then(
+    (response) => {
+      if (response.data.success) {
+        dispatch(keyringStatus());
+        if (onSuccess) {
+          onSuccess();
+        }
+      }
+      else if (onFailure) {
+        const { error } = response.data;
+        onFailure(error);
+      }
+    }
+  );
+}
+
+export const validate_keyring_passphrase = (key) => {
+  const action = daemonMessage();
+  action.message.command = 'validate_keyring_passphrase';
+  action.message.data = { key: key };
+  return action;
+}
+
+export const validate_keyring_passphrase_action = (key, onSuccess, onFailure) => (dispatch) => {
+  return async_api(dispatch, validate_keyring_passphrase(key)).then(
+    (response) => {
+      if (response.data.success) {
+        if (onSuccess) {
+          onSuccess();
+        }
+      }
+      else if (onFailure) {
+        const { error } = response.data;
+        onFailure(error);
+      }
+    }
+  );
+}

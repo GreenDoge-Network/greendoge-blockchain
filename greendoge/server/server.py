@@ -16,6 +16,8 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes, serialization
 
 from greendoge.protocols.protocol_message_types import ProtocolMessageTypes
+from greendoge.protocols.protocol_state_machine import message_requires_reply
+from greendoge.protocols.protocol_timing import INVALID_PROTOCOL_BAN_SECONDS, API_EXCEPTION_BAN_SECONDS
 from greendoge.protocols.shared_protocol import protocol_version
 from greendoge.server.introducer_peers import IntroducerPeers
 from greendoge.server.outbound_message import Message, NodeType
@@ -26,7 +28,7 @@ from greendoge.types.peer_info import PeerInfo
 from greendoge.util.errors import Err, ProtocolError
 from greendoge.util.ints import uint16
 from greendoge.util.network import is_localhost, is_in_network
-from greendoge.util.ssl import verify_ssl_certs_and_keys
+from greendoge.util.ssl_check import verify_ssl_certs_and_keys
 
 
 def ssl_context_for_server(
@@ -159,8 +161,8 @@ class GreenDogeServer:
 
         self.tasks_from_peer: Dict[bytes32, Set[bytes32]] = {}
         self.banned_peers: Dict[str, float] = {}
-        self.invalid_protocol_ban_seconds = 10
-        self.api_exception_ban_seconds = 10
+        self.invalid_protocol_ban_seconds = INVALID_PROTOCOL_BAN_SECONDS
+        self.api_exception_ban_seconds = API_EXCEPTION_BAN_SECONDS
         self.exempt_peer_networks: List[Union[IPv4Network, IPv6Network]] = [
             ip_network(net, strict=False) for net in config.get("exempt_peer_networks", [])
         ]
@@ -372,7 +374,11 @@ class GreenDogeServer:
         session = None
         connection: Optional[WSGreenDogeConnection] = None
         try:
-            timeout = ClientTimeout(total=30)
+            # Crawler/DNS introducer usually uses a lower timeout than the default
+            timeout_value = (
+                30 if "peer_connect_timeout" not in self.config else float(self.config["peer_connect_timeout"])
+            )
+            timeout = ClientTimeout(total=timeout_value)
             session = ClientSession(timeout=timeout)
 
             try:
@@ -607,13 +613,29 @@ class GreenDogeServer:
                 for message in messages:
                     await connection.send_message(message)
 
+    async def validate_broadcast_message_type(self, messages: List[Message], node_type: NodeType):
+        for message in messages:
+            if message_requires_reply(ProtocolMessageTypes(message.type)):
+                # Internal protocol logic error - we will raise, blocking messages to all peers
+                self.log.error(f"Attempt to broadcast message requiring protocol response: {message.type}")
+                for _, connection in self.all_connections.items():
+                    if connection.connection_type is node_type:
+                        await connection.close(
+                            self.invalid_protocol_ban_seconds,
+                            WSCloseCode.INTERNAL_ERROR,
+                            Err.INTERNAL_PROTOCOL_ERROR,
+                        )
+                raise ProtocolError(Err.INTERNAL_PROTOCOL_ERROR, [message.type])
+
     async def send_to_all(self, messages: List[Message], node_type: NodeType):
+        await self.validate_broadcast_message_type(messages, node_type)
         for _, connection in self.all_connections.items():
             if connection.connection_type is node_type:
                 for message in messages:
                     await connection.send_message(message)
 
     async def send_to_all_except(self, messages: List[Message], node_type: NodeType, exclude: bytes32):
+        await self.validate_broadcast_message_type(messages, node_type)
         for _, connection in self.all_connections.items():
             if connection.connection_type is node_type and connection.peer_node_id != exclude:
                 for message in messages:

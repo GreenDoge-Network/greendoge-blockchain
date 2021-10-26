@@ -25,7 +25,7 @@ from greendoge.util.config import (
 from greendoge.util.ints import uint32
 from greendoge.util.keychain import Keychain
 from greendoge.util.path import mkdir
-from greendoge.util.ssl import (
+from greendoge.util.ssl_check import (
     DEFAULT_PERMISSIONS_CERT_FILE,
     DEFAULT_PERMISSIONS_KEY_FILE,
     RESTRICT_MASK_CERT_FILE,
@@ -88,10 +88,14 @@ def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
             if all_targets[-1] == config["pool"].get("gdog_target_address"):
                 stop_searching_for_pool = True
 
-    # Set the destinations
+    # Set the destinations, if necessary
+    updated_target: bool = False
     if "gdog_target_address" not in config["farmer"]:
-        print(f"Setting the gdog destination address for coinbase fees reward to {all_targets[0]}")
+        print(
+            f"Setting the gdog destination for the farmer reward (1/8 plus fees, solo and pooling) to {all_targets[0]}"
+        )
         config["farmer"]["gdog_target_address"] = all_targets[0]
+        updated_target = True
     elif config["farmer"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a farmer address which we don't have the private"
@@ -102,13 +106,19 @@ def check_keys(new_root: Path, keychain: Optional[Keychain] = None) -> None:
     if "pool" not in config:
         config["pool"] = {}
     if "gdog_target_address" not in config["pool"]:
-        print(f"Setting the gdog destination address for coinbase reward to {all_targets[0]}")
+        print(f"Setting the gdog destination address for pool reward (7/8 for solo only) to {all_targets[0]}")
         config["pool"]["gdog_target_address"] = all_targets[0]
+        updated_target = True
     elif config["pool"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a pool address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
             f"{config['pool']['gdog_target_address']} with {all_targets[0]}"
+        )
+    if updated_target:
+        print(
+            f"To change the GDOG destination addresses, edit the `gdog_target_address` entries in"
+            f" {(new_root / 'config' / 'config.yaml').absolute()}."
         )
 
     # Set the pool pks in the farmer
