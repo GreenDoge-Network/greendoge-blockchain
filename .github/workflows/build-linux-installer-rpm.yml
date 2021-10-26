@@ -16,7 +16,7 @@ jobs:
     name: Linux .rpm installer on Python 3.9
     runs-on: ubuntu-latest
     container:
-      image: greendogenetwork/centos7-builder:latest
+      image: chianetwork/centos7-builder:latest
     timeout-minutes: 40
     strategy:
       fail-fast: false
