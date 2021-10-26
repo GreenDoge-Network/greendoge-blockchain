@@ -18,7 +18,6 @@ For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
 - We specifically compared [the GreenDoge Issuance Schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vRRxSd9cvJlPSspm63RYWPzLk82jB4lPZZT9pg8pGLLHiwLZJvq2R26TncCBzQPWuK1GX0SaOUffzSL/pubhtml) with Chia. Help miners and users who support us understand how valuable GDOG coins are in your hands.
-- You can also trade and vote GreenDoge on [Chianow](https://chianow.net/markets) now.
 - The GreenDoge whitepaper v1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
 
 ## Installing
@@ -44,7 +43,7 @@ If you need a quick synchronization, you can [download the database](https://chi
 - 147.135.4.49:6544
 
 ## Mining Rewards
-According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [fd-cli](https://github.com/GreenDoge-Network/fd-cli) or [nft-recovery](https://alltheblocks.net/nft-recovery) tool after 7 days.
+According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [nft-recovery](https://alltheblocks.net/nft-recovery) or [fd-cli](https://github.com/GreenDoge-Network/fd-cli) tool after 7 days.
 - 100 GDOG for the first 1 month after launch.
 - 20 GDOG in months 2 through 6.
 - 10 GDOG in months 7 through 12.
@@ -84,7 +83,7 @@ https://chiadb.org/ <br>
 https://chiaforksblockchain.com/
 
 ## Sponsor 
-Donate the developer for advertising GreenDoge, renting the Timelord and Introducer servers
+Donate the developer for advertising GreenDoge, renting the Timelord and Introducer servers.
 - BTC: 18e1gdU8EXg6V6gCqRWt3rEQTEsAqoPKaz
 - ETH: 0x4ae2822c7391dbc32ba6d0a7ab315475d0b44581
 - BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505
