@@ -14,7 +14,7 @@ GreenDoge is an environmentally-friendly blockchain that is easier to use, more 
 * Support for light clients with fast, objective syncing
 * A growing community of farmers and developers around the world
 
-For more information, see our website and downloads at https://greendoge.dog.
+For more information, see our website and downloads at https://greendoge.network.
 
 ## Latest News
 - We specifically compared [the GreenDoge Issuance Schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vRRxSd9cvJlPSspm63RYWPzLk82jB4lPZZT9pg8pGLLHiwLZJvq2R26TncCBzQPWuK1GX0SaOUffzSL/pubhtml) with Chia. Help miners and users who support us understand how valuable GDOG coins are in your hands.
