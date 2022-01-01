@@ -18,7 +18,7 @@ For more information, see our website and downloads at https://greendoge.dog.
 
 ## Latest News
 - We specifically compared [the GreenDoge Issuance Schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vRRxSd9cvJlPSspm63RYWPzLk82jB4lPZZT9pg8pGLLHiwLZJvq2R26TncCBzQPWuK1GX0SaOUffzSL/pubhtml) with Chia. Help miners and users who support us understand how valuable GDOG coins are in your hands.
-- The GreenDoge whitepaper v1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.dog/whitepaper.
+- The GreenDoge whitepaper v1.0.0 was officially released and the emission schedule was confirmed, downloads at https://greendoge.network/whitepaper.
 
 ## Installing
 
@@ -43,7 +43,7 @@ If you need a quick synchronization, you can [download the database](https://chi
 - 147.135.4.49:6544
 
 ## Mining Rewards
-According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [nft-recovery](https://alltheblocks.net/nft-recovery) or [fd-cli](https://github.com/GreenDoge-Network/fd-cli) tool after 7 days.
+According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://greendoge.network/whitepaper), the block rewards are as follows. If you assign plots to a Chia plot NFT instead of a GreenDoge plot NFT, you will get the 1/8 rewards directly in GreenDoge blockchain software. The other 7/8 rewards must be taken out through [nft-recovery](https://alltheblocks.net/nft-recovery) or [fd-cli](https://github.com/GreenDoge-Network/fd-cli) tool after 7 days.
 - 100 GDOG for the first 1 month after launch.
 - 20 GDOG in months 2 through 6.
 - 10 GDOG in months 7 through 12.
@@ -55,7 +55,7 @@ According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://
 
 ## Links
 - Website: https://greendoge.dog/ <br>
-- Whitepaper: https://greendoge.dog/whitepaper <br>
+- Whitepaper: https://greendoge.network/whitepaper <br>
 - Issuance Schedule: http://issuance-schedule.greendoge.dog/ <br>
 - Discord: https://discord.gg/HXbcfPGrgz <br>
 - Twitter: https://twitter.com/Green_Dogecoin <br>
@@ -75,9 +75,9 @@ https://market.posat.io/ <br>
 https://www.forks.green/trading/gdogxch <br>
 https://chivescoin.net/ <br>
 - Explorer: <br>
-https://greendoge.posat.io/ <br>
 https://alltheblocks.net/greendoge <br>
 https://greendoge.chivescoin.org/ <br>
+https://greendoge.posat.io/ <br>
 - Database: <br>
 https://chiadb.org/ <br>
 https://chiaforksblockchain.com/
@@ -95,4 +95,4 @@ Donate the developer for advertising GreenDoge, renting the Timelord and Introdu
 - The ChiaDoge(CDOG) testnet was launched on July 3, different from ChiaDogecoin(XCD) that was launched on July 10.
 - The name was changed from ChiaDoge to GreenDoge(GDOG) on July 7.
 - The mainnet was launched on July 9.
-- [The GreenDoge whitepaper v1.0.0](https://greendoge.dog/whitepaper) was released on August 31.
+- [The GreenDoge whitepaper v1.0.0](https://greendoge.network/whitepaper) was released on August 31.
