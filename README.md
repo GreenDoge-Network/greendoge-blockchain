@@ -54,7 +54,7 @@ According to the emission schedule of [the GreenDoge whitepaper v1.0.0](https://
 - 0.30625 GDOG for every year after year 9.
 
 ## Links
-- Website: https://greendoge.dog/ <br>
+- Website: https://greendoge.network/ <br>
 - Whitepaper: https://greendoge.network/whitepaper <br>
 - Issuance Schedule: http://issuance-schedule.greendoge.dog/ <br>
 - Discord: https://discord.gg/HXbcfPGrgz <br>
